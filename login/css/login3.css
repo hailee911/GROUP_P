@@ -27,52 +27,22 @@ body, html {
 
 #f1{
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 }
 #f2{
   font-size: 18px;
   margin-bottom: 50px;
 }
-form {
-  width: 100%;
-  max-width: 460px;
+#f3{
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+#f4{
+  font-size: 28px;
+  margin-bottom: 70px;
 }
 
-label {
-  display: block;
-  margin-bottom: 12px;
-  font-weight: bold;
-}
-
-input[type="text"]#id,input[type="text"]#birthday{
-  
-  width: 100%;
-  height: 55px;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-input[type="text"]{
-  width: 47.5%;
-  height: 55px;
-  padding: 10px;
-  margin-bottom: 0px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-select{
-  margin-left: 15px;
-  width: 47.5%;
-  height: 55px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-
-button {
+#w1{
   width: 460PX;
   height: 55PX;
   padding: 10px;
@@ -83,7 +53,26 @@ button {
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 4px 19px rgba(94, 94, 94, 0.3);
-  margin-top: 30px;
+  margin-top: 20px;
+}
+button{
+  width: 460PX;
+  height: 55PX;
+  padding: 10px;
+  background-color: #d9d9d9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 19px rgba(94, 94, 94, 0.3);
+  margin-top: 20px;
+}
+
+#w1:hover {
+  background-color: #ffffff;
+  color: black;
+  box-shadow: 0 4px 19px rgba(94, 94, 94, 0.3);
 }
 
 button:hover {
