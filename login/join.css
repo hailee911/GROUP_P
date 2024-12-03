@@ -1,0 +1,197 @@
+/* 기본틀 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.image-section {
+  flex: 3;
+  background-color: #f4f4f4;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 흰배경 약관동의 부분 */
+.join_form {
+  justify-content: center;
+  align-items: flex-start;
+  margin: 120px 60px 0 70px;
+  background-color: #fff;
+  width: 450px;
+}
+
+.join_form h2 {
+  font-size: 24px;
+  margin-bottom: 13px;
+}
+
+.join_form span {
+  font-size: 18px;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.terms_all {
+  margin-bottom: 20px;
+}
+
+.join_form .terms_all label {
+  font-size: 16px;
+  color: #797979;
+  margin-left: 15px;
+  font-weight: bold;
+  width: 181px;
+  height: 18px;
+}
+
+.terms_all input[type="checkbox"]:checked + label {
+  color: black;
+}
+
+.terms {
+  align-items: center;
+  margin-top: 20px;
+}
+
+.join_form .terms label{
+  font-size: 14px;
+  color: #797979;
+  margin: 0 10px 0 15px;
+  width: 181px;
+  height: 18px;
+}
+
+.terms input{
+  margin-bottom: 30px;
+}
+
+.terms input[type="checkbox"]:checked + label {
+  color: black;
+}
+
+.join_form .terms a{
+  float: right;
+  margin-right: 5px;
+  font-size: 13px;
+  color: #797979;
+  border-bottom: 1px solid #797979;
+}
+
+button {
+  width: 100%;
+  height: 54px;
+  padding: 10px;
+  background-color: #d9d9d9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 19px rgba(94, 94, 94, 0.3);
+}
+
+button:hover {
+  background-color: #5B70C8;
+}
+
+/* 약관동의 전체보기 페이지 */
+.termtainer {
+  margin: 50px auto;
+  width: 75%;
+  height: 85%;
+}
+
+.termtainer h3 {
+  margin: 100px 0 40px 0;
+  text-align: center;
+  font-size: 24px;
+
+}
+
+.termtainer span {
+  display: block;
+  margin: 30px 0 30px 0;
+}
+
+/* join02 가입 계정 정보 입력부분 */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  height: 55px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.join_info label {
+  display: block;
+  margin: 10px 0 5px 0;
+}
+
+.join_form .email {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.join_form .email p {
+  padding: 20px 5px 0 5px;
+}
+
+.join_form #email {
+  width: 47%;
+  height: 55px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* join03 사용자 정보 입력 */
+
+input[type="date"] {
+  width: 100%;
+  height: 55px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+input[type="radio"] {
+  width: 20px;
+  padding-top: 10px;
+}
+
+.join_form .gender {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.join_form .gender label {
+  margin: 10px 37px 5px 14px;
+}
