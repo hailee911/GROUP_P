@@ -83,11 +83,25 @@ input[type="text"], input[type="password"] {
 #pw{margin-top: 30px;}
 
 .checkbox {
+  width: 450px;
   display: flex;
+  text-align: left;
   align-items: center;
   margin-bottom: 20px;
-}
 
+}
+.checkbox > div{
+  cursor: pointer;
+  color: #666666;
+  margin-left: 70px;
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+}
+.checkbox > div > label > a{
+  color: #666666;
+  margin-left: 16px;
+}
 .checkbox input {
   margin-top: -10px;
   margin-right: 10px;
