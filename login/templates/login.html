@@ -35,8 +35,9 @@
             <label for="pw_remember"><a href='#'>비밀번호를 잊었어요.</a></label>
           </div>
         </div>
-          
-        <button type="submit">로그인</button>
+        <div class="login_error-message" id="login_errorMessage1">아이디를 입력해주세요</div>
+        <div class="login_error-message" id="login_errorMessage2">비밀번호를 입력해주세요</div>
+        <button type="button" id="login_button">로그인</button>
       </form>
       <div class="alternative-login">
         <p>또는</p>
@@ -46,6 +47,7 @@
           <a href="#"></a><img src="../images/kakao-icon.png" alt="Kakao"></a>
         </div>
       </div>
+      <script src="../js/login.js"></script>
     </div>
   </div>
 </body>

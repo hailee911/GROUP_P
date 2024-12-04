@@ -17,10 +17,14 @@
       <div id="pw_f1">비밀번호 찾기</div>
       <div id="pw_f2">회원가입시 입력한 정보로 찾을게요</div>
       <form>
-        <label for="name" id="pw_id">아이디</label>
+        <div class="pw_span1">
+          <label for="name" id="pw_id">아이디</label>
+          <div class="pw_error-message" id="pw_errorMessage">아이디를 입력해주세요.</div>
+        </div>
         <input type="text" id="pw_id_input" placeholder="    아이디를 입력해주세요.">
-        <button type="submit">확인</button>
+        <button type="button" id="pw_button">확인</button>
       </form>
+      <script src="../js/pw.js"></script>
     </div>
   </div>
 </body>

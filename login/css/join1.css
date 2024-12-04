@@ -141,6 +141,15 @@ p{
   margin: 20px 10px;
   cursor: pointer;
 }
+.login_error-message{
+  margin-bottom: 20px;
+  color: #E97C7C;
+  font-size: 14px;
+  display: none;
+}
+
+
+
 
 /* 아이디찾기1 */
 #f1{
@@ -153,13 +162,23 @@ p{
   margin-bottom: 56px;
 }
 #label_name,#label_mail {
-  display: block;
+  display: inline-block;
   font-weight: bold;
 }
+.id1_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.id1_span1{
+  display: flex;
+}
+
 #id_input_id,#id_input_bir{
   margin:12px 0 20px 0;
 }
-input[type="text"]#id,input[type="text"]#birthday{
+input[type="text"]#id1_id,input[type="text"]#id1_birthday{
   width: 100%;
   height: 55px;
   padding: 10px;
@@ -171,7 +190,7 @@ input[type="text"]#id,input[type="text"]#birthday{
   margin-bottom: 12px;
   font-weight: bold;
 }
-input[type="text"]#mail_id{
+input[type="text"]#id1_mail_id{
   width: 47.5%;
   height: 55px;
   padding: 10px;
@@ -268,6 +287,15 @@ input[type="text"]#input_code{
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+.pw_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.pw_span1{
+  display: flex;
+}
 
 /* 비밀번호2=아이디1 복붙 */
 
@@ -327,9 +355,12 @@ input[type="text"]#input_code{
 .error-message {
   color: #E97C7C;
   font-size: 14px;
+  margin-left: 30px;
   display: none;
 }
-
+.pw_span1{
+  display: flex;
+}
 
 
 /* 흰배경 약관동의 부분 */
