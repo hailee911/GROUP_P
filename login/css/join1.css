@@ -286,10 +286,8 @@ input[type="text"]#input_code{
   border-radius: 5px;
   box-sizing: border-box;
 }
-#pw3_pwrul{
-  font-size: 14px;
-  color: #E97C7C;
-  margin-bottom: 23px;
+#pw3_pw2{
+  margin-top: 23px;
 }
 #password{
   width: 100%;
@@ -325,6 +323,11 @@ input[type="text"]#input_code{
 }
 #pw3_{
   margin-bottom: 220px;
+}
+.error-message {
+  color: #E97C7C;
+  font-size: 14px;
+  display: none;
 }
 
 
