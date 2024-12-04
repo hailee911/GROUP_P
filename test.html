@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오 버튼 체크 확인</title>
+  <style>
+    .message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>라디오 버튼 체크 확인</h1>
+  <form id="radioForm">
+    <div>
+      <input type="radio" name="option" id="option1" value="1">
+      <label for="option1">옵션 1</label>
+    </div>
+    <div>
+      <input type="radio" name="option" id="option2" value="2">
+      <label for="option2">옵션 2</label>
+    </div>
+    <div>
+      <input type="radio" name="option" id="option3" value="3">
+      <label for="option3">옵션 3</label>
+    </div>
+    <button type="button" id="submitButton">제출</button>
+    <div id="warningMessage" class="message"></div>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

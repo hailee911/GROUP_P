@@ -438,6 +438,18 @@ input[type="text"]#input_code{
   margin: 30px 0 30px 0;
 }
 
+#terma1{
+  margin-top: 68px;
+}
+
+#terma3{
+  margin-top: 334px;
+}
+
+#terma4{
+  margin-top: 125px;
+}
+
 /* join02 가입 계정 정보 입력부분 */
 input[type="text"], input[type="password"] {
   width: 100%;
@@ -470,6 +482,16 @@ input[type="text"], input[type="password"] {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+.join2_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 30px;
+  display: none;
+}
+.join2_span1{
+  display: flex;
+}
 
 /* join03 사용자 정보 입력 */
 
@@ -494,4 +516,13 @@ input[type="radio"] {
 
 .join_form .gender label {
   margin: 10px 37px 5px 14px;
+}
+.join3_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.join3_span1{
+  display: flex;
 }
