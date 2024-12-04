@@ -5,7 +5,7 @@ import os
 import vertexai
 
 # Set the environment variable
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "land_pg/alert-condition-443702-g2-78f203ca597a.json"  # Replace with actual path
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "land_pg/alert-condition-443702-g2-78f203ca597a.json"  # Replace with actual path
 
 vertexai.init(project="alert-condition-443702-g2", location="us-central1")
 # ... rest of your code ...
