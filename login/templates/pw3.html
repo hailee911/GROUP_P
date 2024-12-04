@@ -6,6 +6,7 @@
   <title>아이디 찾기 페이지</title>
   <link rel="stylesheet" href="../css/join1.css">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  
 </head>
 <body>
   <div class="container">
@@ -24,6 +25,7 @@
               <img src="../images/eye_closed.png" alt="비밀번호 보기">
           </button>
         </div>
+        <div class="error-message" id="errorMessage1">비밀번호를 입력해주세요</div>
         <div id="pw3_pwrul">8자 이상 12자리 이하의 숫자, 영문자, 특수문자 조합으로 가능합니다.</div>
         <label for="name" id="pw_id">새 비밀번호 확인</label>
         <div id='pw3_'>
@@ -33,9 +35,10 @@
               <img src="../images/eye_closed.png" alt="비밀번호 보기">
             </button>
           </div>
+          <div class="error-message" id="errorMessage2">비밀번호를 입력해주세요</div>
         </div>
 
-        <button type="submit" id="validateButton">비밀번호 변경완료</button>
+        <button type="button" id="validateButton">비밀번호 변경완료</button>
       </form>
       <script>
         
@@ -66,6 +69,7 @@
         
 
 
+
         // 비밀번호 필요조건
 
         const validateButton = document.getElementById('validateButton');
@@ -87,6 +91,8 @@
         });
 
 
+
+
         // 비밀번호 확인기능
         const checkButton = document.getElementById('validateButton');
         const pwpw = document.getElementById('pwpw');
@@ -101,6 +107,60 @@
           }
         });
 
+
+
+
+        
+        // input이 비었을때 에러메세지
+
+        const submitButton = document.getElementById('validateButton');
+        const textInput1 = document.getElementById('pwpw');
+        const textInput2 = document.getElementById('pwpw2');
+        const errorMessage1 = document.getElementById('errorMessage1');
+        const errorMessage2 = document.getElementById('errorMessage2');
+    
+        // 버튼 클릭 시 입력 필드 확인
+        validateButton.addEventListener('click', () => {
+          let isValid = true;
+    
+          // 첫 번째 입력 필드 확인
+          if (pwpw.value.trim() === '') {
+            errorMessage1.style.display = 'block';
+            pwpw.focus(); // 첫 번째 입력 필드에 포커스 이동
+            isValid = false;
+          } else {
+            errorMessage1.style.display = 'none';
+          }
+    
+          // 두 번째 입력 필드 확인
+          if (pwpw2.value.trim() === '') {
+            errorMessage2.style.display = 'block';
+            if (isValid) {
+              pwpw2.focus(); // 첫 번째 입력 필드가 비어있지 않으면 두 번째로 포커스 이동
+            }
+            isValid = false;
+          } else {
+            errorMessage2.style.display = 'none';
+          }
+    
+        });
+    
+        // 입력 필드에 포커스를 잃었을 때도 확인
+        pwpw.addEventListener('blur', () => {
+          if (pwpw.value.trim() === '') {
+            errorMessage1.style.display = 'block';
+          } else {
+            errorMessage1.style.display = 'none';
+          }
+        });
+    
+        pwpw2.addEventListener('blur', () => {
+          if (pwpw2.value.trim() === '') {
+            errorMessage2.style.display = 'block';
+          } else {
+            errorMessage2.style.display = 'none';
+          }
+        });
 
 
       </script>

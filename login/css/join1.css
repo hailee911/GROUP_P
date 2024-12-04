@@ -326,6 +326,11 @@ input[type="text"]#input_code{
 #pw3_{
   margin-bottom: 220px;
 }
+.error-message {
+  color: #E97C7C;
+  font-size: 14px;
+  display: none;
+}
 
 
 
