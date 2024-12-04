@@ -28,7 +28,7 @@
         <label for="name" id="pw_id">새 비밀번호 확인</label>
         <div id='pw3_'
         <div class="password-container">
-          <input type="password" class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
+          <input type="password" id="pwpw2" class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
           <button type="button" class="toggleButton">
               <img src="../images/eye_closed.png" alt="비밀번호 보기">
           </button>
@@ -79,17 +79,28 @@
           const password = passwordInput.value;
     
           if (validatePassword(password)) {
-            alert('비밀번호 조건이 충족되었습니다!');
+            pass
           } else {
             alert('비밀번호는 8자 이상 12자 이하이며, 숫자, 영문자, 특수문자를 최소 1개 이상 포함해야 합니다.');
           }
         });
 
 
+        // 비밀번호 확인기능
+        const checkButton = document.getElementById('validateButton');
+        const pwpw = document.getElementById('pwpw');
+        const pwpw2 = document.getElementById('pwpw2');
+    
+        // 버튼 클릭 이벤트
+        validateButton.addEventListener('click', () => {
+          if (pwpw.value === pwpw2.value) {
+            pass
+          } else {
+            alert('비밀번호가 일치하지 않습니다.');
+          }
+        });
 
 
-
-        
 
       </script>
     </div>
