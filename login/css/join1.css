@@ -61,9 +61,6 @@ button:hover {
   width: 450px;
 }
 
-
-
-
 /* 로그인 페이지 */
 #login_h1{
   width: 400px;
@@ -375,7 +372,6 @@ input[type="text"]#input_code{
   margin-bottom: 40px;
   display: inline-block;
 }
-
 
 .terms_all {
   margin-bottom: 20px;
