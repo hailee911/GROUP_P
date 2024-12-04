@@ -20,14 +20,15 @@
       <form>
         <label for="password" id="pw_id">새 비밀번호</label>
         <div class="password-container">
-          <input type='password' id="pwpw" class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
+          <input type='password' id="pwpw" class="pw3_id_input" name="password" placeholder="8자 이상 12자리 이하의 숫자, 영문자, 특수문자를 포함해주세요.">
           <button type="button" class="toggleButton">
               <img src="../images/eye_closed.png" alt="비밀번호 보기">
           </button>
         </div>
         <div class="error-message" id="errorMessage1">비밀번호를 입력해주세요</div>
-        <div id="pw3_pwrul">8자 이상 12자리 이하의 숫자, 영문자, 특수문자 조합으로 가능합니다.</div>
-        <label for="name" id="pw_id">새 비밀번호 확인</label>
+        <div id='pw3_pw2'>
+          <label for="name" id="pw_id">새 비밀번호 확인</label>
+        </div>
         <div id='pw3_'>
           <div class="password-container">
             <input type="password" id="pwpw2" class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
@@ -82,12 +83,7 @@
         // 버튼 클릭 이벤트
         validateButton.addEventListener('click', () => {
           const password = passwordInput.value;
-    
-          if (validatePassword(password)) {
-            pass
-          } else {
-            alert('비밀번호는 8자 이상 12자 이하이며, 숫자, 영문자, 특수문자를 최소 1개 이상 포함해야 합니다.');
-          }
+
         });
 
 
