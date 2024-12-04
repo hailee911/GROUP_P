@@ -152,7 +152,7 @@ p{
   font-size: 18px;
   margin-bottom: 56px;
 }
-#label_name {
+#label_name,#label_mail {
   display: block;
   font-weight: bold;
 }
@@ -258,12 +258,13 @@ input[type="text"]#input_code{
 }
 #pw_id{
   font-size: 16px;
+  font-weight: bold;
 }
 #pw_id_input{
   width: 100%;
   height: 55px;
   padding: 10px;
-  margin-bottom: 158px;
+  margin: 12px 0 158px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -271,20 +272,26 @@ input[type="text"]#input_code{
 /* 비밀번호2=아이디1 복붙 */
 
 /* 비밀번호3 */
-#pw3_id_input{
+#pw3_f2{
+  font-size: 18px;
+  margin-bottom: 56px;
+}
+
+.pw3_id_input{
   width: 100%;
   height: 55px;
   padding: 10px;
   margin: 12px 0 10px 0;
   border: 1px solid #ddd;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 #pw3_pwrul{
   font-size: 14px;
   color: #E97C7C;
   margin-bottom: 23px;
 }
-#pw3_id_input2{
+#password{
   width: 100%;
   height: 55px;
   padding: 10px;
@@ -292,9 +299,34 @@ input[type="text"]#input_code{
   border: 1px solid #ddd;
   border-radius: 5px;
 }
-#pw3_img img{
-  width: 30px;
+
+.password-container {
+  position: relative;
+  display: inline-block;
+  width: 100%; 
 }
+.password-container button {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  right: 10px; /* 오른쪽 여백 */
+  top: 55%;
+  transform: translateY(-50%);
+  background-color:#fff ;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: none;
+}
+
+.password-container button img {
+  width: 30px; /* 아이콘 크기 조정 */
+  height: 30px;
+}
+#pw3_{
+  margin-bottom: 220px;
+}
+
 
 
 /* 흰배경 약관동의 부분 */
