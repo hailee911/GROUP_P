@@ -15,18 +15,51 @@
     </div>
     <div class="join_form">
       <div id="pw_f1">비밀번호 찾기</div>
-      <div id="pw_f2">회원가입시 입력한 정보로 찾을게요</div>
+      <div id="pw3_f2">회원가입시 입력한 정보로 찾을게요</div>
       <form>
-        <label for="name" id="pw_id">새 비밀번호</label>
-        <div class="pw3_img"><img src="../images/View_fill.png"></div>
-        <input type="text" id="pw3_id_input" placeholder="    아이디를 입력해주세요.">
+        <label for="password" id="pw_id">새 비밀번호</label>
+        <div class="password-container">
+          <input type='password' class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
+          <button type="button" class="toggleButton">
+              <img src="../images/eye_closed.png" alt="비밀번호 보기">
+          </button>
+        </div>
         <div id="pw3_pwrul">8자 이상 12자리 이하의 숫자, 영문자, 특수문자 조합으로 가능합니다.</div>
-
         <label for="name" id="pw_id">새 비밀번호 확인</label>
-        <div class="pw3_img"><img src="../images/View_fill.png"></div>
-        <input type="text" id="pw3_id_input2" placeholder="    아이디를 입력해주세요.">
+        <div id='pw3_'
+        <div class="password-container">
+          <input type="password" class="pw3_id_input" name="password" placeholder="새비밀번호를 입력해주세요.">
+          <button type="button" class="toggleButton">
+              <img src="../images/eye_closed.png" alt="비밀번호 보기">
+          </button>
+        </div>
+
         <button type="submit">비밀번호 변경완료</button>
       </form>
+      <script>
+        // 모든 버튼 및 입력 필드를 가져옵니다.
+        const passwordFields = document.querySelectorAll('.pw3_id_input');
+        const toggleButtons = document.querySelectorAll('.toggleButton');
+
+        // 각 버튼에 이벤트 리스너 추가
+        toggleButtons.forEach((button, index) => {
+          const toggleImage = button.querySelector('img'); // 버튼 내부의 이미지
+          const passwordField = passwordFields[index]; // 해당 버튼에 맞는 입력 필드
+
+          button.addEventListener('click', () => {
+            // 현재 필드 타입 확인 및 토글
+            if (passwordField.type === 'password') {
+              passwordField.type = 'text'; // 텍스트로 변경
+              toggleImage.src = '../images/eye_open.png'; // 눈 열림 이미지
+              toggleImage.alt = '비밀번호 숨기기';
+            } else {
+              passwordField.type = 'password'; // 비밀번호로 변경
+              toggleImage.src = '../images/eye_closed.png'; // 눈 닫힘 이미지
+              toggleImage.alt = '비밀번호 보기';
+            }
+          });
+        });
+      </script>
     </div>
   </div>
 </body>
