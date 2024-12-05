@@ -1,3 +1,4 @@
+{% extends 'main_navi_base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -5,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="{% static 'css/customer/customer_service.css'%}">
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <title>알려드려요</title>
 </head>
 <body>
+  {% block container-block%}
   <div id="container">
     <div id="customer_service_top">
       <h2>알려드려요</h2>
@@ -233,5 +234,10 @@
     });
     
   </script>
+  {% endblock container-block%}
+  {% comment %} {% block container-block%}
+  {% endblock container-block%} {% endcomment %}
+  </div>
+  
 </body>
 </html>
