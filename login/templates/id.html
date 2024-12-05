@@ -10,40 +10,49 @@
 <body>
   <div class="container">
     <div class="image-section">
-      <img src="../join_login_index.svg" alt="">
+      <img src="../images/join_login_index.svg" alt="">
       </svg>
     </div>
     <div class="join_form">
       <div id="f1">아이디 찾기</div>
       <div id="f2">회원가입시 입력한 정보로 찾을게요</div>
       <form>
-        <label for="name" id="label_name">이름</label>
+        <div class="id1_span1">
+          <label for="name" id="label_name">이름</label>
+          <div class="id1_error-message" id="id1_errorMessage1">이름을 입력해주세요.</div>
+        </div>
         <div id="id_input_id">
-          <input type="text" id="id" placeholder="    이름을 입력해주세요.">
+          <input type="text" id="id1_id" class="id_input" placeholder="    이름을 입력해주세요.">
         </div>
-        <label for="birthday" id="label_bir">생년월일</label>
+        <div class="id1_span1">
+          <label for="birthday" id="label_bir">생년월일</label>
+          <div class="id1_error-message" id="id1_errorMessage2">생년월일을 입력해주세요.</div>
+        </div>
         <div id="id_input_bir">
-          <input type="text" id="birthday" placeholder="    예) 19991122">
+          <input type="text" id="id1_birthday" class="id_input" placeholder="    예) 19991122">
         </div>
-        <label for="mail" id="mail">이메일</label>
+        <div class="id1_span1">
+          <label for="mail" id="label_mail">이메일</label>
+          <div class="id1_error-message" id="id1_errorMessage3">메일을 입력해주세요.</div>
+        </div>
         <dd>
-          <input type="text" id="mail_id"  placeholder="    이메일">
-          <select id="id_select">
-            <option selected style="color:#999999"> 선택</option>
-            <option>@gmail.com</option>
-            <option>@naver.com</option>
-            <option>@nate.com</option>
-            <option>@yahoo.com</option>
-            <option>@daum.net</option>
-          </select>
+          <input type="text" id="id1_mail_id" class="id_input"  placeholder="    이메일">
+            <select id="id_select">
+              <option value="naver">naver.com</option>
+              <option value="gmail">gmail.com</option>
+              <option value="daum">hanmail.net</option>
+              <option value="nate">nate.com</option>
+              <option value="daum">daum.net</option>
+            </select>
         </dd>
         <label for="mail" id="label_code">인증코드</label>
         <input type="text" id="input_code" placeholder="    인증코드를 입력하세요.">
         <div id='code_a'>
           <a href="#" id='code_a'>인증코드를 발송합니다.</a>
         </div>
-        <button type="submit">인증 코드 확인</button>
+        <button type="button" id="id_button">인증 코드 확인</button>
       </form>
+      <script src="../js/id.js"></script>
     </div>
   </div>
 </body>
