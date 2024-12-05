@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+	<link rel="stylesheet" href="css/main.css">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<title>감정 돌아보기</title>
+	<style>
+		#container{width: 1635px; height: 3758px; float: left; margin-top: 110px; margin-left: 324px; 
+			border: 1px solid black;}
+		
+		#main_title{
+			width: 144px; height: 33px;
+			font-size: 22px; font-weight: 500;
+			line-height: 150%;
+		}
+	</style>
+	
+	
+	<script>
+		
+		$(function() {
+			// GNB 클릭
+			$('#menu ul li').on('click', function() {
+				$('#menu ul li').removeClass('active');
+				$(this).addClass('active');
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- 최상단 메뉴 -->
+	<div id="top_nav">
+		<h1><a href="#"></a></h1>
+		<ul class="top_menu">
+			<li><a href="#"><img src="images/search_icon.png" alt=""></a></li>
+			<li><a href="#"><img src="images/bell_off_icon.png" alt=""></a></li>
+			<li><a href="#">마이페이지</a></li>
+		</ul>
+
+	</div>
+
+	<!-- 좌측 gnb -->
+	<div id="gnb">
+
+		<!-- 프로필 -->
+		<div id="user_profile">
+			<div id="pimg">
+				<img src="images/default_profile.png" alt="">
+			</div>
+			<p id="uName">김용준</p>
+			<p id="uEmail">kyjoon0105@gmail.com</p>
+		</div>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul>
+				<a href="#"><li class="menu_item">우리 가족 이야기</li></a>
+				<a href="#"><li class="menu_item">다이어리</li></a>
+				<a href="#"><li class="menu_item active">감정 돌아보기</li></a>
+				<a href="#"><li class="menu_item">우리가족</li></a>
+				<a href="#"><li class="menu_item">캘린더</li></a>
+				<a href="#"><li class="menu_item">알려드려요</li></a>
+			</ul>
+		</nav>
+
+		<!-- logout -->
+		<div id="logout">
+			<a href="#"><span>로그아웃</span></a>
+		</div>
+		
+	</div>
+
+	<!-- container -->
+	<div id="container">
+		<span id="main_title">내 감정 돌아보기</span>
+		<div>
+			<h1>AI 감정 분석 리포트</h1>
+			<h3>용준 님의 최근 일주일의 기록을 바탕으로 AI가 분석한 감정 리포트를 보여드릴게요.</h3>
+			<h3><strong>AI 감정 분석 리포트</strong>란?</h3>
+			<h3>사용자의 기록 내용에서 감정의 점수를 매겨 기록 속의 MBTI와 LBTI를 분석해요. 그 후 사용자의 실제 MBTI에 기반하여</h3>
+
+		</div>
+	</div>
+
+
+
+
+
+
+</body>
+</html>
