@@ -138,9 +138,33 @@ box-sizing: border-box;
 .search_bar.closed {
 	top: -950px;
 }
-
 .search_bar.open {
 	top: 0; 
+}
+
+.search_box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 5px 14px;
+  width: 600px;
+	height: 48px;
+	margin: 40px auto;
+	box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.search_box input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  font-size: 14px;
+  background: transparent;
+}
+
+.search_box input::placeholder {
+  color: #aaa;
 }
 
 
