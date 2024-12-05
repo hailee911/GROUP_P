@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" type="text/css" href="../css/join1.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/login/join1.css'%}">
   <title>회원가입 페이지</title>
   
 </head>
@@ -28,7 +29,9 @@
             서비스 이용 과정에서 위치정보가 수집될 수 있으며,우리의 기록에서 제공하는 위치기반 서비스에 대해서는 '우리의 기록 위치기반서비스 이용약관'에서 자세하게 규정하고 있습니다.<br>
             이와 같이 수집된 정보는 개인정보와의 연계 여부 등에 따라 개인정보에 해당할 수 있고, 개인정보에 해당하지 않을 수도 있습니다.
         </span>
-        <button type="button">확인</button>
+            <a href="/loginpage/join01/">
+            <button type="button">확인</button>
+            </a>
     </div>
 </body>
 </html>

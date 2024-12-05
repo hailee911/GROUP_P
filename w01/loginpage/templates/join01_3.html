@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" type="text/css" href="../css/join1.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/login/join1.css'%}">
   <title>회원가입 페이지</title>
   
 </head>
@@ -24,7 +25,9 @@
             - 본 동의 시점에 카카오톡을 아직 사용하지 않은 사용자는 추후 우리의 기록 가입이 완료될 경우 자동으로 우리의 기록알림 카테고리의 채널이 추가됩니다.<br>
         </span>
         <div id="terma3" >
+            <a href="/loginpage/join01/">
             <button type="button">확인</button>
+            </a>
         </div>
     </div>
 </body>
