@@ -7,42 +7,67 @@
 a {
     text-decoration: none;
     cursor: pointer;
+    color:inherit;
+}
+ul{
+    list-style: none;
 }
 
-#header {
-    width: 1920px;
-    height: 174px;
-    position: relative;
+#land_header {
+	width: 100%;
+	height: 60px;
+    color:#ffffff;
+	background: #66666670;
+	/* border-bottom: 1px solid #E9E9E970; */
+	position: fixed;
+    top: 0; /* 상단에서 시작 */
+    left: 0; /* 좌측에서 시작 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+	
 }
 
-#headerline {
-    width: 1920px;
-    height: 5px;
-    background-color: #9D9D9D;
-    margin-top: 59px;
+#land_header:hover{
+    background: #ffffff;
+    transition: transform 1s cubic-bezier(0.3, 0.8, 0.4, 1);
+    color:#000000
 }
 
-#register {
-    color: #000000;
-    width: 83px;
-    height: 29px;
-    font-weight: 400;
-    font-size: 24px;
-    position: absolute;
-    top: 17px;
-    left: 1595px;
+#land_header>h1{ width: 81px; height: 24px; 
+    background: url('../images/logo_sample.png') no-repeat;
+    position: absolute; 
+    left:50px; top:18px; 
 }
 
-#login {
-    color: #000000;
-    width: 63px;
-    height: 29px;
-    font-weight: 400;
-    font-size: 24px;
-    position: absolute;
-    top: 17px;
-    left: 1722px;
+#land_header>ul>li>button{
+    width: 70px;
+    height: 32px;
+    color: #ffffff;
+    background: #66666670;
+    /* background: #5B70C8; */
+    border-radius: 28px;
+    border: 0;
 }
+
+#land_header>ul>li>button:hover{
+    width: 70px;
+    height: 32px;
+    color: #fff;
+    background: #5B70C8;
+    border-radius: 28px;
+    border: 0;
+    transition: transform 1s cubic-bezier(0.3, 0.8, 0.4, 1);
+}
+    
+.land_menu{
+    display: flex;
+    gap: 18px;
+    justify-content: flex-end;
+    margin-right: 48px;
+    padding-top: 14px;
+    box-sizing: border-box;
+}
+
+
 
 body {
     width: 1920px;
@@ -51,6 +76,7 @@ body {
 
 #main {
     overflow: hidden;
+    /* margin-top: 60px; */
 }
 
 .slide-container {
@@ -59,6 +85,7 @@ body {
     width: 1920px;
     height: 858px;
     transition: transform 2s ease-in-out;
+    /* transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); */
     /* 부드러운 전환 */
 }
 
@@ -199,12 +226,13 @@ body {
 #subInfo h5 {
     width: 524px;
     height: 30px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 150%;
+    color: #797979;
     text-align: center;
     position: absolute;
-    top: 660px;
+    top: 680px;
     left: 698px;
 }
 
