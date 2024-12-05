@@ -40,5 +40,7 @@ document.getElementById('join01button').addEventListener('click', () => {
   // 필수 항목 체크 여부 확인
   if (!checkboxA.checked || !checkboxB.checked) {
     alert('필수항목을 모두 체크해주세요')
+    return;
   }
+  location.href="/loginpage/join02/"
 });

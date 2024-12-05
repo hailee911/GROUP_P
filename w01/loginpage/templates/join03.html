@@ -1,17 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" type="text/css" href="../css/join1.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/login/join1.css'%}">
   <title>회원가입 페이지</title>
   
 </head>
 <body>
     <div class="container">
         <div class="image-section">
-            <img src="../images/join_login_index.svg" alt="">
+            <img src="{% static '/images/login/join_login_index.svg'%}" alt="">
             </svg>
         </div>
         <div class="join_form">
@@ -40,7 +41,7 @@
                 </div>
                 <button type="button" id="join03button">회원가입 완료</button>
             </form>
-            <script src="../js/join03.js"></script>
+            <script src="{% static '/js/login/join03.js'%}"></script>
         </div>
     </div>
 </body>

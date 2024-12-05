@@ -1,5 +1,20 @@
 from django.shortcuts import render
 
+
+
+
+# 회원가입페이지4
+def join04(request):
+  return render(request,'join04.html')
+
+# 회원가입페이지3
+def join03(request):
+  return render(request,'join03.html')
+
+# 회원가입페이지2
+def join02(request):
+  return render(request,'join02.html')
+
 # 회원가입페이지
 def join01(request):
   return render(request,'join01.html')

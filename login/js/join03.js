@@ -1,13 +1,12 @@
 // 아이디찾기 페이지1
 
-// input이 비었을때 에러메세지
-
+// input이 비었을 때 에러 메시지
 const join3submitButton = document.getElementById('join03button');
 const inputs = document.querySelectorAll('.join3_input');
 const join31errorMessage = document.querySelectorAll('.join3_error-message');
 
 // 버튼 클릭 시 입력 필드 확인
-join03button.addEventListener('click', () => {
+join3submitButton.addEventListener('click', () => {
   let isValid = true;
 
   // 입력 필드 확인
@@ -22,6 +21,25 @@ join03button.addEventListener('click', () => {
       join31errorMessage[i].style.display = 'none'; // 에러 메시지 숨김
     }
   }
+
+  // 라디오 버튼 선택 여부 확인
+  const radios = document.querySelectorAll('input[name="gender"]');
+  const join3_errorMessage3 = document.getElementById('join3_errorMessage3');
+  const isChecked = Array.from(radios).some(radio => radio.checked);
+
+  if (!isChecked) {
+    join3_errorMessage3.style.display = 'block';
+    isValid = false;
+  } else {
+    join3_errorMessage3.style.display = 'none';
+  }
+
+  // 입력 필드나 라디오 버튼에서 오류가 있으면 제출되지 않도록 함
+  if (!isValid) {
+    return;
+  }
+
+  // 여기에 폼 제출 등 추가 작업을 추가할 수 있습니다.
 });
 
 // 입력 필드에 포커스를 잃었을 때도 확인
@@ -34,21 +52,3 @@ inputs.forEach((input, index) => {
     }
   });
 });
-
-//radio 비어있을시
-document.getElementById('join03button').addEventListener('click', () => {
-  const radios = document.querySelectorAll('input[name="gender"]');
-  const join3_errorMessage3 = document.getElementById('join3_errorMessage3');
-
-  // 라디오 버튼 중 선택된 것이 있는지 확인
-  const isChecked = Array.from(radios).some(radio => radio.checked);
-
-  if (!isChecked) {
-    join3_errorMessage3.style.display = 'block';
-    pwpw.focus(); // 첫 번째 입력 필드에 포커스 이동
-    isValid = false;
-  } else {
-    join3_errorMessage3.style.display = 'none';
-  }
-});
-
