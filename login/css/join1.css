@@ -469,6 +469,15 @@ input[type="text"], input[type="password"] {
   display: flex;
   margin-bottom: 30px;
 }
+.email2{
+  margin-left: 15px;
+  width: 47.5%;
+  height: 55px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
 .join_form .email p {
   padding: 20px 5px 0 5px;
@@ -492,12 +501,17 @@ input[type="text"], input[type="password"] {
 .join2_span1{
   display: flex;
 }
+.join02_password {
+  position: relative;
+  display: inline-block;
+  width: 100%; 
+}
 .join02_password button {
   width: 50px;
   height: 40px;
   position: absolute;
   right: 10px; /* 오른쪽 여백 */
-  top: 55%;
+  top: 48%;
   transform: translateY(-50%);
   background-color:#fff ;
   border: none;
