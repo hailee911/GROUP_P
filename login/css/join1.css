@@ -61,9 +61,6 @@ button:hover {
   width: 450px;
 }
 
-
-
-
 /* 로그인 페이지 */
 #login_h1{
   width: 400px;
@@ -141,6 +138,15 @@ p{
   margin: 20px 10px;
   cursor: pointer;
 }
+.login_error-message{
+  margin-bottom: 20px;
+  color: #E97C7C;
+  font-size: 14px;
+  display: none;
+}
+
+
+
 
 /* 아이디찾기1 */
 #f1{
@@ -153,13 +159,23 @@ p{
   margin-bottom: 56px;
 }
 #label_name,#label_mail {
-  display: block;
+  display: inline-block;
   font-weight: bold;
 }
+.id1_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.id1_span1{
+  display: flex;
+}
+
 #id_input_id,#id_input_bir{
   margin:12px 0 20px 0;
 }
-input[type="text"]#id,input[type="text"]#birthday{
+input[type="text"]#id1_id,input[type="text"]#id1_birthday{
   width: 100%;
   height: 55px;
   padding: 10px;
@@ -171,7 +187,7 @@ input[type="text"]#id,input[type="text"]#birthday{
   margin-bottom: 12px;
   font-weight: bold;
 }
-input[type="text"]#mail_id{
+input[type="text"]#id1_mail_id{
   width: 47.5%;
   height: 55px;
   padding: 10px;
@@ -268,6 +284,15 @@ input[type="text"]#input_code{
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+.pw_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.pw_span1{
+  display: flex;
+}
 
 /* 비밀번호2=아이디1 복붙 */
 
@@ -327,9 +352,12 @@ input[type="text"]#input_code{
 .error-message {
   color: #E97C7C;
   font-size: 14px;
+  margin-left: 30px;
   display: none;
 }
-
+.pw_span1{
+  display: flex;
+}
 
 
 /* 흰배경 약관동의 부분 */
@@ -344,7 +372,6 @@ input[type="text"]#input_code{
   margin-bottom: 40px;
   display: inline-block;
 }
-
 
 .terms_all {
   margin-bottom: 20px;
@@ -411,6 +438,18 @@ input[type="text"]#input_code{
   margin: 30px 0 30px 0;
 }
 
+#terma1{
+  margin-top: 68px;
+}
+
+#terma3{
+  margin-top: 334px;
+}
+
+#terma4{
+  margin-top: 125px;
+}
+
 /* join02 가입 계정 정보 입력부분 */
 input[type="text"], input[type="password"] {
   width: 100%;
@@ -443,6 +482,34 @@ input[type="text"], input[type="password"] {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+.join2_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 30px;
+  display: none;
+}
+.join2_span1{
+  display: flex;
+}
+.join02_password button {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  right: 10px; /* 오른쪽 여백 */
+  top: 55%;
+  transform: translateY(-50%);
+  background-color:#fff ;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: none;
+}
+
+.join02_password button img {
+  width: 30px; /* 아이콘 크기 조정 */
+  height: 30px;
+}
 
 /* join03 사용자 정보 입력 */
 
@@ -467,4 +534,13 @@ input[type="radio"] {
 
 .join_form .gender label {
   margin: 10px 37px 5px 14px;
+}
+.join3_error-message{
+  color: #E97C7C;
+  font-size: 14px;
+  margin-left: 30px;
+  display: none;
+}
+.join3_span1{
+  display: flex;
 }

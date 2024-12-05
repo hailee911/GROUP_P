@@ -5,7 +5,7 @@
 # import vertexai
 
 # # Set the environment variable
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "land_pg/alert-condition-443702-g2-78f203ca597a.json"  # Replace with actual path
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "land_pg/파일.json"  # api 키 추가
 
 # vertexai.init(project="alert-condition-443702-g2", location="us-central1")
 # # ... rest of your code ...
