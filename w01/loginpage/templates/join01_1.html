@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" type="text/css" href="../css/join1.css">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/login/join1.css'%}">
   <title>회원가입 페이지</title>
   
 </head>
@@ -37,7 +38,9 @@
             ③혹시라도 여러분이 관련 법령, 회사의 모든 약관 또는 정책을 준수하지 않는다면, 회사는 여러분의 위반행위 등을 조사할 수 있고, 여러분의 계정・서비스 이용을 잠시 또는 계속하여 중단하거나, 재가입에 제한을 둘 수도 있습니다. 또한 여러분이 서비스와 관련된 설비의 오작동이나 시스템의 파괴 및 혼란을 유발하는 등 서비스 제공에 악영향을 미치거나 안정적 운영을 심각하게 방해한 경우, 회사는 이러한 위험 활동이 확인된 여러분의 계정들에 대하여
         </span>
         <div id="terma1" >
+            <a href="/loginpage/join01/">
             <button type="button">확인</button>
+            </a>
         </div>
     </div>
 </body>
