@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+	<link rel="stylesheet" href="css/main.css">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>우리의 기록</title>
+</head>
+<body>
+  <script>
+		$(function() {
+			// GNB 클릭
+			$('#menu ul li').on('click', function() {
+				$('#menu ul li').removeClass('active');
+				$(this).addClass('active');
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- 최상단 메뉴 -->
+	<div id="top_nav">
+		<h1><a href="#"></a></h1>
+		<ul class="top_menu">
+			<li><a href="#"><img src="images/search_icon.png" alt=""></a></li>
+			<li><a href="#"><img src="images/bell_off_icon.png" alt=""></a></li>
+			<li><a href="#">마이페이지</a></li>
+		</ul>
+
+	</div>
+
+	<!-- 좌측 gnb -->
+	<div id="gnb">
+
+		<!-- 프로필 -->
+		<div id="user_profile">
+			<div id="pimg">
+				<img src="images/default_profile.png" alt="">
+			</div>
+			<p id="uName">김용준</p>
+			<p id="uEmail">kyjoon0105@gmail.com</p>
+		</div>
+
+		<!-- Nav -->
+		<nav id="menu">
+			<ul>
+				<a href="#"><li class="menu_item active">우리 가족 이야기</li></a>
+				<a href="#"><li class="menu_item">다이어리</li></a>
+				<a href="#"><li class="menu_item">감정 돌아보기</li></a>
+				<a href="#"><li class="menu_item">우리가족</li></a>
+				<a href="#"><li class="menu_item">캘린더</li></a>
+				<a href="#"><li class="menu_item">알려드려요</li></a>
+			</ul>
+		</nav>
+
+		<!-- logout -->
+		<div id="logout">
+			<a href="#"><span>로그아웃</span></a>
+		</div>
+		
+	</div>
+
+	<!-- container -->
+  {% block container-block%}
+  {% endblock container-block%}
+</body>
+</html>
