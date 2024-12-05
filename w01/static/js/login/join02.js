@@ -10,11 +10,11 @@ toggleButtons.forEach((button, index) => {
     // 현재 필드 타입 확인 및 토글
     if (passwordField.type === 'password') {
       passwordField.type = 'text'; // 텍스트로 변경
-      toggleImage.src = '../images/eye_open.png'; // 눈 열림 이미지
+      toggleImage.src = eyeOpenImage; // 눈 열림 이미지
       toggleImage.alt = '비밀번호 숨기기';
     } else {
       passwordField.type = 'password'; // 비밀번호로 변경
-      toggleImage.src = '../images/eye_closed.png'; // 눈 닫힘 이미지
+      toggleImage.src = eyeClosedImage; // 눈 닫힘 이미지
       toggleImage.alt = '비밀번호 보기';
     }
   });
