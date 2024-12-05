@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Rotating Carousel</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #F0F0F0;
+    }
+    .carousel {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    .card {
+      position: absolute;
+      width: 30%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 24px;
+      font-weight: bold;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      opacity: 0.6;
+    }
+    .card.center {
+      transform: translateX(0) scale(1.2) rotateY(0deg);
+      opacity: 1;
+      z-index: 2;
+    }
+    .card.left {
+      transform: translateX(-120%) rotateY(-30deg);
+    }
+    .card.right {
+      transform: translateX(120%) rotateY(30deg);
+    }
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .prev-btn {
+      left: 10px;
+    }
+    .next-btn {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <button class="prev-btn">←</button>
+    <div class="image-container">
+      <div class="card">1</div>
+      <div class="card">2</div>
+      <div class="card">3</div>
+      <div class="card">4</div>
+    </div>
+    <button class="next-btn">→</button>
+  </div>
+  <script>
+    const cards = document.querySelectorAll(".image-container .card");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    let currentIndex = 1; // Default center card index
+    // Update card positions
+    function updateCards() {
+      cards.forEach((card, index) => {
+        card.classList.remove("center", "left", "right");
+        if (index === currentIndex) {
+          card.classList.add("center");
+        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+          card.classList.add("left");
+        } else if (index === (currentIndex + 1) % cards.length) {
+          card.classList.add("right");
+        }
+      });
+    }
+    // Left button functionality
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCards();
+    });
+    // Right button functionality
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCards();
+    });
+    // Initial setup
+    updateCards();
+  </script>
+</body>
+</html>

@@ -8,17 +8,17 @@ a{
   color:inherit
 }
 
-#main_area{
-  width:1635px; 
-  height:2252px;
+#all_area{
+  width:1617px; 
+  height:1080px;
   margin-left:284px;
-  border: 1px solid black;
 }
 
 #title_area{
-  width:1635px;
+  display: flex;
+  width:1617px;
   height: 150px;
-  border: 1px solid black;
+  padding-top: 60px;
 }
 
 #topTit{
@@ -31,12 +31,6 @@ a{
 #searchBar{
   width: 250px;
   height: 40px;
-  /* border-radius: 5px; */
-  /* border: solid 1px;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  opacity: 1; */
   margin: 50px auto;
   padding-left: 1128px;
 }
@@ -47,17 +41,118 @@ a{
   font-size: 16px;
   border: 1px solid #DDDDDD;
   border-radius: 5px;
+  background: url('/diary_home/images/search.png') no-repeat;
+  background-position: 10px center;
 }
 
-#searchBar::before{
-  content: "";
+#main_area{
+  position: relative;
+  display: flex;
+  width: 1617px;
+  height: 500px;
+  /* border: 1px solid black; */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#leftBtn{
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* padding-top: 217px; */
+  padding-left: 130px;
+  /* padding-bottom: 250px; */
+  left: 20px;
   position: absolute;
-  left: 10px;
+}
+
+#rightBtn{
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* padding-top: 217px; */
+  padding-right: 175px;
+  /* padding-bottom: 250px; */
+  right: 20px;
+  position: absolute;
+}
+
+/* 중심 카드 */
+.card.active {
+  transform: scale(1.2); /* 크기를 키움 */
+  opacity: 1;
+  z-index: 2;
+}
+
+/* 나머지 카드 */
+.card {
+  opacity: 0.7;
+}
+
+/* 컨테이너 스타일 */
+.carousel-container {
+  position: relative;
+  width: 600px; /* 3개의 카드가 보여질 영역 */
+  height: 300px;
+  overflow: hidden;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 카드가 들어있는 슬라이드 */
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* 카드 스타일 */
+.card {
+  flex: 0 0 180px; /* 카드 너비 */
+  height: 250px;
+  background: #f7f7f7;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.7;
+  transform: scale(0.8); /* 기본 크기 축소 */
+}
+
+/* 중앙 카드 강조 */
+.card.active {
+  transform: scale(1.2); /* 중앙 카드 크기 확대 */
+  opacity: 1;
+  z-index: 2;
+}
+
+/* 화살표 버튼 */
+.arrow {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
-  background: url('/diary_home/images/search.png');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s ease;
+  z-index: 3;
+}
+
+.arrow:hover {
+  color: #000;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
 }
