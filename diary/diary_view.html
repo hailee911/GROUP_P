@@ -88,7 +88,7 @@
     </div>
     <div class="diary_react">
       <div class="diary_like">
-        <img src="images/Favorite_light.png" alt=""><span>43</span>
+        <img src="images/Favorite_light.png" alt="" id="like_click"><span>43</span>
       </div>
       <div class="diary_comment">
         <img src="images/Chat_alt_2_light.png" alt=""><span>댓글 1</span>
@@ -139,6 +139,12 @@
       var modal = document.getElementById('sub_menu_modal_2');
       console.log('두 번째 모달 클릭됨');
       modal.classList.toggle('open'); // open 클래스가 있으면 제거, 없으면 추가
+    });
+
+    // 하트 클릭하면 색깔 바뀜
+    document.getElementById('like_click').addEventListener('click', function() {
+      console.log('하트 클릭됨');
+      this.src = this.src.includes('images/Favorite_light.png') ? 'images/Favorite_duotone.png' : 'images/Favorite_light.png';
     });
   </script>
 </body>

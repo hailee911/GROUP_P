@@ -248,7 +248,7 @@ box-sizing: border-box;
 
 
 /* ----- container ----- */
-#container{width: 100%; height: 2000px; float: left; margin-top: 60px;}
+#container{width: 100%; height: 1500px; float: left; margin-top: 60px;}
 #main_sec1{height: 408px; margin-left: 284px; display: flex; align-items: center;}
 #main_sec2{height: 462px; margin-left: 284px; display: flex; background: #fafafa;}
 #main_sec3{height: 460px; margin-left: 284px;}

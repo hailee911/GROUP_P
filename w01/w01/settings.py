@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+## root 디렉토리를 말함
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -9,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9)=(mqq1t9^0&loaj^x8e_il7=i+-^i@2ycy!pyc*1y7*hg6hj'
+SECRET_KEY = 'django-insecure-mj&8&j7@bvr=gus7t3i0m70t--n5sx_@udu_=hjakeo*z*-nz0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,8 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
-    'main',
+    'loginpage',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -42,13 +43,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'w01.urls'
 
-# 탬플릿 경로설정 - 기본경로에서 templates폴더를 모두 사용
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,11 +95,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-# 언어,시간설정
 LANGUAGE_CODE = 'ko-kr'
+
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
+
 USE_TZ = True
 
 
@@ -114,12 +113,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
-
 ## media url로 들어오면, media폴더에서 검색
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # MEDIA_ROOT = r'c:/aaa' #로컬 드라이브 설정
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
