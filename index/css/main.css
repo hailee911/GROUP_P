@@ -27,6 +27,7 @@ ol, ul {
 	position: fixed;
 	top : 60px;
 	border-right: 1px solid #E9E9E9;
+	background: #fff;
 }
 
 #user_profile {
@@ -120,14 +121,15 @@ box-sizing: border-box;
 
 
 /* ----- container ----- */
-#container{width: 100%; height: 2000px; float: left; margin-top: 60px; border: 1px solid red;}
-#main_sec1{height: 408px; margin-left: 284px; border: 1px solid green; display: flex; align-items: center;}
-#main_sec2{height: 462px; margin-left: 284px; background: #fafafa; border: 1px solid rgb(29, 29, 85);}
-#main_sec3{height: 460px; margin-left: 284px; border: 1px solid green;}
+#container{width: 100%; height: 2000px; float: left; margin-top: 60px;}
+#main_sec1{height: 408px; margin-left: 284px; display: flex; align-items: center;}
+#main_sec2{height: 462px; margin-left: 284px; display: flex; background: #fafafa;}
+#main_sec3{height: 460px; margin-left: 284px;}
+
 #diary_txt{
 	width: 683px; 
 	height: 328px; 
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	padding-left: 80px;
 	padding-top: 70px;
 	box-sizing: border-box;
@@ -145,20 +147,30 @@ box-sizing: border-box;
 	width: 155px;
 	height: 43px;
 	border: 1px solid #d9d9d9;
+	background: #fff;
 	font-size: 18px;
 }
-.main_btn span{
-	font-size: 22px;
+
+#diary_list {
+	display: flex;
+	width: 900px;
+	height: 248px;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 32px; 
+
 }
 
-#diary_list{
-	width: 900px;
-	height: 328px;
-	border: 1px solid rgb(221, 107, 0);
-	flex-shrink: 0;
-	padding-top: 80px;
-	box-sizing: border-box;
+.diary_list_wrapper {
+	display: flex;
+	align-items: center; 
+	gap: 32px; /* 버튼과 리스트 사이 간격 */
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	white-space: nowrap;
 }
+
 
 #main_wbtn{
 	width: 66px;
@@ -169,13 +181,186 @@ box-sizing: border-box;
 	background: #fff;
 	border: 1px dashed #999;
 	border-radius: 18px;
+	flex-shrink: 0;
+	overflow-x: auto;
 }
 #dlist{
+	flex-grow: 1; /* dlist가 남은 공간을 채움 */
 	width: 178px;
 	height: 248px;
-	border: 1px solid #E9E9E9;
+	padding: 14px 20px 30px 20px;
+	box-sizing: border-box;
+	border: 1px solid #f7f7f7;
 	border-radius: 10px;
 	background: #fff;
-	box-shadow: 8px 11px 16px rgba(0, 0, 0, 0.13);
+	box-shadow: 8px 11px 16px rgba(0, -1, 0, 0.08);
+	flex-shrink: 0;
+	transition: all 0.3s ease;
+}
+
+#dlist:hover {
+	background-color: #e0e0e075;
+	background-image: url('/index/images/main_dlist_write_icon.png');
+	background-position: center;
+	color: #ffffff;
+}
+
+.dlist_type{
+	font-size: 13px;
+	color:#444;
+	margin-bottom: 24px;
+}
+.dlist_title{
+	width: 120px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 23px;
+	color:#000;
+	margin-bottom: 96px;
+	white-space: normal;
+}
+.dlist_date{
+	width: 120px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 18px;
+	color:#000;
+	white-space: normal;
+}
+
+
+#main_card{
+	width: 620px; 
+	height: 460px; 
+	/* border: 1px solid black; */
+	padding-left: 46px;
+	padding-top: 70px;
+	box-sizing: border-box;
+	/* overflow: hidden; */
+	flex-shrink: 0;
+	display: flex;
+}
+
+#card_arrow{
+	margin-top: 148px;
+	margin-left: 148px;
+}
+#card_list{
+	width: 340px;
+	height: 340px;
+	background: #eee;
+	margin-left: 36px;
+	padding: 34px 34px;
+	box-sizing: border-box;
+}
+.card_title{
+	width: 200px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 28px;
+	white-space: normal;
+	margin-bottom: 132px;
+}
+.card_title_list{
+	width: 200px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 28px;
+	color: #c8c8c8;
+	white-space: normal;
+	margin-bottom: 6px;
+}
+
+#happy_rate{
+	width: 1000px; 
+	height: 460px; 
+	/* border: 1px solid black; */
+	padding-left: 46px;
+	padding-top: 70px;
+	box-sizing: border-box;
+	/* overflow: hidden; */
+	flex-shrink: 0;
+	display: flex;
+	margin-left: 20px;
+}
+
+#happy_graph{
+	width: 608px;
+	height: 348px;
+	border: 1px solid #f7f7f7;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 8px 11px 16px rgba(0, -1, 0, 0.08);
+	margin-left: 50px;
+}
+
+#lastest_diary{
+	width: 682px; 
+	height: 460px; 
+	padding-left: 46px;
+	padding-top: 60px;
+	box-sizing: border-box;
+	/* overflow: hidden; */
+	flex-shrink: 0;
+	/* display: flex; */
+	float: left;
+	/* border: 1px solid black; */
+}
+
+#ldairy_list{
+	margin-top: 18px;
+}
+#ldairy_list tr{
+	height: 45px;
+}
+#ldairy_list th{
+	font-size: 18px;
+	font-weight: 400;
+	text-align: left;
+	color: #000
+}
+#ldairy_list td{
+	font-size: 18px;
+	text-align: center;
+	color: #797979;
+
+}
+
+#past_diary{
+	width: 900px; 
+	height: 460px; 
+	/* border: 1px solid rgb(184, 0, 0); */
+	padding-top: 70px;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	margin-left: 680px;
+}
+
+.sub_t{
+	font-size: 18px;
+	color: #797979;
+	margin: 4px 0 16px;
+}
+
+
+#past_area{
+	width: 858px;
+	height: 194px;
+	border: 1px solid #d9d9d9;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.p_txt{
+	font-size: 17px;
+	line-height: 27px;
+	width: 818px;
+	height: 74px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+#p_button{
 	float: right;
+	margin-top: 16px;
 }
