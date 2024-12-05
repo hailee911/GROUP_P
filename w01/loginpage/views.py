@@ -1,8 +1,5 @@
 from django.shortcuts import render
 
-
-
-
 # 회원가입페이지4
 def join04(request):
   return render(request,'join04.html')
@@ -35,16 +32,13 @@ def join01_1(request):
 def join01(request):
   return render(request,'join01.html')
 
-
 # 비밀번호찾기1
 def pw(request):
   return render(request,'pw.html')
 
-
 # 아이디찾기1
 def id(request):
   return render(request,'id.html')
-
 
 # 로그인페이지
 def login(request):
