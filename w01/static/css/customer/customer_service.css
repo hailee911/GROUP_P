@@ -32,6 +32,8 @@ table, tr, td{
 #customer_service_top{
   width: 100%;
   margin-bottom: 60px;
+  overflow: hidden;
+  position: relative;
 }
 
 #customer_service_top h2{
@@ -45,11 +47,13 @@ table, tr, td{
 
 #customer_service_top .how_dairy{
   display: flex;
+  transition: transform 0.3s ease-in-out;
+  touch-action: pan-y; /* 수직 스크롤 방해 방지 */
 }
 
 #customer_service_top .how_dairy div{
   background: #D9D9D9;
-  width: 340px;
+  min-width: 340px;
   height: 340px;
   margin: 20px 20px 0 0;
 }
@@ -216,7 +220,7 @@ table, tr, td{
 .agree_txt{
   border: 1px solid #DBDBDB;
   font-size: 15px;
-  line-height: 17px;
+  line-height: 18px;
   color: #ACB1C6;
   padding: 10px;
 }
@@ -234,5 +238,6 @@ table, tr, td{
   border: 1px solid #ACB1C6;
   color: #ACB1C6;
   margin-left: 10px;
+  cursor: pointer;
 }
 
