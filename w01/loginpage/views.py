@@ -15,6 +15,22 @@ def join03(request):
 def join02(request):
   return render(request,'join02.html')
 
+# 회원가입페이지1-4
+def join01_4(request):
+  return render(request,'join01_4.html')
+
+# 회원가입페이지1-3
+def join01_3(request):
+  return render(request,'join01_3.html')
+
+# 회원가입페이지1-2
+def join01_2(request):
+  return render(request,'join01_2.html')
+
+# 회원가입페이지1-1
+def join01_1(request):
+  return render(request,'join01_1.html')
+
 # 회원가입페이지
 def join01(request):
   return render(request,'join01.html')
