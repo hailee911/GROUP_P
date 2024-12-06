@@ -22,6 +22,8 @@ table, tr, td{
 }
 
 /* container */
+/* 좌측 네비와 연결할 때 컨테이너 패딩값 변경
+왼쪽 패딩 / 위쪽 패딩 */
 #container{
   width: 100%;
   min-height: 100vh; /* 화면 높이와 동일하게 설정 */

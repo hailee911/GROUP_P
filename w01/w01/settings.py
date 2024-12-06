@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'loginpage',
     'home',
     'customer',
+    'emotion',
 ]
 
 MIDDLEWARE = [
