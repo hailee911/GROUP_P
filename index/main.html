@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-	<link rel="stylesheet" href="css/main.css">
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<title>우리의 기록</title>
-	<style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<link rel="stylesheet" href="css/main.css">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>우리의 기록</title>
+<style>
 
-	</style>
+</style>
+
+
+<script>
 	
-	
-	<script>
-		
-		$(function() {
-			// GNB 클릭
-			$('#menu ul li').on('click', function() {
-				$('#menu ul li').removeClass('active');
-				$(this).addClass('active');
-			});
+	$(function() {
+		// GNB 클릭
+		$('#menu ul li').on('click', function() {
+			$('#menu ul li').removeClass('active');
+			$(this).addClass('active');
 		});
-	</script>
+	});
+</script>
 </head>
 <body>
 	<!-- 최상단 메뉴 -->
@@ -401,16 +401,46 @@
 			</div>
 
 		</div>
-
-
-
-
-
-
 	</div>
-
-
-
+		
+	<!-- footer -->
+	<div id="footer">
+		<div id="f_logo_wrap">
+			<img src="images/logo_white_sample.png" alt="">
+		</div>
+		<div id="f_link">
+			<ul>
+				<li><a href="">공지사항 보기</a></li>
+				<li>|</li>
+				<li><a href="">포스트 보기</a></li>
+				<li>|</li>
+				<li><a href="">개인정보처리방침</a></li>
+			</ul>
+		</div>
+		<div id="f_txt">
+			<ul>
+				<li>상호 : (주)프로젝트파이터</li>
+				<li>|</li>
+				<li>대표자 : 홍길동</li>
+				<li>|</li>
+				<li>개인정보보호책임 : 유관순</li>
+			</ul>
+			<ul>	
+				<li>사업자등록번호 : 123-45-67890</li>
+				<li>|</li>
+				<li>통신판매업신고번호 : 제1234-서울금천-5678호</li>
+			</ul>
+			<ul>	
+				<li>주소 : 서울 금천구 가산디지털2로 101 한라원앤원타워 B동 3층</li>
+				<li>|</li>
+				<li>고객센터 : 02-1234-5678</li>
+			</ul>
+			
+		</div>
+	</div>
+		
+		
+		
 
 
 </body>
