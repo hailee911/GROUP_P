@@ -1,0 +1,112 @@
+{% extends 'main_navi_base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <title>notice view</title>
+</head>
+<body>
+  {% block container-block%}
+
+  <div id="container">
+    <div id="customer_notice_menu">
+      <h2>공지사항</h2>
+      <span>NOTICE</span>
+    </div>
+    
+    <div id="customer_view_top">
+      <div class="customer_view_title">
+        <h2>{{view.btitle}}</h2>
+        <span>{{view.bdate|date:'Y-m-d'}}</span>
+        <span>{{view.member}}</span>
+      </div>
+      <div id="modify_del_slide_1">
+        <img src="/static/images/customer/addBtn.png" alt="" id="openModal_1" style="cursor: pointer;"> <!-- 커서 포인터 추가 -->
+        <div class="sub_menu_modal" id="sub_menu_modal_1">
+          <div id="sub_menu_content">
+            <button id="editButton_1">수정</button>
+            <button id="deleteButton_1">삭제</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="customer_content">
+      <p>{{view.bcontent}}</p>
+    </div>
+    <div class="customer_react">
+      <div class="customer_like">
+        <img src="/static/images/customer/Favorite_light.png" alt="" id="like_click"><span>43</span>
+      </div>
+      <div class="customer_comment">
+        <img src="/static/images/customer/Chat_alt_2_light.png" alt=""><span>댓글 1</span>
+      </div>
+      <div class="back_list" id="back_click">
+        <span>목록</span>
+      </div>
+    </div>
+    <div id="comment">
+      <div id="comment_view">
+        <div class="profile_img">
+          <img src="/static/images/customer/profile_img.png" alt="">
+        </div>
+        <div class="comment_detail">
+          <div class="comment_name">장서윤</div>
+          <div class="comment_date">2024.11.24 12:33:21</div>
+        </div>
+        <div id="modify_del_slide_2">
+          <img src="/static/images/customer/addBtn.png" alt="" id="openModal_2" style="cursor: pointer;"> <!-- 커서 포인터 추가 -->
+          <div class="sub_menu_modal" id="sub_menu_modal_2">
+            <div id="sub_menu_content">
+              <button id="editButton_2">수정</button>
+              <button id="deleteButton_2">삭제</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comment_content">
+        <span>공지 확인했습니다~</span>
+      </div>
+      <div class="comment_reply_btn">
+         답글달기
+      </div>
+    </div>
+    <div class="comment_regist">
+      <textarea placeholder="댓글을 달아보세요."  onfocus="this.placeholder=''" onblur="this.placeholder='댓글을 달아보세요.'"></textarea>
+      <button type="button" value="등록">등록</button>
+    </div>
+  </div>
+
+  <script>
+    // 첫 번째 모달 열기/닫기
+    document.getElementById('openModal_1').addEventListener('click', function() {
+      var modal = document.getElementById('sub_menu_modal_1');
+      console.log('첫 번째 모달 클릭됨');
+      modal.classList.toggle('open'); // open 클래스가 있으면 제거, 없으면 추가
+    });
+
+    // 두 번째 모달 열기/닫기
+    document.getElementById('openModal_2').addEventListener('click', function() {
+      var modal = document.getElementById('sub_menu_modal_2');
+      console.log('두 번째 모달 클릭됨');
+      modal.classList.toggle('open'); // open 클래스가 있으면 제거, 없으면 추가
+    });
+
+    // 하트 클릭하면 색깔 바뀜
+    document.getElementById('like_click').addEventListener('click', function() {
+      console.log('하트 클릭됨');
+      this.src = this.src.includes('/static/images/customer/Favorite_light.png') ? '/static/images/customer/Favorite_duotone.png' : '/static/images/customer/Favorite_light.png';
+    });
+
+    document.getElementById('back_click').addEventListener('click', function() {
+      console.log('목록 클릭됨');
+      location.href='/customer/noticelist/'
+    });
+  </script>
+
+  {% endblock container-block%}
+
+</body>
+</html>

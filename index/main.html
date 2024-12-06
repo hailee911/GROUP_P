@@ -20,6 +20,35 @@
 			$('#menu ul li').removeClass('active');
 			$(this).addClass('active');
 		});
+
+		// 검색창
+		$('#searchBtn').click(function(){
+				$("#main_search").removeClass('closed').addClass('open');
+				$('#s_overlay').addClass('show');
+			});
+		$('#search_closeBtn').click(function(){
+			$("#main_search").removeClass('open').addClass('closed');
+			$('#s_overlay').removeClass('show');
+		});
+		$('#s_overlay').click(function() { //배경 클릭하면 닫히게
+			$('#main_search').removeClass('open').addClass('closed');
+			$('#s_overlay').removeClass('show');
+		});
+
+
+		// 알림창
+		$('#notiBtn').click(function() {
+			$('#noti_side').removeClass('closed').addClass('open');
+			$('#n_overlay').addClass('show');
+		});
+		$('#noti_closeBtn').click(function() {
+			$('#noti_side').removeClass('open').addClass('closed');
+			$('#n_overlay').removeClass('show');
+		});
+		$('#n_overlay').click(function() { //배경 클릭하면 닫히게
+			$('#noti_side').removeClass('open').addClass('closed');
+			$('#n_overlay').removeClass('show');
+		});
 	});
 </script>
 </head>
@@ -66,38 +95,6 @@
 		
 	</div>
 	
-	<script>
-		$(function(){
-			// 검색창
-			$('#searchBtn').click(function(){
-				$("#main_search").removeClass('closed').addClass('open');
-				$('#s_overlay').addClass('show');
-			});
-			$('#search_closeBtn').click(function(){
-				$("#main_search").removeClass('open').addClass('closed');
-				$('#s_overlay').removeClass('show');
-			});
-			$('#s_overlay').click(function() { //배경 클릭하면 닫히게
-				$('#main_search').removeClass('open').addClass('closed');
-				$('#s_overlay').removeClass('show');
-			});
-
-
-			// 알림창
-			$('#notiBtn').click(function() {
-				$('#noti_side').removeClass('closed').addClass('open');
-				$('#n_overlay').addClass('show');
-			});
-			$('#noti_closeBtn').click(function() {
-				$('#noti_side').removeClass('open').addClass('closed');
-				$('#n_overlay').removeClass('show');
-			});
-			$('#n_overlay').click(function() { //배경 클릭하면 닫히게
-        $('#noti_side').removeClass('open').addClass('closed');
-        $('#n_overlay').removeClass('show');
-    	});
-		})
-	</script>
 
 <!-- 검색창 슬라이드 -->
 <div id="s_overlay" class="s_overlay"></div>
