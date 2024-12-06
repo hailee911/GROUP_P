@@ -4,6 +4,6 @@ from . import views
 app_name = "customer"
 urlpatterns = [
     path('', views.main, name="main"),
-    path('noticeview/', views.noticeview, name="noticeview"),
+    path('noticeview/<str:bno>/', views.noticeview, name="noticeview"),
     path('noticelist/', views.noticelist, name="noticelist"),
 ]

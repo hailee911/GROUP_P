@@ -16,11 +16,12 @@
       <h2>공지사항</h2>
       <span>NOTICE</span>
     </div>
+    
     <div id="customer_view_top">
       <div class="customer_view_title">
-        <h2>시스템 개편 오류 조치</h2>
-        <span>2024년 11월 29일</span>
-        <span>관리자</span>
+        <h2>{{view.btitle}}</h2>
+        <span>{{view.bdate|date:'Y-m-d'}}</span>
+        <span>{{view.member}}</span>
       </div>
       <div id="modify_del_slide_1">
         <img src="/static/images/customer/addBtn.png" alt="" id="openModal_1" style="cursor: pointer;"> <!-- 커서 포인터 추가 -->
@@ -33,127 +34,12 @@
       </div>
     </div>
     <div id="customer_content">
-      <p>
-        안녕하세요. 하림펫푸드 고객님<br>
-        지난 4월 22일에 홈페이지 시스템 개편이 원활하지 않아 고객님께 불편과 실망감을 안겨 드리게 되어 죄송합니다.<br>
-        시스템 개편된 후 지금까지의 오류들과 현재 조치 상황에 대해서 공지사항을 통해 설명드리겠습니다.<br><br>
-        1. 카카오톡 로그인 오류<br>
-        - 현상 : 카카오톡으로 간편로그인을 할 때 로그인이 되지 않거나,<br>
-          오류 팝업 뜨거나 회원가입을 하라는 유도창이 떴습니다.<br>
-        - 상황 : 해결되었습니다.<br>
-        - 이슈 : 이전 카카오톡 가입 고객님 중 4월 22일~24일에 새롭게 카카오톡 가입을 한 경우,<br>
-          4월 25일부터 로그인 시 카카오톡 간편가입을 재가입해야 합니다.<br>
-          (아이디는 ka@1234 형식에서 1234@k 형식으로 바뀌지만, 회원정보는 그대로입니다.)<br><br>
-        2. 적립금, 쿠폰 오류<br>
-        - 현상 : 적립금과 쿠폰의 금액 오류<br>
-        - 상황 : 모든 적립금은 복구 되었고, 쿠폰은 4월 27일 일괄 증정될 예정입니다.<br>
-        - 이슈 : 쿠폰은 29일까지 증정하도록 하겠습니다.<br><br>
-        3. 골드멤버 누락<br>
-        - 현상 : 기존 골드멤버였던 고객님이 first member 혹은 일반멤버로 변경되었습니다.<br>
-        - 상황 : 4월 22일까지 골드멤버였던 고객님은 골드멤버로 복구 되었습니다.<br>
-        - 이슈 : 4월 22일 이후 가장맛있는시간30일을 5개 이상 구매한 고객님께서는 고객센터로 문의 부탁드립니다.<br><br>
-        4. 밥그릇 누락<br>
-        - 현상 : 누적 밥그릇이 모두 사라졌습니다.<br>
-        - 상황 : 4월 28일까지 모든 밥그릇 수량은 복구됩니다.<br>
-        -이슈 : 별도 문의 사항은 고객센터로 문의 주세요.<br><br>
-        5. 펫정보 사라짐<br>
-        - 현상 : 마이페이지에서 나의반려동물정보 메뉴가 준비 중으로 노출되고 있습니다.<br>
-        - 상황 : 나의반려동물정보 자료 정리 후, 4월 28일까지 복구될 예정입니다.<br>
-        - 이슈 : 28일 오전 기준으로 복구완료 되었고, 반려동물 실제 정보와 다를 경우, 업데이트 하시거나 고객센터에 문의주세요.  <br>
-        6. 주문 내역 사라짐<br>
-        - 현상 : 마이페이지에서 기존 주문내역이 모두 사라졌습니다.<br>
-        - 상황 : 2018년 1월 주문부터 모두 이관 완료 되었습니다.<br>
-        - 이슈 : 아이디 변경 또는 중복 사용 고객은 주문이 누락될 수 있습니다. 고객센터로 문의 부탁드립니다.<br>
-          지난 주문 건은 모바일에서는 조회 불가하며, PC에서만 조회됩니다.<br>
-          (마이페이지->나의쇼핑/주문->주문목록/배송 조회->이전 주문내역)<br><br>
-        그 밖에 다른 문의는 고객센터로 연락 주시기 바랍니다.<br>
-        다시 한 번 사죄 드리며, 더 나은 하림펫푸드가 될 수 있도록 노력하겠습니다.<br>
-        감사합니다.
-      </p>
-    </div>
-    <div id="customer_list">
-      <table>
-        <colgroup>
-          <col style="width:15%;">
-          <col style="width:50%;">
-          <col style="width:15%;">
-          <col style="width:20%;">
-        </colgroup>
-        <tr>
-          <th colspan="4">공지사항</th>
-        </tr>
-        <tr>
-          <td>78</td>
-          <td><a href="">시스템 개편 오류 조치</a></td>
-          <td>관리자</td>
-          <td>24.12.01</td>
-        </tr>
-        <tr>
-          <td>78</td>
-          <td><a href="">시스템 개편 오류 조치</a></td>
-          <td>관리자</td>
-          <td>24.12.01</td>
-        </tr>
-        <tr>
-          <td>78</td>
-          <td><a href="">시스템 개편 오류 조치</a></td>
-          <td>관리자</td>
-          <td>24.12.01</td>
-        </tr>
-        <tr>
-          <td>78</td>
-          <td><a href="">시스템 개편 오류 조치</a></td>
-          <td>관리자</td>
-          <td>24.12.01</td>
-        </tr>
-        <tr>
-          <td>78</td>
-          <td><a href="">시스템 개편 오류 조치</a></td>
-          <td>관리자</td>
-          <td>24.12.01</td>
-        </tr>
-        <tr class="customer_list_last">
-          <td colspan="4"><a href=""><span>전체 공지 보기(총 0개)</span><img src="/static/images/customer/Expand_right_light.png" alt=""></a></td>
-        </tr>
-      </table>
+      <p>{{view.bcontent}}</p>
     </div>
     <div class="customer_react">
-      <div class="customer_like">
-        <img src="/static/images/customer/Favorite_light.png" alt="" id="like_click"><span>43</span>
+      <div class="back_list" id="back_click">
+        <span>목록</span>
       </div>
-      <div class="customer_comment">
-        <img src="/static/images/customer/Chat_alt_2_light.png" alt=""><span>댓글 1</span>
-      </div>
-    </div>
-    <div id="comment">
-      <div id="comment_view">
-        <div class="profile_img">
-          <img src="/static/images/customer/profile_img.png" alt="">
-        </div>
-        <div class="comment_detail">
-          <div class="comment_name">장서윤</div>
-          <div class="comment_date">2024.11.24 12:33:21</div>
-        </div>
-        <div id="modify_del_slide_2">
-          <img src="/static/images/customer/addBtn.png" alt="" id="openModal_2" style="cursor: pointer;"> <!-- 커서 포인터 추가 -->
-          <div class="sub_menu_modal" id="sub_menu_modal_2">
-            <div id="sub_menu_content">
-              <button id="editButton_2">수정</button>
-              <button id="deleteButton_2">삭제</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="comment_content">
-        <span>공지 확인했습니다~</span>
-      </div>
-      <div class="comment_reply_btn">
-         답글달기
-      </div>
-    </div>
-    <div class="comment_regist">
-      <textarea placeholder="댓글을 달아보세요."  onfocus="this.placeholder=''" onblur="this.placeholder='댓글을 달아보세요.'"></textarea>
-      <button type="button" value="등록">등록</button>
     </div>
   </div>
 
@@ -165,17 +51,10 @@
       modal.classList.toggle('open'); // open 클래스가 있으면 제거, 없으면 추가
     });
 
-    // 두 번째 모달 열기/닫기
-    document.getElementById('openModal_2').addEventListener('click', function() {
-      var modal = document.getElementById('sub_menu_modal_2');
-      console.log('두 번째 모달 클릭됨');
-      modal.classList.toggle('open'); // open 클래스가 있으면 제거, 없으면 추가
-    });
-
-    // 하트 클릭하면 색깔 바뀜
-    document.getElementById('like_click').addEventListener('click', function() {
-      console.log('하트 클릭됨');
-      this.src = this.src.includes('/static/images/customer/Favorite_light.png') ? '/static/images/customer/Favorite_duotone.png' : '/static/images/customer/Favorite_light.png';
+    
+    document.getElementById('back_click').addEventListener('click', function() {
+      console.log('목록 클릭됨');
+      location.href='/customer/noticelist/'
     });
   </script>
 

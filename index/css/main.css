@@ -135,7 +135,7 @@ box-sizing: border-box;
 	margin-top: 60px;
 	box-sizing: border-box;
 	background-color: white;
-	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 	overflow-x: auto;
 	transition: top 0.3s ease-in-out;
 	z-index: 1000;
