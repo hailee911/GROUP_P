@@ -1,78 +1,95 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+	<link rel="stylesheet" as="style" crossorigin
+		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 	<link rel="stylesheet" href="css/main.css">
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<title>감정 돌아보기</title>
 	<style>
-		#container{width: 1635px; height: 3758px; float: left; margin-top: 110px; margin-left: 324px; 
-			border: 1px solid black;}
-		
-		#main_title{
-			width: 144px; height: 33px;
-			font-size: 22px; font-weight: 500;
+		#container_report {
+			width: 1635px;
+			height: 100%;
+			float: left;
+			margin-top: 110px;
+			margin-left: 324px;
+			margin-bottom: 407px;
+		}
+
+		#main_title {
+			width: 144px;
+			height: 33px;
+			font-size: 22px;
+			font-weight: 500;
 			line-height: 150%;
 		}
-		#sub_title{
+
+		#sub_title {
 			width: 1485px;
 			height: 291px;
 			padding-left: 30px;
-			margin-top: 50px;
-			border: 1px solid black;
+			margin-top: 80px;
 		}
-		#sub_title>h1{
+
+		#sub_title>h1 {
 			width: 232px;
 			height: 45px;
 			font-size: 30px;
 			font-weight: 600;
 			line-height: 150%;
 			margin-top: 30px;
-			
+
 		}
-		#sub_title>h3{
+
+		#sub_title>h3 {
 			font-size: 20px;
 			font-weight: 400;
 			line-height: 150%;
 			margin-top: 13px;
-			
+
 		}
-		#sub_title>h4{
+
+		#sub_title>h4 {
 			font-size: 20px;
 			font-weight: 400;
 			line-height: 150%;
 			margin-top: 40px;
 		}
-		#sub_title>h5{
+
+		#sub_title>h5 {
 			font-size: 18px;
 			font-weight: 400;
 			line-height: 170%;
 			margin-top: 9px;
 		}
-		#mbtitle{
+
+		#mbtitle {
 			width: 299px;
 			height: 30px;
 			font-size: 20px;
 			font-weight: 500;
 			line-height: 150%;
-			padding-left: 30px;
 		}
-		#report_container{
+
+		#report_container {
 			margin-left: 40px;
-			border: 1px solid palegreen;
 			margin-top: 50px;
 			width: 330px;
 			height: 127px;
 		}
-		#select_mbti>p{
-			
+
+		#select_mbti>p {
+
 			font-size: 20px;
 			font-weight: 500;
 			line-height: 150%;
 		}
-		.mbti{
+
+		.mbti {
 			width: 155px;
 			height: 43px;
 			margin-top: 54px;
@@ -80,13 +97,17 @@
 			font-weight: 400;
 			line-height: 150%;
 		}
+
 		select {
-			padding: 8px 18px 8px 18px; /* 위 8, 오른쪽 18, 아래 8, 왼쪽 18 */
-			box-sizing: border-box; /* 패딩 포함 크기 조정 */
+			padding: 8px 18px 8px 18px;
+			/* 위 8, 오른쪽 18, 아래 8, 왼쪽 18 */
+			box-sizing: border-box;
+			/* 패딩 포함 크기 조정 */
 			border-color: #D9D9D9;
 			margin-right: 16px;
 		}
-		#select_mbti>button{
+
+		#select_mbti>button {
 			width: 155px;
 			height: 43px;
 			margin-top: 54px;
@@ -97,29 +118,82 @@
 			border-color: #D9D9D9;
 			padding-top: 2.5px;
 		}
-		#report_main{
+
+		#report_main {
 			width: 1485px;
 			height: 100%;
-			border: 1px solid powderblue;
+			border: 1px solid #D9D9D9;
 			margin-top: 37px;
 			margin-left: 30px;
 			border-radius: 10px;
+			padding: 20px 40px;
+
 		}
-		
+
+		#report_main>span {
+			width: 155px;
+			height: 34px;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 34px;
+			margin-left: 20px;
+		}
+
+		hr {
+			width: 1445px;
+			margin-top: 15px;
+			border-top: 1px;
+		}
+
+		#report_txt {
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 28px;
+			margin-top: 44px;
+			margin-left: 40px;
+		}
+
+		#bottom {
+			width: 539px;
+			height: 108px;
+			margin-left: 40px;
+			margin-top: 26px;
+			margin-bottom: 143px;
+		}
+
+		#bottom>span {
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 28px;
+			color: #444444;
+		}
+
+		#bottom>button {
+			width: 155px;
+			height: 43px;
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 150%;
+			background-color: white;
+			border-color: #D9D9D9;
+			margin-top: 37px;
+		}
 	</style>
-	
-	
+
+
+
 	<script>
-		
-		$(function() {
+
+		$(function () {
 			// GNB 클릭
-			$('#menu ul li').on('click', function() {
+			$('#menu ul li').on('click', function () {
 				$('#menu ul li').removeClass('active');
 				$(this).addClass('active');
 			});
 		});
 	</script>
 </head>
+
 <body>
 	<!-- 최상단 메뉴 -->
 	<div id="top_nav">
@@ -147,12 +221,24 @@
 		<!-- Nav -->
 		<nav id="menu">
 			<ul>
-				<a href="#"><li class="menu_item">우리 가족 이야기</li></a>
-				<a href="#"><li class="menu_item">다이어리</li></a>
-				<a href="#"><li class="menu_item active">감정 돌아보기</li></a>
-				<a href="#"><li class="menu_item">우리가족</li></a>
-				<a href="#"><li class="menu_item">캘린더</li></a>
-				<a href="#"><li class="menu_item">알려드려요</li></a>
+				<a href="#">
+					<li class="menu_item">우리 가족 이야기</li>
+				</a>
+				<a href="#">
+					<li class="menu_item">다이어리</li>
+				</a>
+				<a href="#">
+					<li class="menu_item active">감정 돌아보기</li>
+				</a>
+				<a href="#">
+					<li class="menu_item">우리가족</li>
+				</a>
+				<a href="#">
+					<li class="menu_item">캘린더</li>
+				</a>
+				<a href="#">
+					<li class="menu_item">알려드려요</li>
+				</a>
 			</ul>
 		</nav>
 
@@ -160,56 +246,204 @@
 		<div id="logout">
 			<a href="#"><span>로그아웃</span></a>
 		</div>
-		
+
 	</div>
 
 	<!-- container -->
-	<div id="container">
+	<div id="container_report">
 		<span id="main_title">내 감정 돌아보기</span>
-			<div id="sub_title">
-				<h1>AI 감정 분석 리포트</h1>
-				<h3>용준 님의 최근 일주일의 기록을 바탕으로 AI가 분석한 감정 리포트를 보여드릴게요.</h3>
-				<h4><strong>AI 감정 분석 리포트</strong>란?</h4>
-				<h5>사용자의 기록 내용에서 감정의 점수를 매겨 기록 속의 MBTI와 LBTI를 분석해요. 그 후 사용자의 실제 MBTI에 기반하여<br>
-					환경과 맥락에 따라 사용자의 MBTI가 일기속 내용을 바탕으로 AI가 예측하는 MBTI와 비교해 보다 더 깊은 본인 통찰력을 제공해 드려요.<br>
-					AI 분석은 재미로 가볍게 참고하는 정도로 보시는 걸 추천드려요! 😊</h5>
-				</div>
-
-				<div id="report_container">
-				<div id="mbtitle">
-					<span>나의 MBTI 입력하고 AI 감정 분석하기</span>
-				</div>
-				<div id="select_mbti">
-					<select class="mbti" name="mbti">
-						<option value="select">선택</option>
-						<option value="ISTJ">ISTJ</option>
-						<option value="ISFJ">ISFJ</option>
-						<option value="INFJ">INFJ</option>
-						<option value="INTJ">INTJ</option>
-						<option value="ISTP">ISTP</option>
-						<option value="ISFP">ISFP</option>
-						<option value="INFP">INFP</option>
-						<option value="INTP">INTP</option>
-						<option value="ESTP">ESTP</option>
-						<option value="ESFP">ESFP</option>
-						<option value="ENFP">ENFP</option>
-						<option value="ENTP">ENTP</option>
-						<option value="ESTJ">ESTJ</option>
-						<option value="ESFJ">ESFJ</option>
-						<option value="ENFJ">ENFJ</option>
-						<option value="ENTJ">ENTJ</option>
-					</select>
-					<button type="button">분석시작</button>
-				</div>
-			</div>
-			
-		<div id="report_main">
-			</div>
-			
+		<div id="sub_title">
+			<h1>AI 감정 분석 리포트</h1>
+			<h3>용준 님의 최근 일주일의 기록을 바탕으로 AI가 분석한 감정 리포트를 보여드릴게요.</h3>
+			<h4><strong>AI 감정 분석 리포트</strong> 란?</h4>
+			<h5>사용자의 기록 내용에서 감정의 점수를 매겨 기록 속의 MBTI와 LBTI를 분석해요. 그 후 사용자의 실제 MBTI에 기반하여<br>
+				환경과 맥락에 따라 사용자의 MBTI가 일기속 내용을 바탕으로 AI가 예측하는 MBTI와 비교해 보다 더 깊은 본인 통찰력을 제공해 드려요.<br>
+				AI 분석은 재미로 가볍게 참고하는 정도로 보시는 걸 추천드려요! 😊</h5>
 		</div>
-			
-			
+
+		<div id="report_container">
+			<div id="mbtitle">
+				<span>나의 MBTI 입력하고 AI 감정 분석하기</span>
+			</div>
+			<div id="select_mbti">
+				<select class="mbti" name="mbti">
+					<option value="select">선택</option>
+					<option value="ISTJ">ISTJ</option>
+					<option value="ISFJ">ISFJ</option>
+					<option value="INFJ">INFJ</option>
+					<option value="INTJ" selected>INTJ</option>
+					<option value="ISTP">ISTP</option>
+					<option value="ISFP">ISFP</option>
+					<option value="INFP">INFP</option>
+					<option value="INTP">INTP</option>
+					<option value="ESTP">ESTP</option>
+					<option value="ESFP">ESFP</option>
+					<option value="ENFP">ENFP</option>
+					<option value="ENTP">ENTP</option>
+					<option value="ESTJ">ESTJ</option>
+					<option value="ESFJ">ESFJ</option>
+					<option value="ENFJ">ENFJ</option>
+					<option value="ENTJ">ENTJ</option>
+				</select>
+				<button type="button">분석시작</button>
+			</div>
+		</div>
+
+		<div id="report_main">
+			<span>AI 감정 분석 리포트</span>
+			<hr color="#D9D9D9">
+			<div id="report_txt">
+				스마트 AI 감정 분석<br><br>
+
+				**날짜:** 2024년 12월 2일 (월요일)<br><br>
+
+				**감정 분석 결과:**<br><br>
+
+				* **전반적인 감정:**<br><br> 긍정적 (85/100)<br><br>
+				* **세부 감정 점수:**<br><br>
+				* 행복: 90/100 <br>
+				* 만족: 80/100 <br>
+				* 평온: 70/100 <br>
+				* 흥미: 85/100 <br>
+				* 활력: 95/100 <br>
+				* 스트레스: 10/100<br><br>
+
+				**설명:**<br><br>
+				일기 내용 전반에 걸쳐 긍정적인 감정 표현이 두드러집니다. 화창한 날씨, 친구들과의 즐거운 시간, 흥미로운 코딩 수업, 운동 후의 뿌듯함 등 긍정적인 경험들이 행복감과 만족감을 높였음을
+				알 수 있습니다. 스트레스 수치가 매우 낮은 점 또한 긍정적인 심리 상태를 시사합니다. 오랜만에 친구들과 웃으며 이야기 나눈 부분은 사회적 연결감과 소속감을 느꼈다는 것을 보여주는 중요한 지표입니다.
+				새로운 알고리즘 학습에 대한 흥미는 지적 자극과 성취감을 동시에 경험했음을 나타냅니다. 전반적으로 에너지 넘치고 활기찬 하루를 보냈다는 인상을 받습니다.<br><br>
+
+				**MBTI 및 LBTI 예측:**<br><br>
+
+				작성자는 본인을 INTJ라고 밝혔습니다. 일기 내용을 분석해 볼 때, 계획적이고 체계적인 면모는 INTJ 유형과 일치합니다. 코딩 수업에 대한 흥미와 새로운 알고리즘 학습에 대한 적극적인 태도는
+				분석적이고 논리적인 사고방식을 보여줍니다. 하지만 친구들과 즐거운 시간을 보내고, 운동을 통해 하루를 알차게 마무리하는 모습은 INTJ의 일반적인 이미지와는 다소 다른 면을 보여줍니다. 이러한 점들을
+				고려할 때, AI는 INTJ 성향이 강하지만, 다른 유형의 특징 또한 일부 보이는 융합적인 유형으로 분석합니다.<br><br>
+
+				* **AI 예측 MBTI:** INTJ (강한 성향) + 약간의 ENFJ 성향 (사교성 및 감정 표현)<br><br>
+				* **AI 예측 LBTI:** INTJ 유형의 내향적인 성향은 유지되지만, 외부 활동에 대한 흥미와 적극성이 나타나는 점을 고려할 때, LBTI는 INTJ보다 조금 더 외향적인 성향으로 표현될 수
+				있습니다. 예를 들어, INTJ-A 또는 다른 L-유형 변수를 고려해야 할 수 있습니다.<br><br>
+
+				**심리학자의 코멘트:**<br><br>
+
+				일기 내용을 통해 당신의 하루가 얼마나 풍요롭고 긍정적인 에너지로 가득 차 있었는지 잘 알 수 있었습니다. INTJ라는 유형에 갇히지 말고, 당신 안에 숨겨진 다양한 면모를 발견하고 받아들이는 것을
+				두려워하지 마세요. 자신의 강점과 약점을 객관적으로 바라보고, 자신에게 맞는 방식으로 성장해 나갈 수 있다면, 그것이야말로 진정한 성숙입니다.<br><br>
+
+				**월요일 격려:**<br><br>이번 주의 시작을 긍정적인 에너지로 시작했으니, 이번 한 주도 멋지게 헤쳐나갈 수 있을 거예요! 힘내세요!<br><br>
+
+				**마무리 명언:** "<br><br>세상을 바꾸는 가장 강력한 힘은 열정과 긍정적인 마음이다." - 익명<br><br>
+
+				꾸준히 일기를 작성하여 당신의 감정 변화와 성장 과정을 기록해 보세요. 매일매일의 작은 변화들이 당신의 삶을 풍요롭게 만들어 줄 것입니다.<br><br>
+
+				==========================================================================================================<br><br>
+
+				**날짜:** 2024년 12월 3일 (화요일)<br><br>
+
+				**일기 내용 분석:**<br><br>
+
+				오늘 일기는 평범한 회사 생활과 겨울 추위에 대한 불만, 쇼핑 계획, 여행에 대한 갈망, 그리고 돈에 대한 어려움 등 다양한 감정이 복합적으로 드러나 있습니다. "아아와 삼김을 하나 쌈뽕하게 조지고"
+				라는 표현에서 약간의 피로감과 일상에 대한 무료함도 느껴집니다. 하지만 "이번 년도가 얼마 남지 않았으니 마지막까지 열심히 살아야겠다" 와 "오늘도 일기 쓴 나 칭찬해~" 에서는 자기 성찰과 자기
+				긍정적인 태도를 보여줍니다. 전반적으로는 목표 의식과 현실적인 어려움 사이에서 갈등하는 모습이 나타나고 있습니다.<br><br>
+
+				**감정 점수 (100점 만점):**<br><br>
+
+				* 지루함: 30점<br>
+				* 피로감: 25점<br>
+				* 추위에 대한 불쾌감: 20점<br>
+				* 희망/기대감 (여행, 봄): 40점<br>
+				* 목표 의식: 35점<br>
+				* 자기 만족: 20점<br>
+				* 돈에 대한 압박감: 30점<br><br>
+
+				**MBTI 및 LBTI 예측:**<br><br>
+
+				제공된 일기 내용과 "나는 INTJ 입니다" 라는 정보를 종합적으로 고려했을 때, 사용자의 MBTI는 INTJ로 예상됩니다. 자신의 감정을 객관적으로 분석하고, 목표 지향적인 태도와 계획성을 보이는
+				점은 INTJ 유형의 특징과 일치합니다. 하지만 일기에서 드러나는 감정의 섬세함과 여행에 대한 갈망은 단순히 이성적이고 논리적인 INTJ의 모습만으로 설명하기 어렵습니다. 여기서 LBTI는 사용자가
+				스스로 통제하고 관리하려는 면을 보여주는 "Planful" 유형으로 예측해 봅니다. INTJ 유형이지만 감정 표현에 대한 억압보다는 자신의 감정을 인지하고 일기라는 방식으로 표출하려는 시도가 보이는
+				점이 이를 뒷받침합니다. INTJ 유형의 꼼꼼함과 계획적인 성격은 LBTI의 "Planful" 유형과 잘 어울립니다.<br><br>
+
+				**AI 예측 MBTI vs. 자가진단 MBTI:**<br><br>
+
+				AI는 사용자의 MBTI를 INTJ로 예측했습니다. 사용자가 스스로 진단한 MBTI 또한 INTJ입니다. 이는 AI의 분석이 사용자의 성격 특징을 잘 반영하고 있음 을 시사합니다. 다만, AI 분석을
+				통해 드러난 감정의 섬세함은 INTJ의 전형적인 스테레오타입을 벗어나는 부분으로, 좀 더 깊이 있는 이해를 위해 추가적인 정보가 필요할 수 있습니다.<br>
+
+				**심리학적 해석:**<br><br>
+
+				일기에는 현실적인 어려움(돈, 추위)과 미래에 대한 희망(여행, 봄)이 공존합니다. 이는 INTJ 유형의 특징인 장기적인 목표 설정과 현실적인 문제 해결 능력을 보여주는 동시에, 내면의 감정 표현에
+				대한 어려움이나 억압 경향도 간접적으로 나타냅니다. 일기 쓰기를 통해 자신의 감정을 정리하고 긍정적인 마음가짐을 유지하려는 노력은 건강한 자기 관리의 한 형태로 볼 수 있습니다.<br>
+
+				**결론:**<br><br>
+
+				화요일, 이번 주도 절반이나 지났네요! 잘 해내고 있습니다. 앞으로도 꾸준히 일기를 쓰면서 자신의 감정을 이해하고 관리하는데 도움을 받으세요. 자신을 칭찬하고 격려하는 습관을 유지하는 것은 매우
+				중요합니다.<br><br>
+
+				"가장 어두운 밤이 지나면 가장 빛나는 새벽이 온다." - 힘든 시간을 이겨내고, 멋진 미래를 만들어갈 당신을 응원합니다. 계속해서 일기를 써주세요. 변화하는 감정의 흐름을 기록하는 것은 자기 성찰과
+				성장에 큰 도움이 될 것입니다.<br><br>
+
+				==========================================================================================================<br><br>
+
+				스마트 AI 감정 분석<br><br>
+
+				**날짜:** 2024년 12월 4일 (화요일)<br><br>
+
+				**감정 분석 결과:**<br><br>
+
+				* **전반적인 감정:** 긍정적<br><br>
+				* **세부 감정 점수 (100점 만점):**<br>
+				* 행복: 90<br>
+				* 즐거움: 85<br>
+				* 설렘: 70<br>
+				* 평온: 60<br>
+				* 기대: 75<br>
+				* 약간의 불안: 20<br><br>
+
+				**설명:**<br><br>
+
+				오늘의 일기는 눈이 많이 내린 날의 즐거운 경험을 중심으로 기술하고 있습니다. 눈싸움을 즐겁게 했고, 눈으로 머리를 감았다는 표현에서 유쾌함과 긍정적인 감정이 잘 드러납니다. 따뜻한 핫초코를 마시고
+				싶다는 생각은 행복감과 편안함을 동시에 나타냅니다. 크리스마스 시즌에 대한 긍정적인 감정과 다가오는 프로젝트에 대한 기대감도 엿볼 수 있습니다. 단, 약간의 불안감이 느껴지며, 이는 앞으로의 프로젝트나
+				준비에 대한 긴장감을 반영할 수 있습니다.<br><br>
+
+				**MBTI 및 LBTI 예측:** <br><br>
+
+				제공된 일기 내용을 바탕으로 MBTI는 INTJ가 아닌 **ENFP**로 예측합니다. 일기에서 드러나는 유쾌함, 긍정적인 태도, 그리고 크리스마스 시즌에 대
+				한 즐거움, 눈싸움과 같은 감각적인 경험을 중시하는 모습은 INTJ보다는 ENFP의 특징과 더 부합합니다. INTJ는 계획적이고 논리적인 성향을 보이는 반
+				면, ENFP는 열정적이고 창의적이며 사회적 활동을 즐기는 경향이 있습니다. 다가오는 프로젝트에 대한 불안감은 ENFP가 목표 달성에 대한 열정을 가
+				지고 있으면서 동시에 완벽주의적 경향을 가질 수 있음을 시사합니다.<br><br>
+
+				LBTI는 **정보 수집 유형**으로 예상합니다. 자신의 감정과 경험을 자세히 기록하는 모습은 자신의 내면 세계에 대한 관심과 정보 수집 욕구를 보여줍니다.<br><br>
+
+
+				**AI 예측 MBTI와 사용자 기입 MBTI 비교:**<br><br>
+
+				사용자는 자신을 INTJ라고 밝혔지만, AI는 ENFP로 예측했습니다. 이는 자기인식과 타인의 인식 차이를 보여주는 사례입니다. 자신에 대한 깊은 이해를
+				위해 MBTI 검사를 다시 받아보는 것을 권장합니다. 자신의 강점과 약점을 이해하는 것은 자기 성장에 중요한 부분입니다.<br>
+
+
+				**화요일 격려의 말:**<br><br>
+
+				화요일, 이번 주도 중간 지점에 도착했네요! 오늘의 즐거운 기억을 힘 삼아 이번 주도 활기차게 마무리하세요!<br><br>
+
+
+				**마무리 인용구:**<br><br>
+
+				"삶이란 여정, 매일의 기록이 아름다운 추억을 만들어 냅니다."<br><br>
+
+
+				계속해서 일기를 써주시면, 변화하는 감정과 성장하는 당신의 모습을 지켜볼 수 있겠습니다.<br><br>
+
+				==========================================================================================================<br>
+
+			</div>
+		</div>
+		<div id="bottom">
+			<span>상기 리포트 AI가 작성한 것으로 일상생활에서의 참고용 정도로만 봐주세요.</span>
+			<button type="button">다운로드</button>
+		</div>
+	</div>
+
+	<!-- footer -->
+
 
 
 </body>
+
 </html>

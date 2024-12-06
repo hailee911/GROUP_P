@@ -12,6 +12,6 @@ urlpatterns = [
     path('join01_3/', views.join01_3,name="join01_3"),
     path('join01_4/', views.join01_4,name="join01_4"),
     path('join02/', views.join02,name="join02"),
-    path('join03/', views.join03,name="join03"),
+    path('join03/<str:id>/<str:pw>/<str:mail>/', views.join03,name="join03"),
     path('join04/', views.join04,name="join04"),
 ]

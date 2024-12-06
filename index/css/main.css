@@ -3,6 +3,11 @@
 	padding: 0;
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
+
+button{
+	cursor: pointer;
+}
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -130,9 +135,9 @@ box-sizing: border-box;
 	margin-top: 60px;
 	box-sizing: border-box;
 	background-color: white;
-	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+	box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 	overflow-x: auto;
-	transition: right 0.3s ease-in-out;
+	transition: top 0.3s ease-in-out;
 	z-index: 1000;
 }
 .search_bar.closed {
@@ -141,7 +146,9 @@ box-sizing: border-box;
 .search_bar.open {
 	top: 0; 
 }
-
+#input_wrap{
+	display: flex;
+}
 .search_box {
   display: flex;
   align-items: center;
@@ -150,7 +157,7 @@ box-sizing: border-box;
   padding: 5px 14px;
   width: 600px;
 	height: 48px;
-	margin: 40px auto;
+	margin: 40px auto 20px;
 	box-sizing: border-box;
   background-color: #f9f9f9;
 }
@@ -159,12 +166,77 @@ box-sizing: border-box;
   border: none;
   outline: none;
   flex-grow: 1;
-  font-size: 14px;
+  font-size: 15px;
   background: transparent;
+}
+
+#search_closeBtn  {
+  border: none;
+	background: #fff;
+	width: 24px;
+	height: 24px;
+	position: relative;
+	top: 52px;
+	left: -50px;
+	cursor: pointer;
 }
 
 .search_box input::placeholder {
   color: #aaa;
+}
+
+#search_content{
+	width: 1000px;
+	margin: 0 auto 60px;
+	/* border: 1px solid black; */
+}
+
+#search_result{
+	padding: 20px;
+	box-sizing: border-box;
+	height: 64px;
+	font-size: 20px;
+	font-weight: 400;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.search_list{
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid #dfdfdf;
+	font-size: 17px;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.search_list a{
+	display: flex;
+  align-items: center;
+}
+
+.s_title{
+	margin-right: 24px;
+}
+.s_date{
+	color: #797979;
+}
+.search_list img{
+	margin-left: auto;
+}
+/* 페이지 어둡게 */
+.s_overlay {
+	position: fixed;
+	top: 61px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 998;
+	display: none;
+}
+
+.s_overlay.show {
+	display: block;
+	animation: fadeIn 0.8s ease-in-out;
 }
 
 
@@ -189,6 +261,7 @@ box-sizing: border-box;
 .sidebar.open {
 	right: 0; 
 }
+
 
 .noti_header{
 	width: 480px;
@@ -253,11 +326,8 @@ box-sizing: border-box;
 	border-radius: 100%;
 }
 
-/* 페이지 어둡게 */
-.overlay {
+.n_overlay {
 	position: fixed;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -265,14 +335,14 @@ box-sizing: border-box;
 	display: none;
 }
 
-.overlay.show {
+.n_overlay.show {
 	display: block;
 	animation: fadeIn 0.3s ease-in-out;
 }
 
 
 /* ----- container ----- */
-#container{width: 100%; height: 1500px; float: left; margin-top: 60px;}
+#container{width: 100%; height: 1400px; float: left; margin-top: 60px;}
 #main_sec1{height: 408px; margin-left: 284px; display: flex; align-items: center;}
 #main_sec2{height: 462px; margin-left: 284px; display: flex; background: #fafafa;}
 #main_sec3{height: 460px; margin-left: 284px;}
@@ -292,7 +362,7 @@ box-sizing: border-box;
 	font-size: 26px;
 	font-weight: 300;
 	line-height: 40px;
-
+	
 }
 .main_btn{
 	width: 155px;
@@ -309,7 +379,7 @@ box-sizing: border-box;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 32px; 
-
+	
 }
 
 .diary_list_wrapper {
@@ -474,7 +544,7 @@ box-sizing: border-box;
 	font-size: 18px;
 	text-align: center;
 	color: #797979;
-
+	
 }
 
 #past_diary{
@@ -514,4 +584,33 @@ box-sizing: border-box;
 #p_button{
 	float: right;
 	margin-top: 16px;
+}
+
+
+/* footer */
+#footer{
+	width: 1620px; 
+	height: 264px;
+	font-size: 15px;
+	color: #797979;
+	float: left;
+	margin-top: 10px;
+	margin-left: 284px;
+	padding: 60px 40px 40px 100px;
+	box-sizing: border-box;
+	background: #d9d9d9;
+	overflow: hidden;
+}
+#footer ul{
+	display: flex;
+	gap: 10px;
+}
+
+#f_link{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+#f_txt ul li{
+	font-size: 14px;
+	margin-bottom: 6px;
 }

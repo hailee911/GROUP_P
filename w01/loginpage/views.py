@@ -1,16 +1,50 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from loginpage.models import Member
+
 
 # 회원가입페이지4
 def join04(request):
   return render(request,'join04.html')
 
 # 회원가입페이지3
-def join03(request):
-  return render(request,'join03.html')
+def join03(request,id,pw,mail):
+  if request.method == "POST":
+    # `context`에서 전달된 데이터 가져오기
+    id = request.POST.get('id')
+    pw = request.POST.get('pw')  # 비밀번호는 암호화 필요
+    mail = request.POST.get('full_mail')
+    qs = Member.objects.create(
+      id=id,
+      pw=pw,  # 암호화 필요
+      mail=mail,
+      name=request.POST.get('name'),
+      birthday=request.POST.get('date'),
+      gender=request.POST.get('gender'),
+    )
+    print("정보2 : ",qs)
+    return redirect('loginpage:join04')  # 성공 페이지로 이동
+  else:
+    print('join03 확인 : ',id,pw,mail)
+    context = {       
+      'id': id,
+      'pw': pw,
+      'full_mail' : mail
+    }
+    return render(request,'join03.html',context)
 
 # 회원가입페이지2
 def join02(request):
-  return render(request,'join02.html')
+  if request.method == "POST":
+    # 이메일 결합
+    em1 = request.POST.get('em1')  # 이메일 첫 번째 부분
+    em2 = request.POST.get('em2')  # 이메일 두 번째 부분
+    full_mail = f"{em1}@{em2}"  # 전체 이메일
+    print("정보1",request.POST.get('id'),request.POST.get('pw'),full_mail)
+    # return render(request,'join03.html',context)  # Step 2로 이동
+    return redirect('loginpage:join03',request.POST.get('id'),request.POST.get('pw'),full_mail)  # Step 2로 이동
+  else:
+    return render(request,'join02.html')
+  
 
 # 회원가입페이지1-4
 def join01_4(request):
@@ -28,7 +62,7 @@ def join01_2(request):
 def join01_1(request):
   return render(request,'join01_1.html')
 
-# 회원가입페이지
+# 회원가입페이지1
 def join01(request):
   return render(request,'join01.html')
 
@@ -42,4 +76,21 @@ def id(request):
 
 # 로그인페이지
 def login(request):
-  return render(request,'login.html')
+  if request.method == "GET":
+    print('확인2')
+    return render(request,'login.html')
+  else:
+    id = request.POST.get('id')
+    pw = request.POST.get('pw')
+    qs = Member.objects.filter(id=id,pw=pw)
+    print("확인용 :",id)
+
+    if qs:
+      request.session['session_id'] = id
+      print("확인일")
+      context = {"lmsg":"1"}
+      return render(request,'main_navi_base.html',context)
+    else:
+      context = {'lmsg':"0"}
+      print("확인2")
+      return render(request,'login.html',context)

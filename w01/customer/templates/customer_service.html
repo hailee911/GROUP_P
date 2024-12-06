@@ -49,38 +49,16 @@
             <col style="width:15%;">
             <col style="width:20%;">
           </colgroup>
+          {% for notice in notice_5%}
           <tr>
-            <td>20</td>
-            <td><a href="">업데이트 공지</a></td>
-            <td>관리자</td>
-            <td>24.12.01</td>
+            <td>{{notice.bno}}</td>
+            <td><a href="/customer/noticeview/{{notice.bno}}/">{{notice.btitle}}</a></td>
+            <td>{{notice.member}}</td>
+            <td>{{notice.bdate|date:'Y-m-d'}}</td>
           </tr>
-          <tr>
-            <td>20</td>
-            <td><a href="">업데이트 공지</a></td>
-            <td>관리자</td>
-            <td>24.12.01</td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td><a href="">업데이트 공지</a></td>
-            <td>관리자</td>
-            <td>24.12.01</td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td><a href="">업데이트 공지</a></td>
-            <td>관리자</td>
-            <td>24.12.01</td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td><a href="">업데이트 공지</a></td>
-            <td>관리자</td>
-            <td>24.12.01</td>
-          </tr>
+          {% endfor %}
           <tr class="notice_list_last">
-            <td colspan="4"><a href=""><span>전체 공지 보기</span><img src="/static/images/customer/Expand_right_light.png" alt=""></a></td>
+            <td colspan="4"><a href="/customer/noticelist/"><span>전체 공지 보기</span><img src="/static/images/customer/Expand_right_light.png" alt=""></a></td>
           </tr>
         </table>
       </div>
