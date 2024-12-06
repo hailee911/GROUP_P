@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Member
+from loginpage.models import Member
 
 
 # 회원가입페이지4
@@ -76,4 +76,21 @@ def id(request):
 
 # 로그인페이지
 def login(request):
-  return render(request,'login.html')
+  if request.method == "GET":
+    print('확인2')
+    return render(request,'login.html')
+  else:
+    id = request.POST.get('id')
+    pw = request.POST.get('pw')
+    qs = Member.objects.filter(id=id,pw=pw)
+    print("확인용 :",id)
+
+    if qs:
+      request.session['session_id'] = id
+      print("확인일")
+      context = {"lmsg":"1"}
+      return render(request,'main_navi_base.html',context)
+    else:
+      context = {'lmsg':"0"}
+      print("확인2")
+      return render(request,'login.html',context)
