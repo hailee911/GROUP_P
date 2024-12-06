@@ -17,7 +17,8 @@
     <div class="join_form">
       <div id="f1">아이디 찾기</div>
       <div id="f2">회원가입시 입력한 정보로 찾을게요</div>
-      <form>
+      <form method="POST">
+        {% csrf_token %}
         <div class="id1_span1">
           <label for="name" id="label_name">이름</label>
           <div class="id1_error-message" id="id1_errorMessage1">이름을 입력해주세요.</div>
@@ -37,20 +38,21 @@
           <div class="id1_error-message" id="id1_errorMessage3">메일을 입력해주세요.</div>
         </div>
         <dd>
-          <input type="text" id="id1_mail_id" class="id_input"  placeholder="    이메일">
-            <select id="id_select">
-              <option value="naver">@naver.com</option>
-              <option value="gmail">@gmail.com</option>
-              <option value="daum">@hanmail.net</option>
-              <option value="nate">@nate.com</option>
-              <option value="daum">@daum.net</option>
+          <input type="text" id="id1_mail_id" class="id_input" name="email"  placeholder="    이메일">
+            <select id="id_select"name="em2">
+              <option value="naver.com">naver.com</option>
+              <option value="gmail.com">gmail.com</option>
+              <option value="hanmail.net">hanmail.net</option>
+              <option value="nate.com">nate.com</option>
+              <option value="daum.net">daum.net</option>
             </select>
         </dd>
+          <button type="submit" id="code_ok_button"><a id='code_a'>인증코드를 발송합니다.</a></button>
+      </form>
+      <form method="POST">
+        {% csrf_token %}
         <label for="mail" id="label_code">인증코드</label>
         <input type="text" id="input_code" placeholder="    인증코드를 입력하세요.">
-        <div id='code_a'>
-          <a href="#" id='code_a'>인증코드를 발송합니다.</a>
-        </div>
         <button type="button" id="id_button">인증 코드 확인</button>
       </form>
       <script src="{% static '/js/login/id.js'%}"></script>
