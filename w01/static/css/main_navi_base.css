@@ -111,6 +111,7 @@ ol, ul {
 background: url('/static/images/main/logo_sample.png') no-repeat;
 position: absolute; 
 left:50px; top:18px; 
+cursor: pointer;
 }
 
 .top_menu{

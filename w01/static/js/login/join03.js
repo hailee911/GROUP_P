@@ -38,7 +38,8 @@ join3submitButton.addEventListener('click', () => {
   if (!isValid) {
     return;
   }
-  location.href="/loginpage/join04/"
+  // location.href="/loginpage/join04/"
+  join03Frm.submit()
   // 여기에 폼 제출 등 추가 작업을 추가할 수 있습니다.
 });
 
