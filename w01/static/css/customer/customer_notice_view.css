@@ -144,6 +144,26 @@ table, tr, td{
   margin-bottom: 40px;
 }
 
+.customer_react .back_list{
+  width: 90px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  text-align: center;
+  padding-top: 7px;
+  margin-right: 5px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.back_list span{
+  line-height: 25px;
+  text-align: center;
+  vertical-align: middle; 
+  display: inline-block;
+  width: 50px;
+}
+
 .customer_react .customer_like{
   width: 90px;
   height: 40px;

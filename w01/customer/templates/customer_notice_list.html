@@ -18,94 +18,29 @@
     </div>
     
     <div id="notice_list_area">
+      {% for notice in notice_list %}
       <div class="notice_list_group">
-        <a href="/customer/noticeview/">
+        <a href="/customer/noticeview/{{notice.bno}}/">
           <div class="notice_wrap_cont">
-            
             <div class="tit_post">
-              <div class="num_txt">35</div> 
-              <div>시스템 개편 오류 조치</div> 
-              <div id="Nname">관리자</div>
+              <div class="num_txt">{{notice.bno}}</div> 
+              <div>{{notice.btitle}}</div> 
+              <div id="Nname">{{notice.member}}</div>
             </div>
             <p class="desc_cont">
-              <span class="list_txt">안녕하세요. 우리의 일기 관리자 입니다. . . .. . . .. ..</span>
+              <span class="list_txt">{{notice.bcontent}}</span>
             </p>
           </div>
           <dl class="list_post_info">
             <dd class="txt_g">
-              <span>2024.11.29</span><span class="space"> | </span>
+              <span>{{notice.bdate|date:'Y-m-d'}}</span><span class="space"> | </span>
               <span>댓글</span><span>01</span><span class="space"> | </span>
               <span>좋아요</span><span>02</span>
             </dd>
           </dl>
         </a>
       </div>
-      <div class="notice_list_group">
-        <a href="/customer/noticeview/">
-          <div class="notice_wrap_cont">
-            
-            <div class="tit_post">
-              <div class="num_txt">35</div> 
-              <div>시스템 개편 오류 조치</div> 
-              <div id="Nname">관리자</div>
-            </div>
-            <p class="desc_cont">
-              <span class="list_txt">안녕하세요. 우리의 일기 관리자 입니다. . . .. . . .. ..</span>
-            </p>
-          </div>
-          <dl class="list_post_info">
-            <dd class="txt_g">
-              <span>2024.11.29</span><span class="space"> | </span>
-              <span>댓글</span><span>01</span><span class="space"> | </span>
-              <span>좋아요</span><span>02</span>
-            </dd>
-          </dl>
-        </a>
-      </div>
-      <div class="notice_list_group">
-        <a href="/customer/noticeview/">
-          <div class="notice_wrap_cont">
-            
-            <div class="tit_post">
-              <div class="num_txt">35</div> 
-              <div>시스템 개편 오류 조치</div> 
-              <div id="Nname">관리자</div>
-            </div>
-            <p class="desc_cont">
-              <span class="list_txt">안녕하세요. 우리의 일기 관리자 입니다. . . .. . . .. ..</span>
-            </p>
-          </div>
-          <dl class="list_post_info">
-            <dd class="txt_g">
-              <span>2024.11.29</span><span class="space"> | </span>
-              <span>댓글</span><span>01</span><span class="space"> | </span>
-              <span>좋아요</span><span>02</span>
-            </dd>
-          </dl>
-        </a>
-      </div>
-      <div class="notice_list_group">
-        <a href="/customer/noticeview/">
-          <div class="notice_wrap_cont">
-            
-            <div class="tit_post">
-              <div class="num_txt">35</div> 
-              <div>시스템 개편 오류 조치</div> 
-              <div id="Nname">관리자</div>
-            </div>
-            <p class="desc_cont">
-              <span class="list_txt">안녕하세요. 우리의 일기 관리자 입니다. . . .. . . .. ..</span>
-            </p>
-          </div>
-          <dl class="list_post_info">
-            <dd class="txt_g">
-              <span>2024.11.29</span><span class="space"> | </span>
-              <span>댓글</span><span>01</span><span class="space"> | </span>
-              <span>좋아요</span><span>02</span>
-            </dd>
-          </dl>
-        </a>
-      </div>
+      {% endfor %}
     </div>
       
 
