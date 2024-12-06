@@ -80,8 +80,7 @@ table, tr, td{
 
 .customer_service_notice_table{
   border: 1px solid #ddd;
-  box-shadow: 2px 2px 10.1px rgba(128, 128, 128, 0.96),
-  inset 14px 18px 17.1px rgba(255, 255, 255, 0.27);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 
@@ -132,8 +131,8 @@ table, tr, td{
 
 .customer_service_qnabox{
   border: 1px solid #ddd;
-  box-shadow: 2px 2px 10.1px rgba(128, 128, 128, 0.96),
-  inset 14px 18px 17.1px rgba(255, 255, 255, 0.27);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
   margin-top: 20px;
 }
 
@@ -183,8 +182,7 @@ table, tr, td{
 .customer_service_request_box{
   display: flex;
   border: 1px solid #ddd;
-  box-shadow: 2px 2px 10.1px rgba(128, 128, 128, 0.96),
-  inset 14px 18px 17.1px rgba(255, 255, 255, 0.27);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 
