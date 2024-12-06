@@ -34,14 +34,9 @@ login_button.addEventListener('click', () => {
       login_errorMessage2.style.display = 'none';
     }
   }
-  loginFrm.submit()
   // id,pw 일치시 메인화면으로 이동
-  if("{{lmsg}}"=='1'){
-    
-    alert('로그인이 되었습니다')
-  }else if("{{lmsg}}"=='0'){
-      alert("아이디또는 패스워드가 일치하지 않습니다.")
-  }
+  loginFrm.submit()
+
 
 
 });
