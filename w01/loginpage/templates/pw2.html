@@ -1,22 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비밀번호 찾기 페이지</title>
-  <link rel="stylesheet" href="../css/join1.css">
+  <link rel="stylesheet" href="{% static '/css/login/join1.css'%}">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 </head>
 <body>
   <div class="container">
     <div class="image-section">
-      <img src="../images/join_login_index.svg" alt="">
+      <img src="{% static '/images/login/join_login_index.svg'%}" alt="">
       </svg>
     </div>
     <div class="join_form">
       <div id="f1">비밀번호 찾기</div>
       <div id="f2">회원가입시 입력한 정보로 찾을게요</div>
-      <form>
+      <form method="POST">
         <div class="id1_span1">
           <label for="name" id="label_name">이름</label>
           <div class="id1_error-message" id="id1_errorMessage1">이름을 입력해주세요.</div>
@@ -37,22 +38,22 @@
         </div>
         <dd>
           <input type="text" id="id1_mail_id" class="id_input"  placeholder="    이메일">
-          <select id="id_select">
-            <option value="naver">naver.com</option>
-            <option value="gmail">gmail.com</option>
-            <option value="daum">hanmail.net</option>
-            <option value="nate">nate.com</option>
-            <option value="daum">daum.net</option>
-          </select>
+            <select id="id_select">
+              <option value="naver.com">naver.com</option>
+              <option value="gmail.com">gmail.com</option>
+              <option value="hanmail.net">hanmail.net</option>
+              <option value="nate.com">nate.com</option>
+              <option value="daum.net">daum.net</option>
+            </select>
         </dd>
+          <button type="submit" id="code_ok_button"><a id='code_a'>인증코드를 발송합니다.</a></button>
+      </form>
+      <form method="POST">
         <label for="mail" id="label_code">인증코드</label>
         <input type="text" id="input_code" placeholder="    인증코드를 입력하세요.">
-        <div id='code_a'>
-          <a href="#" id='code_a'>인증코드를 발송합니다.</a>
-        </div>
         <button type="button" id="id_button">인증 코드 확인</button>
       </form>
-      <script src="../js/id.js"></script>
+      <script src="{% static '/js/login/id.js'%}"></script>
     </div>
   </div>
 </body>

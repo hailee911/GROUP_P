@@ -30,6 +30,11 @@
                     <label for="id">아이디*</label>
                     <div class="join2_error-message" id="join2_errorMessage1">아이디를 입력해주세요.</div>
                 </div>
+                {% if messages %}
+                {% for message in messages %}
+                    <div id="overlap_id">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
                 <input type="text" id="id" class='join2_input' name='id' placeholder="아이디를 입력해주세요.">
                 <div class="join2_span1">
                     <label for="password">비밀번호*</label>
