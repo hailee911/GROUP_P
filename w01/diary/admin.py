@@ -1,3 +1,6 @@
 from django.contrib import admin
+from diary.models import DiaryBoard
 
-# Register your models here.
+@admin.register(DiaryBoard)
+class BoardAdmin(admin.ModelAdmin):
+  list_display = ['dno','dtitle','ddate']
