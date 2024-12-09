@@ -42,97 +42,24 @@
 			</thead>
 			<tbody>
 				<!-- 데이터 추가 반복 -->
+				 {% if msg %}
+				 <tr>
+					<td colspan = '7'>{{msg}}</td>
+				 </tr>
+				 {% else %}
+				 {% for mem in memlist %}
 				<tr>
 					<td><input type="checkbox" class="select_member"></td>
 					<td>001</td>
-					<td>aaaaa</td>
-					<td class="member_name"><a href="#">홍길동</a></td>
-					<td>길동스길동</td>
-					<td>hong@naver.com</td>
-					<td>2024-01-01</td>
+					<td>{{mem.id}}</td>
+					<td class="member_name"><a href="#">{{mem.name}}</a></td>
+					<td>{{mem.nicName}}</td>
+					<td>{{mem.mail}}</td>
+					<td>{{mem.mdate}}</td>
 					<td>구독중</td>
 				</tr>
-				<!-- 데이터 추가 반복 -->
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
+				{% endfor %}
+				{% endif %}
 			</tbody>
 		</table>
 	</div>
@@ -155,6 +82,12 @@
 					checkbox.checked = selectAllCheckbox.checked;
 			});
 	});
+
+	// 멤버 추가 버튼 클릭
+	document.getElementById('cBtn').addEventListener('click', function() {
+		location.href = '/admin1/admin_memAdd/';
+	});
+
 	</script>
 
 </body>

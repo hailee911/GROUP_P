@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from admin1.models import Administrator
+from loginpage.models import Member
 
 # 관리자1 로그인
 def admin_login(request):
@@ -25,11 +26,24 @@ def admin_adminList(request):
 
 # 회원관리 (유저리스트)
 def admin_memList(request):
-	return render(request, 'admin_memList.html')
+	qs = Member.objects.all()
+	
+	if qs:
+		context = {'memlist':qs}
+	else:
+		context = {'msg':'멤버가 없습니다.'}
+	return render(request, 'admin_memList.html', context)
 
 # 회원 추가
 def admin_memAdd(request):
-	return render(request, 'admin_memAdd.html')
+	# 페이지 열기
+	if request.method == 'GET':
+		return render(request, 'admin_memAdd.html')
+	# post 방식 (데이터 받기)
+	else:
+		id = request.POST.get('user_id')
+		print(id)
+
 
 # 포스트 리스트
 def admin_postList(request):
