@@ -11,12 +11,13 @@
 
 </style>
 <script>
+
 	if ('{{lmsg}}' == '1'){
 		alert("관리자 로그인되었습니다.")
 		location.href='/admin1/admin_memList/'
 	}else if('{{lmsg}}' == '0'){
 			alert("아이디 또는 패스워드가 일치하지 않습니다.")
-	}
+	};
 	$(function(){
 		$(".login_btn").click(function(){
 			if($("#user_id").val().length<1){
