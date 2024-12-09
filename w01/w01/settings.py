@@ -33,10 +33,7 @@ INSTALLED_APPS = [
     'emotion',
     'admin1',
     'diary',
-<<<<<<< HEAD
-=======
     'mypage',
->>>>>>> 9c8faa2c86df2804a6aa6da021356fc4db7b757b
 ]
 
 MIDDLEWARE = [
