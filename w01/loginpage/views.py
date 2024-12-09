@@ -262,7 +262,11 @@ def login(request):
       request.session['session_id'] = id
       print("확인일")
       context = {"lmsg":"1"}
+<<<<<<< HEAD
       return redirect('/index',context)
+=======
+      return render(request,'main.html',context)
+>>>>>>> e10baeee0065b7fc61e45dc97c9ffbeb2f357d2a
     else:
       context = {'lmsg':"0"}
       print("확인2")

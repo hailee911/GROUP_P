@@ -31,6 +31,9 @@ INSTALLED_APPS = [
     'home',
     'customer',
     'emotion',
+    'admin1',
+    'diary',
+    'mypage',
 ]
 
 MIDDLEWARE = [
