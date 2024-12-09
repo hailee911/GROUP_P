@@ -10,7 +10,9 @@ def admin_login(request):
 
 		qs = Administrator.objects.filter(id=id,pw=pw)
 		if qs:
-			request.session['session_id']
+			request.session['session_id'] = id
+			request.session['session_role'] = qs[0].role
+
 			context = {'lmsg':'1'}
 		else:
 			context = {'lmsg':'0'}
