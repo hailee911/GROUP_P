@@ -1,61 +1,97 @@
-//로그인 페이지
+// 변수 선언
+const loginButton = document.getElementById('login_button');
+const idInput = document.getElementById('id_input');
+const pwInput = document.getElementById('pw_input');
+const loginErrorMessage1 = document.getElementById('login_errorMessage1');
+const loginErrorMessage2 = document.getElementById('login_errorMessage2');
+const rememberCheckbox = document.getElementById('remember');
 
-// input이 비었을때 에러메세지
+// 페이지 로드 시 쿠키에서 아이디를 가져와 자동으로 설정
+window.onload = function() {
+  const storedId = getCookie('user_id');
+  if (storedId) {
+    idInput.value = storedId;
+    rememberCheckbox.checked = true;  // 체크박스 체크 상태 유지
+  }
+};
 
-const loginsubmitButton = document.getElementById('login_button');
-const logintextInput1 = document.getElementById('id_input');
-const logintextInput2 = document.getElementById('pw_input');
-const loginerrorMessage1 = document.getElementById('login_errorMessage1');
-const loginerrorMessage2 = document.getElementById('login_errorMessage2');
-
-// 버튼 클릭 시 입력 필드 확인
-login_button.addEventListener('click', () => {
+// 로그인 버튼 클릭 시 입력 필드 확인
+loginButton.addEventListener('click', () => {
   let isValid = true;
 
-  // 첫 번째 입력 필드 확인
-  if (id_input.value.trim() === '') {
-    login_errorMessage1.style.display = 'block';
-    id_input.focus(); // 첫 번째 입력 필드에 포커스 이동
+  // 아이디 입력 확인
+  if (idInput.value.trim() === '') {
+    loginErrorMessage1.style.display = 'block';
+    idInput.focus();
     isValid = false;
   } else {
-    login_errorMessage1.style.display = 'none';
+    loginErrorMessage1.style.display = 'none';
   }
 
-  // 두 번째 입력 필드 확인
-  if (pw_input.value.trim() === '') {
-    if (id_input.value.trim() != '') {
-
-      login_errorMessage2.style.display = 'block';
-      if (isValid) {
-        pw_input.focus(); // 첫 번째 입력 필드가 비어있지 않으면 두 번째로 포커스 이동
-      }
-      isValid = false;
-    } else {
-      login_errorMessage2.style.display = 'none';
+  // 비밀번호 입력 확인
+  if (pwInput.value.trim() === '') {
+    if (idInput.value.trim() !== '') {
+      loginErrorMessage2.style.display = 'block';
+      pwInput.focus();
     }
-  }
-
-  // id,pw 일치시 메인화면으로 이동
-  loginFrm.submit()
-
-});
-
-// 입력 필드에 포커스를 잃었을 때도 확인
-id_input.addEventListener('blur', () => {
-  if (id_input.value.trim() === '') {
-    login_errorMessage1.style.display = 'block';
+    isValid = false;
   } else {
-    login_errorMessage1.style.display = 'none';
+    loginErrorMessage2.style.display = 'none';
+  }
+
+  // 유효한 경우 로그인 폼 제출
+  if (isValid) {
+    loginFrm.submit();
   }
 });
 
-pw_input.addEventListener('blur', () => {
-  if (pw_input.value.trim() === '') {
-    if (id_input.value.trim() != '') {
+// 입력 필드에서 포커스가 벗어날 때 에러 메시지 확인
+idInput.addEventListener('blur', () => {
+  if (idInput.value.trim() === '') {
+    loginErrorMessage1.style.display = 'block';
+  } else {
+    loginErrorMessage1.style.display = 'none';
+  }
+});
 
-      login_errorMessage2.style.display = 'block';
-    } else {
-      login_errorMessage2.style.display = 'none';
+pwInput.addEventListener('blur', () => {
+  if (pwInput.value.trim() === '') {
+    loginErrorMessage2.style.display = 'block';
+  } else {
+    loginErrorMessage2.style.display = 'none';
+  }
+});
+
+// 체크박스 상태에 따라 쿠키에 아이디 저장
+loginButton.addEventListener('click', () => {
+  if (rememberCheckbox.checked) {
+    setCookie('user_id', idInput.value, 7);  // 7일 동안 쿠키 저장
+  } else {
+    deleteCookie('user_id');
+  }
+});
+
+// 쿠키 설정 함수
+function setCookie(name, value, days) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));  // 날짜 계산
+  document.cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/`;
+}
+
+// 쿠키 가져오기 함수
+function getCookie(name) {
+  const nameEQ = `${name}=`;
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(nameEQ) === 0) {
+      return c.substring(nameEQ.length, c.length);
     }
   }
-});
+  return null;
+}
+
+// 쿠키 삭제 함수
+function deleteCookie(name) {
+  document.cookie = `${name}=; Max-Age=-99999999; path=/`;
+}
