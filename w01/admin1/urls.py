@@ -3,7 +3,7 @@ from . import views
 
 app_name = "admin1"
 urlpatterns = [
-	# 어드민 로그인
+	# 관리자1 로그인
     path('login/', views.admin_login, name="admin_login"),
 	# 어드민 로그아웃
     path('logout/', views.admin_logout, name="admin_logout"),

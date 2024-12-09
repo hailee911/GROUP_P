@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdeliv.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-<link rel="stylesheet" href="css/admin_memllist.css">
-<link rel="stylesheet" href="css/admin_login.css">
+<link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
+<link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>공지사항</title>
 </head>
@@ -13,12 +14,12 @@
 	<nav class="gnb">
 		<a href="#" class="logo"><img src="images/logo_sample.png" alt=""></a>
 		<div class="menu">
-				<a href="admin_memList.html">회원관리</a>
-				<a href="#">판매관리</a>
-				<a class="active" href="#">공지사항</a>
-				<a href="admin_postList.html">포스트</a>
-				<a href="admin_adminList.html">관리자설정</a>
-				<a href="#">로그아웃</a>
+			<a href="/admin1/admin_memList/">회원관리</a>
+			<a href="#">판매관리</a>
+			<a class="active" href="/admin1/admin_noticeList/">공지사항</a>
+			<a href="/admin1/admin_postList/">포스트</a>
+			<a href="/admin1/admin_adminList/">관리자설정</a>
+			<a href="#">로그아웃</a>
 		</div>
 	</nav>
 	<div class="container">
@@ -94,6 +95,11 @@
 			memberCheckboxes.forEach(checkbox => {
 					checkbox.checked = selectAllCheckbox.checked;
 			});
+	});
+
+	// 공지사항 추가 버튼 클릭
+	document.getElementById('cBtn').addEventListener('click', function() {
+		location.href = '/admin1/admin_notiWrite/';
 	});
 	</script>
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from admin1.models import Administrator
 from loginpage.models import Member
+from loginpage.models import Member
 
 # 어드민 로그인
 def admin_login(request):
