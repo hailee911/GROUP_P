@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/diary_home.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <title>다이어리 HOME</title>
+</head>
+
+<!-- 공통 상단좌측메뉴 -->
+<script>
+  $(function() {
+    // GNB 클릭
+    $('#menu ul li').on('click', function() {
+      $('#menu ul li').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+</head>
+<body>
+<!-- 최상단 메뉴 -->
+<div id="top_nav">
+  <h1><a href="#"></a></h1>
+  <ul class="top_menu">
+    <li><a href="#"><img src="images/search_icon.png" alt=""></a></li>
+    <li><a href="#"><img src="images/bell_off_icon.png" alt=""></a></li>
+    <li><a href="#">마이페이지</a></li>
+  </ul>
+
+</div>
+
+<!-- 좌측 gnb -->
+<div id="gnb">
+
+  <!-- 프로필 -->
+  <div id="user_profile">
+    <div id="pimg">
+      <img src="images/default_profile.png" alt="">
+    </div>
+    <p id="uName">김용준</p>
+    <p id="uEmail">kyjoon0105@gmail.com</p>
+  </div>
+
+  <!-- Nav -->
+  <nav id="menu">
+    <ul>
+      <a href="#"><li class="menu_item">우리 가족 이야기</li></a>
+      <a href="#"><li class="menu_item active">다이어리</li></a>
+      <a href="#"><li class="menu_item">감정 돌아보기</li></a>
+      <a href="#"><li class="menu_item">우리가족</li></a>
+      <a href="#"><li class="menu_item">캘린더</li></a>
+      <a href="#"><li class="menu_item">알려드려요</li></a>
+    </ul>
+  </nav>
+
+  <!-- logout -->
+  <div id="logout">
+    <a href="#"><span>로그아웃</span></a>
+  </div>
+  
+</div>
+<!-- 공통 상단좌측메뉴 -->
+
+
+<!-- 다이어리 HOME -->
+<div id="all_area">
+  <!-- 상단부분 -->
+  <div id="title_area">
+    <p id="topTit">다이어리<span id="searchBar"><input type="text" name="search" placeholder="검색"></span>
+    <span><button id="plusBtn"><img src="images/plusBtn.png" alt=""></button></span></p>      
+  </div>
+
+  <!-- 메인부분 -->
+  <div id="main_area">
+
+  <button class="prev-btn"><img src="images/Arrow_drop_left.png" alt=""></button>
+  <div class="carousel">
+    <div class="image-container">
+
+      <div class="card"><a href="#"><img src="images/diary.png" alt="">
+        <div id="dFirst_area">
+          <div class="diary_group">
+            <p>Family Dairy</p>
+          </div>
+          <div class="diary_title">
+            <p>우리 가족 일기</p>
+          </div>
+        </div>
+
+        <div class="diary_member">
+          <p>김용준, 배현지, 이다영, 장서윤, 정종원</p>
+        </div>
+
+        <div class="diary_date">
+          <p>2023.12.04 ~</p>
+        </div>
+      </a></div>
+
+      <div class="card"><a href="#"><img src="images/diary.png" alt="">
+        <div id="dFirst_area">
+          <div class="diary_group">
+            <p>My Dairy</p>
+          </div>
+          <div class="diary_title">
+            <p>내가 한 말을<br> 내가 오해하지 않기로 함</p>
+          </div>
+        </div>
+
+        <div class="diary_member">
+          <p>김용준</p>
+        </div>
+
+        <div class="diary_date">
+          <p>2023.09.28 ~</p>
+        </div>
+      </a></div>
+
+      <div class="card"><a href="#"><img src="images/diary.png" alt="">
+        <div id="dFirst_area">
+          <div class="diary_group">
+            <p>Family Dairy</p>
+          </div>
+          <div class="diary_title">
+            <p>우리 가족 일기</p>
+          </div>
+        </div>
+
+        <div class="diary_member">
+          <p>김용준, 배현지, 이다영, 장서윤, 정종원</p>
+        </div>
+
+        <div class="diary_date">
+          <p>2023.12.04 ~</p>
+        </div>
+      </a></div>
+
+      <div class="card"><a href="#"><img src="images/diary.png" alt="">
+        <div id="dFirst_area">
+          <div class="diary_group">
+            <p>My Dairy</p>
+          </div>
+          <div class="diary_title">
+            <p>내가 한 말을<br> 내가 오해하지 않기로 함</p>
+          </div>
+        </div>
+
+        <div class="diary_member">
+          <p>김용준</p>
+        </div>
+
+        <div class="diary_date">
+          <p>2023.09.28 ~</p>
+        </div>
+      </a></div>
+
+    </div>
+  </div>
+  <button class="next-btn"><img src="images/Arrow_drop_right.png" alt=""></button>
+
+  </div>
+
+  <div id="mailbox_container">
+    <!-- 어두운 배경 레이어 -->
+    <div id="dark_background"></div>
+
+    <!-- 우체통 버튼 -->
+    <button id="mailBtn">
+      <img id="mailBtn_icon" src="images/mailbox_alert_off.png" alt="">
+    </button>
+    
+    <!-- 우체통 리스트 -->
+    <div id="mailbox_list">
+      <div class="list_header">우체통</div>
+      <ul>
+        <li data-id="1" class="mail_item"><a href="#">
+          <span class="mail_tit">사랑하는 우리 아들</span>
+          <span class="mail_date">2024.12.03</span>
+        </a>
+        </li>
+        
+        <li data-id="2" class="mail_item"><a href="#">
+          <span class="mail_tit">아들아 아빠다. 잘 지내니?</span>
+          <span class="mail_date">2024.11.16</span>
+        </a>
+        </li>
+
+        <li data-id="3" class="mail_item"><a href="#">
+          <span class="mail_tit">오빠~ 생일 축하해! 🎉</span>
+          <span class="mail_date">2024.02.23</span>
+        </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+    
+
+  <!-- 편지지 창 -->
+  <div class="letter_container" id="letter_container">
+    <div class="letter" id="letter-1">
+      <div class="letter_header">
+        <p><strong>To. 아들</strong></p>
+      </div>
+      <div class="letter_content"><p>사랑하는 우리 아들,
+
+        벌써 네가 서른이라니 믿기지가 않아. 엄마에게 너는 여전히 작은 손으로 내 손을 잡던 그 귀여운 아이로 남아 있는데, 이제는 한 사람의 성인이자 스스로의 길을 묵묵히 걸어가는 어엿한 어른이 되었구나.
+        
+        얼마 전 네가 커리어 고민을 하면서 엄마에게 진지하게 이야기하던 날이 생각나. 그때 네 목소리에서 느껴진 책임감과 성숙함이 엄마 마음을 참 따뜻하게 했어. 아들이지만, 네가 얼마나 멋진 사람으로 자랐는지 새삼 존경스러웠단다. 네가 고민하는 모습조차도 엄마는 자랑스러워. 세상에 정답은 없단다. 중요한 건 너 자신을 믿고 너의 속도대로 걸어가는 거야.
+        
+        엄마도 네 나이쯤에는 내가 잘하고 있는 건지, 이 길이 맞는지 몰라 불안할 때가 많았어. 하지만 돌아보니 그 모든 순간이 다 소중한 과정이었더라. 그러니 네가 지금 겪고 있는 시간들도 언젠가 네 인생에서 가장 값진 추억으로 남을 거야. 실수해도 괜찮아. 넘어질 때마다 더 단단해질 테니까.
+        
+        아들아, 엄마는 네가 어떤 선택을 하든 항상 너를 믿고 응원할 거야. 그리고 그 길이 조금 외롭거나 어려워 보일 때는 언제든 엄마를 찾아와. 너의 이야기를 들어주는 사람이 있다는 것만으로도 큰 힘이 되니까.
+        
+        마지막으로, 네가 건강하고 행복하길 엄마는 매일 기도해. 지금까지도 잘해왔고 앞으로도 잘할 거야. 네가 꿈꾸는 대로, 네가 바라는 모습대로 살아가기를 마음 깊이 바란다.
+        
+        사랑한다, 우리 아들. 항상.
+        
+        너의 엄마가.</p>
+      </div>
+      <div class="letter_footer"><p><strong>From. 엄마</strong></p>
+      </div>
+    </div>
+
+    <div class="letter" id="letter-2">
+      <div class="letter_header">
+        <p><strong>To. 아들</strong></p>
+      </div>
+      <div class="letter_content"><p>아들아 아빠다. 잘 지내니?</p>
+      </div>
+      <div class="letter_footer"><p><strong>From. 엄마</strong></p>
+      </div>
+    </div>
+
+    <div class="letter" id="letter-3">
+      <div class="letter_header">
+        <p><strong>To. 오빠</strong></p>
+      </div>
+      <div class="letter_content"><p>오빠~ 생일 축하해! 🎉</p>
+      </div>
+      <div class="letter_footer"><p><strong>From. 여동생</strong></p>
+      </div>
+    </div>
+
+  </div>
+   
+
+</div>
+
+
+  <!-- 스크립트 부분 -->
+  <script>
+    const cards = document.querySelectorAll(".image-container .card");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    let currentIndex = 1; // Default center card index
+    // Update card positions
+    function updateCards() {
+      cards.forEach((card, index) => {
+        card.classList.remove("center", "left", "right");
+        if (index === currentIndex) {
+          card.classList.add("center");
+        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+          card.classList.add("left");
+        } else if (index === (currentIndex + 1) % cards.length) {
+          card.classList.add("right");
+        }
+      });
+    }
+    // Left button functionality
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCards();
+    });
+    // Right button functionality 
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCards();
+    });
+    // Initial setup
+    updateCards();
+
+
+
+    // 우체통 리스트
+    document.addEventListener('DOMContentLoaded', () => {
+      const mailboxBtn = document.getElementById('mailBtn');
+      const mailboxList = document.getElementById('mailbox_list');
+
+      let isOpen = false;
+
+      mailboxBtn.addEventListener('click', () => {
+        if (isOpen) {
+          // 닫기
+          mailboxList.style.right = '-400px';
+        } else {
+          // 열기
+          mailboxList.style.right = '0';
+        }
+        isOpen = !isOpen; // 상태 변경
+      });
+    });
+
+
+    // 우체통 아이콘 변경
+    document.addEventListener('DOMContentLoaded', () => {
+      const mailboxBtn = document.getElementById('mailBtn'); // 버튼
+      const mailboxIcon = document.getElementById('mailBtn_icon'); // 아이콘 이미지
+
+      let isOpen = false; // 상태 변수 (열린/닫힌 상태)
+
+      mailboxBtn.addEventListener('click', () => {
+        if (isOpen) {
+          // 닫힌 상태로 변경
+          mailboxIcon.src = 'images/mailbox_alert_on.png'; // 닫힌 우체통 이미지
+          mailboxBtn.style.backgroundColor = '#ffffff'; // 초기 배경색
+        } else {
+          // 열린 상태로 변경
+          mailboxIcon.src = 'images/mailbox_alert_off.png'; // 열린 우체통 이미지
+          mailboxBtn.style.backgroundColor = '#FAFDFF'; // 변경된 배경색
+        }
+        isOpen = !isOpen; // 상태 반전
+      });
+    });
+
+
+    // 편지지 창
+    document.addEventListener('DOMContentLoaded', () => {
+      const mailItems = document.querySelectorAll('.mail_item'); // 리스트 항목
+      const letterContainer = document.getElementById('letter_container'); // 편지지 창
+      const letters = document.querySelectorAll('.letter'); // 모든 편지지 내용
+      const darkBackground = document.getElementById('dark_background'); // 어두운 배경 레이어
+
+      // 우체통 리스트 항목 클릭 시
+      mailItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // 모든 편지지 숨기기
+          letters.forEach(letter => (letter.style.display = 'none'));
+
+          // 클릭된 항목의 편지지 보여주기
+          const letterId = item.getAttribute('data-id');
+          const targetLetter = document.getElementById(`letter-${letterId}`);
+          if (targetLetter) {
+            targetLetter.style.display = 'block';
+          }
+
+          // 편지지 창 및 어두운 배경 표시
+          letterContainer.style.display = 'block';
+          darkBackground.style.display = 'block';
+        });
+      });
+
+      // 어두운 배경 클릭 시 창 닫기
+      darkBackground.addEventListener('click', () => {
+        letterContainer.style.display = 'none';
+        darkBackground.style.display = 'none';
+      });
+    });
+  </script>
+
+
+  
+</body>
+</html>
