@@ -217,6 +217,11 @@ input[type="text"]#input_code{
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+#id1_errorMessage{
+  color: #E97C7C;
+  font-size: 14px;
+  margin: -15px 0 20px 0;
+}
 #code_ok_button{
   width: 180px;
   height: 40px;

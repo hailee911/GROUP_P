@@ -1,24 +1,22 @@
 from django.shortcuts import render,redirect
 from loginpage.models import Member
 from django.contrib import messages
-
-
-
 import smtplib
 import random
 import string
 from email.mime.text import MIMEText
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.urls import reverse
 
 # 전역 변수로 인증 코드와 이메일을 저장
 verification_code = None
 user_email = None
 
+# 램덤 인증 코드 생성
 def generate_verification_code():
   """랜덤 인증 코드를 생성하는 함수"""
   return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
 
+# 이메일 인증코드
 def send_verification_email(email, code):
   """이메일로 인증 코드를 보내는 함수"""
   smtpName = "smtp.naver.com"
@@ -45,46 +43,9 @@ def send_verification_email(email, code):
 
 
 
-
-
-def id(request):
-    global verification_code, user_email
-
-    if request.method == 'POST':
-        if 'email' in request.POST:
-            # 이메일 입력 후 인증 코드 발송
-            em1 = request.POST.get('email')  # 이메일 첫 번째 부분
-            em2 = request.POST.get('em2')  # 이메일 두 번째 부분
-            full_mail = f"{em1}@{em2}"  # 전체 이메일 
-            user_email = full_mail
-            verification_code = generate_verification_code()
-
-            send_verification_email(user_email, verification_code)
-            
-            return render(request, 'id.html')
-
-        elif 'verification_code' in request.POST:
-            # 인증 코드 확인
-            entered_code = request.POST['verification_code']
-            if entered_code == verification_code:
-                return HttpResponse("인증 성공!")
-            else:
-                return HttpResponse("잘못된 인증 코드입니다.")
-
-    return render(request, 'id.html')
-
-
-
-
-# 회원가입페이지4
+# 테스트
 def test(request):
   return render(request,'test.html')
-
-
-
-
-
-
 
 # 회원가입페이지4
 def join04(request):
@@ -160,19 +121,131 @@ def pw3(request):
 
 # 비밀번호찾기2
 def pw2(request):
-  return render(request,'pw2.html')
+  if request.method == 'POST':
+    # 입력된 데이터 유지하기 위한 기본 context 생성
+    context = {
+      'name': request.POST.get('name', ''),
+      'birthday': request.POST.get('birthday', ''),
+      'email': request.POST.get('email', ''),
+      'em2': request.POST.get('em2', 'naver.com'),  # 기본 도메인
+    }
+
+    # 이메일 인증코드 발송 버튼 클릭 처리
+    if 'email' in request.POST:
+      # 이메일 주소 조합 및 세션 저장
+      em1 = request.POST.get('email')
+      em2 = request.POST.get('em2')
+      full_mail = f"{em1}@{em2}"
+      request.session['user_email'] = full_mail  # 세션 저장
+      verification_code = generate_verification_code()
+      request.session['verification_code'] = verification_code  # 인증코드 세션 저장
+
+      # 이메일 발송
+      send_verification_email(full_mail, verification_code)
+
+      # 회원 정보 확인
+      if not Member.objects.filter(name=context['name'], birthday=context['birthday']).exists():
+        messages.error(request, '이름과 생년월일이 일치하지 않습니다.')
+        return render(request, 'pw2.html', context)
+
+      messages.success(request, '인증 코드가 이메일로 발송되었습니다. 확인해주세요.')
+      return render(request, 'pw2.html', context)
+
+    # 인증코드 확인 버튼 클릭 처리
+    elif 'verification_code' in request.POST:
+      entered_code = request.POST.get('verification_code')
+      saved_code = request.session.get('verification_code')
+      user_email = request.session.get('user_email')
+
+      # 이름, 생년월일, 이메일 확인
+      if not Member.objects.filter(name=context['name'], birthday=context['birthday']).exists():
+        messages.error(request, '입력된 정보가 일치하지 않습니다. 다시 확인해주세요.')
+        return render(request, 'pw2.html', context)
+
+      # 인증 코드 확인
+      if entered_code != saved_code:
+        messages.error(request, '잘못된 인증 코드입니다.')
+        return render(request, 'pw2.html', context)
+
+      # 인증 성공 시 리다이렉트
+      return redirect('loginpage:id2')
+
+  # GET 요청 처리 (빈 입력 폼 렌더링)
+  return render(request, 'pw2.html', {
+      'name': '',
+      'birthday': '',
+      'email': '',
+      'em2': 'naver.com',
+  })
 
 # 비밀번호찾기1
 def pw(request):
   return render(request,'pw.html')
 
 # 아이디찾기2
-def id2(request):
-  return render(request,'id2.html')
+def id2(request,user_id):
+  return render(request,'id2.html', {'user_id': user_id})
 
-# # 아이디찾기1
-# def id(request):
-#   return render(request,'id.html')
+
+# 아이디찾기1
+def id(request):
+  if request.method == 'POST':
+    # 입력된 데이터 유지하기 위한 기본 context 생성
+    context = {
+        'name': request.POST.get('name', ''),
+        'birthday': request.POST.get('birthday', ''),
+        'email': request.POST.get('email', ''),
+        'em2': request.POST.get('em2', 'naver.com'),  # 기본 도메인
+    }
+
+    # 이메일 인증코드 발송 버튼 클릭 처리
+    if 'email' in request.POST:
+      # 이메일 주소 조합 및 세션 저장
+      em1 = request.POST.get('email')
+      em2 = request.POST.get('em2')
+      full_mail = f"{em1}@{em2}"
+      request.session['user_email'] = full_mail  # 세션 저장
+      verification_code = generate_verification_code()
+      request.session['verification_code'] = verification_code  # 인증코드 세션 저장
+
+      # 이메일 발송
+      send_verification_email(full_mail, verification_code)
+
+      # 회원 정보 확인
+      if not Member.objects.filter(name=context['name'], birthday=context['birthday']).exists():
+        messages.error(request, '이름과 생년월일이 일치하지 않습니다.')
+        return render(request, 'id.html', context)
+
+      messages.success(request, '인증 코드가 이메일로 발송되었습니다. 확인해주세요.')
+      return render(request, 'id.html', context)
+
+    # 인증코드 확인 버튼 클릭 처리
+    elif 'verification_code' in request.POST:
+      entered_code = request.POST.get('verification_code')
+      saved_code = request.session.get('verification_code')
+      user_email = request.session.get('user_email')
+
+      # 이름, 생년월일, 이메일 확인
+      if not Member.objects.filter(name=context['name'], birthday=context['birthday']).exists():
+        messages.error(request, '입력된 정보가 일치하지 않습니다. 다시 확인해주세요.')
+        return render(request, 'id.html', context)
+
+      # 인증 코드 확인
+      if entered_code != saved_code:
+        messages.error(request, '잘못된 인증 코드입니다.')
+        return render(request, 'id.html', context)
+
+      # 인증 성공 시 리다이렉트
+      user = Member.objects.get(name=context['name'], birthday=context['birthday'])
+      return redirect(reverse('loginpage:id2', kwargs={'user_id': user.id}))
+    # GET 요청 처리 (빈 입력 폼 렌더링)
+  return render(request, 'id.html', {
+      'name': '',
+      'birthday': '',
+      'email': '',
+      'em2': 'naver.com',
+  })
+
 
 # 로그인페이지
 def login(request):
@@ -189,7 +262,7 @@ def login(request):
       request.session['session_id'] = id
       print("확인일")
       context = {"lmsg":"1"}
-      return render(request,'main_navi_base.html',context)
+      return redirect('/index',context)
     else:
       context = {'lmsg':"0"}
       print("확인2")
