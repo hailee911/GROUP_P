@@ -8,17 +8,34 @@
 <link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>회원관리</title>
+<script>
+	if(! '{{request.session.session_id}}'){
+		alert("로그인을 하셔야 접근가능합니다.")
+		location.href = '/admin1/login/'
+	}
+	if ('{{outMsg}}' == '1'){
+		alert("안전하게 로그아웃되었습니다.")
+		location.href = '/admin1/login/'
+	};
+	$(function(){
+		$("#a_logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href='/admin1/logout/'
+			}
+		})
+	})
+</script>
 </head>
 <body>
 	<nav class="gnb">
 		<a href="#" class="logo"><img src="/static/images/admin1/logo_sample.png" alt=""></a>
 		<div class="menu">
-				<a class="active" href="#">회원관리</a>
+				<a class="active" href="/admin1/admin_memList/">회원관리</a>
 				<a href="#">판매관리</a>
 				<a href="admin_noticeList.html">공지사항</a>
 				<a href="admin_postList.html">포스트</a>
-				<a href="admin_adminList.html">관리자설정</a>
-				<a href="#">로그아웃</a>
+				<a href="/admin1/admin_adminList/">관리자설정</a>
+				<a id='a_logout'>로그아웃</a>
 		</div>
 	</nav>
 	<div class="container">
@@ -31,7 +48,6 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="select_all"></th>
-					<th>회원번호</th>
 					<th>아이디</th>
 					<th>회원이름</th>
 					<th>닉네임</th>
@@ -42,97 +58,19 @@
 			</thead>
 			<tbody>
 				<!-- 데이터 추가 반복 -->
+				{% for mem in mlist %}
 				<tr>
 					<td><input type="checkbox" class="select_member"></td>
-					<td>001</td>
-					<td>aaaaa</td>
-					<td class="member_name"><a href="#">홍길동</a></td>
-					<td>길동스길동</td>
-					<td>hong@naver.com</td>
-					<td>2024-01-01</td>
+					<td>{{mem.id}}</td>
+					<td class="member_name"><a href="#">{{mem.name}}</a></td>
+					<td>{{mem.nicName}}</td>
+					<td>{{mem.mail}}</td>
+					<td>{{mem.mdate}}</td>
 					<td>구독중</td>
 				</tr>
+				{% endfor %}
 				<!-- 데이터 추가 반복 -->
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td>bbbbb</td>
-					<td class="member_name"><a href="#">유관순</a></td>
-					<td>관순관순스</td>
-					<td>abbabbb1123@hanmail.net</td>
-					<td>2024-02-15</td>
-					<td>구독안함</td>
-				</tr>
+				
 			</tbody>
 		</table>
 	</div>
