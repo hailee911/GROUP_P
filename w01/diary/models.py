@@ -1,14 +1,18 @@
 from django.db import models
 from loginpage.models import Member
 
-class Letter(models.Model):
-  lno = models.AutoField(primary_key=True)
-  id = models.ForeignKey(Member, on_delete=models.DO_NOTHING)
-  ltitle = models.CharField(max_length=1000)
-  lcontent = models.TextField()
-  ldate = models.DateTimeField(auto_now=True)
-  lhit = models.IntegerField(default=0) # 편지 읽으면 1 안읽으면 0
-  
+class DiaryBoard(models.Model):
+  dno = models.AutoField(primary_key=True)
+  member = models.ForeignKey(Member,on_delete=models.DO_NOTHING, null=True)
+  ## Board객체 : 좋아요 체크 - dno,member
+  like_members = models.ManyToManyField(Member,default='', related_name='diary_like_member')
+  dtitle = models.CharField(max_length=1000)
+  dcontent = models.TextField()
+  dhit = models.IntegerField(default=0)
+  ddate = models.DateTimeField(auto_now=True)
+  # img 파일업로드
+  dfile = models.ImageField(null=True,upload_to='diary')
+
   def __str__(self):
-    return f"{self.lno},{self.id},{self.ltitle},{self.lcontent},{self.ldate},{self.lhit}"
+    return f"{self.dno},{self.dtitle},{self.ddate}"
   

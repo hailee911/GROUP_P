@@ -27,7 +27,8 @@ table, tr, td{
 #container{
   width: 100%;
   min-height: 100vh; /* 화면 높이와 동일하게 설정 */
-  padding: 60px 300px 0 300px;
+  padding: 100px 180px 300px 334px;
+  /* padding: 60px 300px 0 300px; */
 }
 
 #mypage_top{
@@ -81,9 +82,8 @@ table, tr, td{
   margin-bottom: 50px;
 }
 
-.mypage_cont div {
-  flex: 1; /* 가로 공간 균등 분배 */
-}
+/* .mypage_cont div {
+  flex: 1; /* 가로 공간 균등 분배 } */
 
 .mypage_cont span{
   display: inline-block;
@@ -124,6 +124,10 @@ table, tr, td{
 
 .mypage_pw_chg button{
   margin-left: 40px;
+}
+
+.mypage_pw_chg p{
+  margin: 0 0 0 180px ;
 }
 
 .mypage_cont .mypage_nicname{

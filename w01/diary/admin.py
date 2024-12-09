@@ -1,7 +1,6 @@
 from django.contrib import admin
-from diary.models import Letter
+from diary.models import DiaryBoard
 
-@admin.register(Letter)
-class LetterAdmin(admin.ModelAdmin):
-  list_display = ['lno','ltitle','lcontent','ldate']
-
+@admin.register(DiaryBoard)
+class BoardAdmin(admin.ModelAdmin):
+  list_display = ['dno','dtitle','ddate']
