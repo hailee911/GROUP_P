@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from admin1.models import Administrator
 
+# 관리자1 로그인
 def admin_login(request):
 	if request.method == 'GET':
 		return render(request, 'admin_login.html')
@@ -18,5 +19,26 @@ def admin_login(request):
 			context = {'lmsg':'0'}
 		return render(request, 'admin_login.html', context)
 	
+# 관리자 리스트
+def admin_adminList(request):
+	return render(request, 'admin_adminList.html')
+
+# 회원관리 (유저리스트)
 def admin_memList(request):
 	return render(request, 'admin_memList.html')
+
+# 회원 추가
+def admin_memAdd(request):
+	return render(request, 'admin_memAdd.html')
+
+# 포스트 리스트
+def admin_postList(request):
+	return render(request, 'admin_postList.html')
+
+# 공지사항 리스트
+def admin_noticeList(request):
+	return render(request, 'admin_noticeList.html')
+
+# 공지사항 글쓰기
+def admin_notiWrite(request):
+	return render(request, 'admin_notiWrite.html')
