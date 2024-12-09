@@ -20,6 +20,7 @@ a{
   width:1617px;
   height: 150px;
   padding-top: 60px;
+  display: flex;
 }
 
 #topTit{
@@ -27,17 +28,21 @@ a{
   font-weight: 500;
   padding-top: 50px;
   padding-left: 40px;
+  display: flex;
 }
 
 #searchBar{
   width: 250px;
   height: 40px;
-  margin: 50px auto;
-  padding-left: 1128px;
+  /* margin: 50px auto; */
+  padding-left: 1060px;
+  padding-right: 30px;
+  /* margin-top: 40px; */
+  /* margin-right: 80px; */
 }
 
 #searchBar input{
-  width: 250px;
+  width: 200px;
   padding: 10px 40px;
   font-size: 16px;
   border: 1px solid #DDDDDD;
@@ -45,6 +50,24 @@ a{
   background: url('/diary_home/images/search.png') no-repeat;
   background-position: 10px center;
 }
+
+#plusBtn{
+  width: 36px;               
+  height: 36px;             
+  /* background-color: #787878;     */
+  border: none;              
+  border-radius: 100%;       
+  justify-content: center;  
+  align-items: center;       
+  cursor: pointer;          
+  margin-left: 30px;
+  /* display: flex; */
+}
+
+/* #plusTxt{
+  color: white;
+  font-size: 20px;
+} */
 
 #main_area{
   position: relative;
@@ -383,4 +406,5 @@ a{
   left: 20px;
   right: 20px;
   overflow-y: auto; /* 내용이 넘칠 경우 스크롤 활성화 */
+  line-height: 40px;
 }

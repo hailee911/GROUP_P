@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'home',
     'customer',
     'emotion',
+    'admin1',
 ]
 
 MIDDLEWARE = [

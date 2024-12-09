@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/admin_notiWrite.css">
+<link rel="stylesheet" href="css/admin_login.css">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+  	$('#summernote').summernote({
+		
+		});
+
+	});
+
+</script>
+
+<title>공지사항 등록</title>
+
+</head>
+
+<body>
+	<nav class="gnb">
+		<a href="#" class="logo"><img src="images/logo_sample.png" alt=""></a>
+		<div class="menu">
+				<a class="active" href="#">회원관리</a>
+				<a href="#">판매관리</a>
+				<a href="admin_noticeList.html">공지사항</a>
+				<a href="admin_postList.html">포스트</a>
+				<a href="admin_adminList.html">관리자설정</a>
+				<a href="#">로그아웃</a>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="con_header">
+			<h2>공지사항 등록</h2>
+		</div>
+		<div id="write_wrap">
+			<form action="" method="POST" id="addFrm" name="">
+				<label for="title">제목</label>
+				<br>
+				<input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
+				<br>
+				<label for="user_name">작성자</label>
+				<span>관리자</span>
+				<br>
+				<br>
+				<label for="user_name">내용</label>
+				<br>
+				<textarea name="editordata" id="summernote"	placeholder="내용을 입력해주세요."></textarea>
+				<br>
+				<button type="button">공지사항 등록</button>
+				<button type="button">취소</button>
+			</form>
+
+		</div>
+	</div>
+	
+</body>
+</html>
