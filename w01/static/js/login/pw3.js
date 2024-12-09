@@ -15,11 +15,11 @@ toggleButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
     if (passwordField.type === 'password') {
       passwordField.type = 'text';
-      toggleImage.src = '../images/eye_open.png';
+      toggleImage.src = eyeOpenImage;
       toggleImage.alt = '비밀번호 숨기기';
     } else {
       passwordField.type = 'password';
-      toggleImage.src = '../images/eye_closed.png';
+      toggleImage.src = eyeClosedImage;
       toggleImage.alt = '비밀번호 보기';
     }
   });

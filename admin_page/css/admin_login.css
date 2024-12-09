@@ -62,6 +62,10 @@ ol, ul {
 	height: 26px;
 	padding: 0 4px;
 }
+.login_wrap input:focus{
+	border-color: #007bff;
+	outline: none;
+}
 
 .id_wrap, .pw_wrap{
 	width: 320px;

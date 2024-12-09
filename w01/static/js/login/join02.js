@@ -77,6 +77,7 @@ join2submitButton.addEventListener('click', () => {
     return;
   }
 
+  
   // 모든 검증을 통과한 경우
   // location.href="/loginpage/join03/"
   join02Frm.submit()
