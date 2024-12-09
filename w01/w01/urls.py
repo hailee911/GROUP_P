@@ -11,4 +11,5 @@ urlpatterns = [
     path('main/', include('home.urls')),
     path('diary/', include('diary.urls')),
     path('mypage/', include('mypage.urls')),
+    path('comment/', include('comment.urls')),
 ]
