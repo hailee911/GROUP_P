@@ -1,3 +1,7 @@
 from django.contrib import admin
+from admin1.models import Administrator
 
-# Register your models here.
+@admin.register(Administrator)
+class AdministratorAdmin(admin.ModelAdmin):
+  list_display = ['ano','id','name','nickname','role']
+  
