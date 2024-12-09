@@ -22,6 +22,7 @@ id_button.addEventListener('click', () => {
       id1errorMessage[i].style.display = 'none'; // 에러 메시지 숨김
     }
   }
+  idFrm.submit()
 });
 
 // 입력 필드에 포커스를 잃었을 때도 확인

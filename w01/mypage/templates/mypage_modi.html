@@ -1,3 +1,4 @@
+{% extends 'main_navi_base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -5,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="{% static 'css/mypage/mypage_modi.css'%}">
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <title>알려드려요</title>
+  <title>회원 정보 수정</title>
 </head>
 <body>
+  {% block container-block%}
   <div id="container">
     <div id="mypage_top">
       <span>마이페이지</span>
@@ -99,5 +100,6 @@
       });
     });
   </script>
+  {% endblock container-block%}
 </body>
 </html>
