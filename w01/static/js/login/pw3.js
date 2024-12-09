@@ -76,6 +76,7 @@ validateButton.addEventListener('click', () => {
   }
 
   // 모든 조건을 통과한 경우
+  pw3Frm.submit()
   alert('비밀번호 변경을 완료했습니다!');
   // 여기서 form을 제출하거나 다른 작업 수행 가능
 });

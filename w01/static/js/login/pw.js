@@ -16,7 +16,7 @@ pw_button.addEventListener('click', () => {
   } else {
     pw_errorMessage.style.display = 'none';
   }
-
+  pwFrm.submit()
 });
 
 // 입력 필드에 포커스를 잃었을 때도 확인

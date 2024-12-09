@@ -5,7 +5,6 @@ import smtplib
 import random
 import string
 from email.mime.text import MIMEText
-from django.urls import reverse
 
 # 전역 변수로 인증 코드와 이메일을 저장
 verification_code = None
@@ -116,11 +115,22 @@ def join01(request):
   return render(request,'join01.html')
 
 # 비밀번호찾기3
-def pw3(request):
-  return render(request,'pw3.html')
+def pw3(request,user_id):
+  if request.method == "POST":
+
+    # 비밀번호 변경
+    pw = request.POST.get('password')
+    qs = Member.objects.get(id=user_id)
+    qs.pw = pw
+    qs.save()
+
+    # 비밀번호 변경 후 로그인 처리
+    return redirect('loginpage:login')  # 비밀번호 변경 후 로그인 페이지로 리다이렉트
+  else:
+    return render(request,'pw3.html')
 
 # 비밀번호찾기2
-def pw2(request):
+def pw2(request,user_id):
   if request.method == 'POST':
     # 입력된 데이터 유지하기 위한 기본 context 생성
     context = {
@@ -168,7 +178,7 @@ def pw2(request):
         return render(request, 'pw2.html', context)
 
       # 인증 성공 시 리다이렉트
-      return redirect('loginpage:id2')
+      return redirect('/loginpage/pw3/'+user_id)
 
   # GET 요청 처리 (빈 입력 폼 렌더링)
   return render(request, 'pw2.html', {
@@ -180,7 +190,17 @@ def pw2(request):
 
 # 비밀번호찾기1
 def pw(request):
-  return render(request,'pw.html')
+  if request.method == "POST":
+    # 아이디 확인
+    user_id = request.POST.get('id')
+    if not Member.objects.filter(id=user_id).exists():
+      messages.error(request, '아이디를 확인해 주세요.')
+      return render(request, 'pw.html')
+    else:
+      request.session['user_id'] = user_id
+      return redirect('/loginpage/pw2/'+user_id)
+  else:
+    return render(request,'pw.html')
 
 # 아이디찾기2
 def id2(request,user_id):
@@ -237,7 +257,7 @@ def id(request):
 
       # 인증 성공 시 리다이렉트
       user = Member.objects.get(name=context['name'], birthday=context['birthday'])
-      return redirect(reverse('loginpage:id2', kwargs={'user_id': user.id}))
+      return redirect('loginpage:id2', user_id=user.id)
     # GET 요청 처리 (빈 입력 폼 렌더링)
   return render(request, 'id.html', {
       'name': '',
