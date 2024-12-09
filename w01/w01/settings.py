@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'customer',
     'emotion',
     'admin1',
-    'diary.apps.DiaryHomeConfig',
+    'diary',
 ]
 
 MIDDLEWARE = [
