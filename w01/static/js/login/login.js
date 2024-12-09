@@ -35,16 +35,8 @@ login_button.addEventListener('click', () => {
     }
   }
 
-
-
-
-
-
-  
   // id,pw 일치시 메인화면으로 이동
   loginFrm.submit()
-
-
 
 });
 
