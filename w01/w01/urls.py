@@ -9,4 +9,5 @@ urlpatterns = [
     path('emotion/', include('emotion.urls')),
     path('', include('home.urls')),
     path('main/', include('home.urls')),
+    path('mypage/', include('mypage.urls')),
 ]
