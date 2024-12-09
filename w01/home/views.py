@@ -6,4 +6,4 @@ def landing(request):
   return render(request,'landing.html')
 
 def main(request):
-  return render(request, 'main_navi_base.html')
+  return render(request, 'main.html')
