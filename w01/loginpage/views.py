@@ -89,7 +89,7 @@ def login(request):
       request.session['session_id'] = id
       print("확인일")
       context = {"lmsg":"1"}
-      return render(request,'main_navi_base.html',context)
+      return render(request,'main.html',context)
     else:
       context = {'lmsg':"0"}
       print("확인2")
