@@ -4,4 +4,3 @@ from . import views
 app_name = "comment"
 urlpatterns = [
 ]
-+

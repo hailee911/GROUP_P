@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from loginpage.models import Member
+from django.http import JsonResponse, HttpResponse
+
 
 # Create your views here.
 def main(request):
@@ -13,3 +15,15 @@ def modify(request):
   context = {'mem_info':qs[0], 'mail_id':email[0], 'mail_domain':email[1]}
   print(email[1])
   return render(request, 'mypage_modi.html', context)
+
+def currpw_chk(request):
+  pw = request.POST.get('currPw','')
+  qs = Member.objects.filter(pw=pw)
+  print(qs[0])
+
+  if qs:
+    context = {'result':'success'}
+  else:
+    context = {'result':'fail'}
+
+  return JsonResponse(context) 
