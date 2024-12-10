@@ -1,0 +1,133 @@
+*{
+  margin:0; padding:0; 
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+a{
+  text-decoration: none; 
+  color:inherit
+}
+
+#all_area{
+  width:1617px; 
+  height:1080px;
+  margin-left:284px;
+}
+
+#title_area{
+  display: flex;
+  width:1617px;
+  height: 130px;
+  padding-top: 60px;
+  display: flex;
+}
+
+#topTit{
+  width: 500px;
+  font-size: 22px;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-left: 40px;
+  /* display: flex; */
+}
+
+
+
+#main_area{
+  position: relative;
+  display: flex;
+  width: 1617px;
+  height: 700px;
+  /* border: 1px solid black; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* overflow: hidden; */
+  /* background-color: #eeeeee; */
+}
+
+.container {
+  display: flex;
+  padding-left: 80px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  /* position: relative; */
+  /* width: 460px;
+  padding-right: 500px; */
+}
+
+#diaryImg {
+  width: 414px; /* 컨테이너 크기에 맞게 이미지 크기 조정 */
+  height: 578px; /* 이미지 비율 유지 */
+  /* display: block; 아래 요소와 겹치지 않도록 */
+}
+
+.aa{
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.title_input {
+  /* position: absolute;
+  top: 60px;
+  left: 530px; */
+  width: 600px;
+  height: 40px;
+  border: 1px solid #DDDDDD;
+  border-radius: 10px;
+  /* border-bottom: 1px solid #000; */
+  background: transparent;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 0 16px;
+  box-sizing: border-box;
+  outline: none;
+  z-index: 10;
+  margin-top: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+#mem_search{
+  margin-top: 40px;
+}
+
+#searchBar{
+  width: 200px;
+  height: 34px;
+  padding: 14px 14px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  background: url('/diary_make/images/search.png') no-repeat;
+  background-position: center;
+  margin-top: 10px;
+  /* position: absolute;
+  top: 180px;
+  left: 530px; */
+}
+
+#searchBtn{
+  width: 24px;               
+  height: 24px;             
+  background-color: white;    
+  border: none;              
+  border-radius: 100%;       
+  /* justify-content: center;  
+  align-items: center;        */
+  cursor: pointer;          
+  margin-left: 15px;
+  /* margin-right: 800px; */
+  /* margin-top: 145px; */
+  /* display: flex; */
+  /* position: absolute;
+  top: 180px;
+  left: 530px; */
+}
+
+
+
+
