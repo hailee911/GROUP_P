@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static '/css/diary/diary_home.css'%}">
-  <link rel="stylesheet" href="{% static '/css/diary/main.css'%}">
+  <link rel="stylesheet" href="{% static '/css/home/main.css'%}">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <title>다이어리 HOME</title>
@@ -161,7 +161,6 @@
     </div>
   </div>
   <button class="next-btn"><img src="/static/images/diary/Arrow_drop_right.png" alt=""></button>
-
   </div>
 
   <div id="mailbox_container">
@@ -177,55 +176,49 @@
     <div id="mailbox_list">
       <div class="list_header">우체통</div>
       <ul>
-        <li data-id="1" class="mail_item"><a href="#">
-          <span class="mail_tit">사랑하는 우리 아들</span>
-          <span class="mail_date">2024.12.03</span>
+        {% if list %}
+        {% for letter in list  %}
+        <li data-id="{{letter.lno}}" class="mail_item"><a href="#">
+          <input type="hidden" name="lcontent" value="{{letter.lcontent}}" >
+          <input type="hidden" name="id" value="{{letter.id.id}}" >
+          <span class="mail_tit">{{letter.ltitle}}</span>
+          <span class="mail_date">{{letter.ldate|date:'Y.m.d'}}</span>
         </a>
-        </li>
-        
-        <li data-id="2" class="mail_item"><a href="#">
-          <span class="mail_tit">아들아 아빠다. 잘 지내니?</span>
-          <span class="mail_date">2024.11.16</span>
-        </a>
-        </li>
-
-        <li data-id="3" class="mail_item"><a href="#">
-          <span class="mail_tit">오빠~ 생일 축하해! 🎉</span>
-          <span class="mail_date">2024.02.23</span>
-        </a>
-        </li>
+      </li>
+      
+      {% comment %} <li data-id="2" class="mail_item"><a href="#">
+        <span class="mail_tit">아들아 아빠다. 잘 지내니?</span>
+        <span class="mail_date">2024.11.16</span>
+      </a>
+    </li>
+    
+    <li data-id="3" class="mail_item"><a href="#">
+      <span class="mail_tit">오빠~ 생일 축하해! 🎉</span>
+      <span class="mail_date">2024.02.23</span>
+    </a>
+  </li> {% endcomment %}
+  {% endfor %}
+  {% else %}
+  <li>편지가 없습니다.</li>
+  {% endif %}
       </ul>
     </div>
   </div>
-    
+ 
 
   <!-- 편지지 창 -->
   <div class="letter_container" id="letter_container">
-    <div class="letter" id="letter-1">
+    <div class="letter" id="letter">
       <div class="letter_header">
-        <p><strong>To. 아들</strong></p>
+        <p><strong>To. 받는 사람 닉네임이 들어가야함..</strong></p>
       </div>
-      <div class="letter_content"><p>사랑하는 우리 아들,
-
-        벌써 네가 서른이라니 믿기지가 않아. 엄마에게 너는 여전히 작은 손으로 내 손을 잡던 그 귀여운 아이로 남아 있는데, 이제는 한 사람의 성인이자 스스로의 길을 묵묵히 걸어가는 어엿한 어른이 되었구나.
-        
-        얼마 전 네가 커리어 고민을 하면서 엄마에게 진지하게 이야기하던 날이 생각나. 그때 네 목소리에서 느껴진 책임감과 성숙함이 엄마 마음을 참 따뜻하게 했어. 아들이지만, 네가 얼마나 멋진 사람으로 자랐는지 새삼 존경스러웠단다. 네가 고민하는 모습조차도 엄마는 자랑스러워. 세상에 정답은 없단다. 중요한 건 너 자신을 믿고 너의 속도대로 걸어가는 거야.
-        
-        엄마도 네 나이쯤에는 내가 잘하고 있는 건지, 이 길이 맞는지 몰라 불안할 때가 많았어. 하지만 돌아보니 그 모든 순간이 다 소중한 과정이었더라. 그러니 네가 지금 겪고 있는 시간들도 언젠가 네 인생에서 가장 값진 추억으로 남을 거야. 실수해도 괜찮아. 넘어질 때마다 더 단단해질 테니까.
-        
-        아들아, 엄마는 네가 어떤 선택을 하든 항상 너를 믿고 응원할 거야. 그리고 그 길이 조금 외롭거나 어려워 보일 때는 언제든 엄마를 찾아와. 너의 이야기를 들어주는 사람이 있다는 것만으로도 큰 힘이 되니까.
-        
-        마지막으로, 네가 건강하고 행복하길 엄마는 매일 기도해. 지금까지도 잘해왔고 앞으로도 잘할 거야. 네가 꿈꾸는 대로, 네가 바라는 모습대로 살아가기를 마음 깊이 바란다.
-        
-        사랑한다, 우리 아들. 항상.
-        
-        너의 엄마가.</p>
-      </div>
-      <div class="letter_footer"><p><strong>From. 엄마</strong></p>
+      <div class="letter_content"><p>고민을 좀 더 해봐야할 듯..</p></div>
+      <div class="letter_footer">
+        <p><strong>From. 닉네임이 들어가야함..</strong></p>
       </div>
     </div>
 
-    <div class="letter" id="letter-2">
+    {% comment %} <div class="letter" id="letter-2">
       <div class="letter_header">
         <p><strong>To. 아들</strong></p>
       </div>
@@ -243,12 +236,9 @@
       </div>
       <div class="letter_footer"><p><strong>From. 여동생</strong></p>
       </div>
-    </div>
+    </div> {% endcomment %}
 
   </div>
-   
-
-</div>
 
 
   <!-- 스크립트 부분 -->
@@ -333,7 +323,8 @@
       const letterContainer = document.getElementById('letter_container'); // 편지지 창
       const letters = document.querySelectorAll('.letter'); // 모든 편지지 내용
       const darkBackground = document.getElementById('dark_background'); // 어두운 배경 레이어
-
+      
+      
       // 우체통 리스트 항목 클릭 시
       mailItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -342,9 +333,26 @@
 
           // 클릭된 항목의 편지지 보여주기
           const letterId = item.getAttribute('data-id');
-          const targetLetter = document.getElementById(`letter-${letterId}`);
+          //글제목
+          const ltitle = item.querySelector('.mail_tit').textContent;
+          //글내용
+          const lcontent = item.querySelector('input[name="lcontent"]').value;
+          //글날짜
+          const mail_date = item.querySelector('.mail_date').textContent;
+
+          const targetLetter = document.getElementById(`letter`);
+          console.log("letterId : "+letterId);
+          console.log("ltitle : "+ltitle);
+          console.log("lcontent : "+lcontent);
+          console.log("mail_date : "+mail_date);
+
           if (targetLetter) {
             targetLetter.style.display = 'block';
+            //데이터 넣기
+            console.log(targetLetter.querySelector('.letter_header'))
+            
+            targetLetter.querySelector('.letter_header').innerHTML = '<p><strong>To.홍길동에게</strong></p>';
+            targetLetter.querySelector('.letter_content').innerHTML = `<p>${lcontent}</p>`;
           }
 
           // 편지지 창 및 어두운 배경 표시
