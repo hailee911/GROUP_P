@@ -11,6 +11,17 @@
   <title>회원 정보 수정</title>
 </head>
 <body>
+  <!-- 프로필 -->
+  {% block profill-block%}
+  <div id="user_profile">
+    <div id="pimg">
+      <img src="/static/images/home/default_profile.png" alt="">
+    </div>
+      <!-- profill -->
+    <p id="uName" >{{mem_info.name}}</p>
+    <p id="uEmail">{{mem_info.mail}}</p>
+  </div>
+  {% endblock profill-block%}
   {% block container-block%}
   <div id="container">
     

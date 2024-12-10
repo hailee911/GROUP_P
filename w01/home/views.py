@@ -7,12 +7,9 @@ def landing(request):
   return render(request,'landing.html')
 
 def main(request):
-  id = request.session['session_id']
-  qs = Member.objects.filter(id=id)
-
-  context = {'my':qs[0]}
-  return render(request, 'main.html',context)
+  return render(request, 'main.html')
 
 def logout(request):
   request.session.clear()
   return redirect('/')
+

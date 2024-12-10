@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="{% static 'css/customer/customer_notice_list.css'%}">
   <link rel="stylesheet" href="{% static 'css/emotion/emotion.css'%}">
   <link rel="stylesheet" href="{% static 'css/mypage/mypage_modi.css'%}">
-	<link rel="stylesheet" href="{% static 'css\mypage\main.css'%}" />
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <title>우리의 기록</title>
 </head>
@@ -53,6 +52,7 @@
 				$('#n_overlay').removeClass('show');
 				});
 		});
+
 	</script>
 </head>
 <body>
@@ -70,13 +70,9 @@
 	<div id="gnb">
 
 		<!-- 프로필 -->
-		<div id="user_profile">
-			<div id="pimg">
-				<img src="/static/images/home/default_profile.png" alt="">
-			</div>
-			<p id="uName">{{my.name}}</p>
-			<p id="uEmail">{{my.mail}}</p>
-		</div>
+		{% block profill-block%}
+		
+		{% endblock profill-block%}
 
 		<!-- Nav -->
 		<nav id="menu">

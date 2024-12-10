@@ -48,7 +48,6 @@ def modify(request):
 
     print('post : ',qs[0].nicName)
     return redirect('/mypage/main/')
-    
 
 # 회원정보 수정 > 현재 비밀번호 확인
 def currpw_chk(request):
@@ -64,7 +63,6 @@ def currpw_chk(request):
 
   return JsonResponse(context) 
 
-
 # 회원정보 수정 > 비밀번호 변경
 def pw_chg(request):
   id = request.session['session_id']
@@ -75,3 +73,8 @@ def pw_chg(request):
   qs.save()
   print(qs.pw)
   return JsonResponse({'result': 'success'})
+
+
+# 회원 탈퇴
+def delaccount(request):
+  return redirect('/')

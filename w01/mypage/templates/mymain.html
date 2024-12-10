@@ -314,6 +314,18 @@
           document.getElementById("mem_option").style.display = "flex"; // 보이기
         });
       };
+
+      // 회원 탈퇴 클릭
+      $(function () {
+        $("#deleteBtn").on("click", function () {
+          if(confirm('탈퇴하시겠습니까?')){
+            alert('탈퇴되었습니다.')
+            
+          }else{
+            alert('탈퇴 취소')
+          }
+        });
+      });
     </script>
   </head>
 
