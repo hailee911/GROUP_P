@@ -39,14 +39,6 @@
     document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
         headerToolbar: { // 헤더에 표시할 툴 바
           start: 'prev next today',
@@ -156,16 +148,16 @@
       </div>
       
       <label for="eventTitle">제목</label>
-      <input class="Modal_input" type="text" id="eventTitle" name="eventTitle" placeholder="이벤트 제목을 입력하세요" /><br>
+      <input class="Modal_input" type="text" id="eventTitle" name="title" placeholder="이벤트 제목을 입력하세요" /><br>
       
       <label for="startTime">시작</label>
-      <input class="Modal_input" type="datetime-local" id="startTime" name="startTime" /><br>
+      <input class="Modal_input" type="datetime-local" id="startTime" name="start_date" /><br>
       
       <label for="endTime">종료</label>
-      <input class="Modal_input" type="datetime-local" id="endTime" name="endTime" /><br>
+      <input class="Modal_input" type="datetime-local" id="endTime" name="end_date" /><br>
       
       <label for="eventTitle">장소</label>
-      <input class="Modal_input" type="text" id="eventTitle" name="eventTitle"/><br>
+      <input class="Modal_input" type="text" id="eventTitle" name="location"/><br>
       
       <label for="repeat">반복</label>
       <select class="Modal_input" id="repeat" name="repeat"><br>
@@ -177,7 +169,7 @@
       </select><br>
       
       <label for="notes">메모</label>
-      <textarea class="Modal_input" id="notes" name="notes" rows="2" placeholder="메모를 작성하세요"></textarea><br>
+      <textarea class="Modal_input" id="notes" name="memo" rows="2" placeholder="메모를 작성하세요"></textarea><br>
       
     </form>
   </div>
