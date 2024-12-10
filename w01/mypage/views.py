@@ -77,4 +77,7 @@ def pw_chg(request):
 
 # 회원 탈퇴
 def delaccount(request):
+  id = request.session['session_id']
+  qs = Member.objects.get(id=id)
+  qs.delete()
   return redirect('/')
