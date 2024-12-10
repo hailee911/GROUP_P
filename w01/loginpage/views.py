@@ -57,11 +57,13 @@ def join03(request,id,pw,mail):
     id = request.POST.get('id')
     pw = request.POST.get('pw')  # 비밀번호는 암호화 필요
     mail = request.POST.get('full_mail')
+    name=request.POST.get('name')
     qs = Member.objects.create(
       id=id,
       pw=pw,  # 암호화 필요
       mail=mail,
-      name=request.POST.get('name'),
+      name=name,
+      nicName=name,
       birthday=request.POST.get('date'),
       gender=request.POST.get('gender'),
     )
