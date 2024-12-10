@@ -40,12 +40,14 @@
 	<nav class="gnb">
 			<a href="#" class="logo"><img src="/static/images/admin1/logo_sample.png" alt=""></a>
 			<div class="menu">
+				{% if request.session.session_id %}
 				<a href="/admin1/admin_memList/">회원관리</a>
 				<a href="#">판매관리</a>
 				<a href="/admin1/admin_noticeList/">공지사항</a>
 				<a href="/admin1/admin_postList/">포스트</a>
 				<a href="/admin1/admin_adminList/">관리자설정</a>
 				<a href="#">로그아웃</a>
+				{% endif %}
 			</div>
 	</nav>
 
