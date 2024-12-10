@@ -8,7 +8,6 @@ urlpatterns = [
     path('customer/', include('customer.urls')),
     path('emotion/', include('emotion.urls')),
     path('', include('home.urls')),
-    path('main/', include('home.urls')),
     path('diary/', include('diary.urls')),
     path('mypage/', include('mypage.urls')),
     path('comment/', include('comment.urls')),
