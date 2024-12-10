@@ -5,7 +5,7 @@ class Member(models.Model):
   id = models.CharField(max_length=50,primary_key=True)
   pw = models.CharField(max_length=100)
   name = models.CharField(max_length=100)
-  nicName = models.CharField(max_length=100,default=name)
+  nicName = models.CharField(max_length=100)
   mail = models.EmailField(max_length=100)
   birthday = models.CharField(max_length=50)
   gender = models.CharField(max_length=10,choices=[('남자', '남자'), ('여자', '여자')])
