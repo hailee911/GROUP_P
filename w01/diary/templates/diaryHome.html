@@ -180,7 +180,8 @@
         {% for letter in list  %}
         <li data-id="{{letter.lno}}" class="mail_item"><a href="#">
           <input type="hidden" name="lcontent" value="{{letter.lcontent}}" >
-          {% comment %} <input type="hidden" name="user_nic" value="{{user_nic}}" > {% endcomment %}
+          <input type="hidden" name="user_nic" value="{{user_nic}}" >
+          <input type="hidden" name="sent_nic" value="{{letter.member.nicName}}" >
           <span class="mail_tit">{{letter.ltitle}}</span>
           <span class="mail_date">{{letter.ldate|date:'Y.m.d'}}</span>
         </a>
@@ -340,20 +341,27 @@
           //글날짜
           const mail_date = item.querySelector('.mail_date').textContent;
 
+          //받는 사람
+          const nicName = item.querySelector('input[name="user_nic"]').value;
+          const sent_nic = item.querySelector('input[name="sent_nic"]').value;
+
           const targetLetter = document.getElementById(`letter`);
           console.log("letterId : "+letterId);
           console.log("ltitle : "+ltitle);
           console.log("lcontent : "+lcontent);
           console.log("mail_date : "+mail_date);
+          console.log("받는사람 : "+nicName);
+          console.log("보낸사람 : "+sent_nic);
+          
 
           if (targetLetter) {
             targetLetter.style.display = 'block';
             //데이터 넣기
             console.log(targetLetter.querySelector('.letter_header'))
             
-            targetLetter.querySelector('.letter_header').innerHTML = '<p><strong>To.홍길동에게</strong></p>';
+            targetLetter.querySelector('.letter_header').innerHTML = `<p><strong>To. ${nicName}</strong></p>`;
             targetLetter.querySelector('.letter_content').innerHTML = `<p>${lcontent}</p>`;
-            targetLetter.querySelector('.letter_footer').innerHTML = `<p><strong>From. ${nicName}</strong></p>`
+            targetLetter.querySelector('.letter_footer').innerHTML = `<p><strong>From. ${sent_nic}</strong></p>`;
           }
 
           // 편지지 창 및 어두운 배경 표시
