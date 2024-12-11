@@ -264,3 +264,29 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django
+
+# Python 관련
+*.pyc
+__pycache__/
+
+# Django 관련
+db.sqlite3
+*.sqlite3
+
+# 환경 변수 파일
+.env
+
+# 미디어 업로드
+/media/
+
+# 마이그레이션 파일
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# IDE 및 편집기 설정 파일
+.vscode/
+.idea/
+
+# OS 관련 파일
+.DS_Store
+Thumbs.db
