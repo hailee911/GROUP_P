@@ -1,18 +1,7 @@
 from django.shortcuts import render,redirect
-<<<<<<< Updated upstream
 from admin1.models import Administrator
 from loginpage.models import Member
 from loginpage.models import Member
-=======
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-from loginpage.models import Member
-from django.db.models import Max
-from admin1.models import Administrator
-from customer.models import NoticeBoard
-
->>>>>>> Stashed changes
 
 # 어드민 로그인
 def admin_login(request):
@@ -49,7 +38,7 @@ def admin_memList(request):
 # 관리자 리스트
 def admin_adminList(request):
 	return render(request, 'admin_adminList.html')
-=======
+
 # 유저 상세정보
 def admin_memView(request,id):
 	qs = Member.objects.get(id=id)
@@ -224,4 +213,4 @@ def admin_notiWrite(request):
 # 포스트 리스트
 def admin_postList(request):
 	return render(request, 'admin_postList.html')
->>>>>>> Stashed changes
+
