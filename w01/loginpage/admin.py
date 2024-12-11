@@ -5,3 +5,5 @@ from .models import Member
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'mail', 'gender', 'mdate')
     search_fields = ('id', 'name', 'mail')  # 검색 필드 추가
+    
+    
