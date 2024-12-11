@@ -33,8 +33,8 @@ table, tr, td{
 }
 
 .emotion_graph_m, .emotion_graph_w, .emotion_graph_r, .family_graph_r, .family_graph_l, .personal_graph, .personal_graph_r{
-  box-shadow: 2px 2px 10.1px rgba(128, 128, 128, 0.96),
-  inset 14px 18px 17.1px rgba(255, 255, 255, 0.27);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
 }
 
 /* 감정 돌아보기 상단 */
@@ -88,7 +88,7 @@ table, tr, td{
 }
 
 .graph_r_title span{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-right: 6px;
 }
@@ -167,7 +167,7 @@ table, tr, td{
 }
 
 #emotion_main_bottom .graph_r_title span{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-right: 6px;
   width: 100%;
