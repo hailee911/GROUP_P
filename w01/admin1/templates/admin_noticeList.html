@@ -9,6 +9,16 @@
 <link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>공지사항</title>
+<<<<<<< Updated upstream
+=======
+<script>
+	$(function(){
+		$("#notiAddBtn").click(function(){
+			location.href = '/admin1/admin_notiWrite/'
+		})
+	})
+</script>
+>>>>>>> Stashed changes
 </head>
 <body>
 	<nav class="gnb">
@@ -29,6 +39,14 @@
 			<button id="dBtn" type="button">공지사항 삭제</button>
 		</div>
 		<table>
+			<colgroup>
+        <col style="width: 5%;"> <!-- 체크박스 열 -->
+        <col style="width: 10%;"> <!-- 번호 열 -->
+        <col style="width: 55%;"> <!-- 제목 열 -->
+        <col style="width: 10%;"> <!-- 작성자 열 -->
+        <col style="width: 10%;"> <!-- 작성일 열 -->
+        <col style="width: 10%;"> <!-- 게시 상태 열 -->
+    	</colgroup>
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="select_all"></th>
@@ -41,39 +59,22 @@
 			</thead>
 			<tbody>
 				<!-- 데이터 추가 반복 -->
+				{% for noti in notiList %}
 				<tr>
 					<td><input type="checkbox" class="select_member"></td>
-					<td>004</td>
-					<td class="member_name"><a href="#">공지사항 안내 입니다. 제목이 들어갑니다요요요요요요요.</a></td>
-					<td>관리자</td>
-					<td>2024-01-01</td>
+					<td>{{noti.bno}}</td>
+					<td class="member_name"><a href="#">{{noti.btitle}}</a></td>
+					<td>{{noti.member.name}}</td>
+					<td>{{noti.bdate|date:'y-m-d H:i:s'}}</td>
 					<td>게시 중</td>
 				</tr>
+				{% empty %}
+    		<tr>
+       	 <td colspan="6" style="text-align: center;">등록된 공지사항이 없습니다.</td>
+    		</tr>
+				{% endfor %}
 				<!-- 데이터 추가 반복 -->
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>003</td>
-					<td class="member_name"><a href="#">공지사항 안내 입니다. 제목이 들어갑니다요요요요요요요.</a></td>
-					<td>관리자</td>
-					<td>2024-01-01</td>
-					<td>게시 중</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>002</td>
-					<td class="member_name"><a href="#">공지사항 안내 입니다. 제목이 들어갑니다요요요요요요요.</a></td>
-					<td>관리자</td>
-					<td>2024-01-01</td>
-					<td>게시 중</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>001</td>
-					<td class="member_name"><a href="#">공지사항 안내 입니다. 제목이 들어갑니다요요요요요요요.</a></td>
-					<td>관리자</td>
-					<td>2024-01-01</td>
-					<td>게시 중</td>
-				</tr>
+				
 			</tbody>
 		</table>
 	</div>
@@ -97,10 +98,6 @@
 			});
 	});
 
-	// 공지사항 추가 버튼 클릭
-	document.getElementById('cBtn').addEventListener('click', function() {
-		location.href = '/admin1/admin_notiWrite/';
-	});
 	</script>
 
 </body>

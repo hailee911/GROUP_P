@@ -23,6 +23,53 @@
 				location.href='/admin1/logout/'
 			}
 		})
+<<<<<<< Updated upstream
+=======
+
+		$("#addBtn").click(function(){
+			location.href = '/admin1/admin_memAdd/'
+		})
+
+
+		$('#dBtn').click(function () {
+			// 선택된 체크박스의 데이터를 배열로 저장
+			const selectedMembers = [];
+			document.querySelectorAll('.select_member:checked').forEach((checkbox) => {
+					const memberId = checkbox.closest('tr').querySelector('td:nth-child(2)').textContent.trim(); // 아이디 추출
+					selectedMembers.push(memberId);
+			});
+
+			// 선택된 멤버가 없을 경우 알림
+			if (selectedMembers.length === 0) {
+					alert("삭제할 회원을 선택해주세요.");
+					return;
+			}
+
+			// 확인 창
+			if (!confirm("선택된 회원을 삭제하시겠습니까?")) {
+					return;
+			}
+
+			// AJAX로 데이터 전송
+			$.ajax({
+					url: '/admin1/admin_memsDelete/', // 삭제 요청을 처리할 URL
+					method: 'POST',
+					data: JSON.stringify({ members: selectedMembers }),
+					contentType: 'application/json',
+					headers: {
+							'X-CSRFToken': '{{ csrf_token }}',
+					},
+					success: function (response) {
+							alert("선택된 회원이 삭제되었습니다.");
+							location.reload(); // 페이지 새로고침
+					},
+					error: function (error) {
+							alert("회원 삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
+							console.error(error);
+					},
+			});
+		});
+>>>>>>> Stashed changes
 	})
 </script>
 </head>
