@@ -27,48 +27,6 @@
         $(this).addClass("active");
       });
     });
-    $(function () {
-      // GNB 클릭
-      $("#menu ul li").on("click", function () {
-        $("#menu ul li").removeClass("active");
-        $(this).addClass("active");
-      });
-    });
-
-    // 달력
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-        headerToolbar: { // 헤더에 표시할 툴 바
-          start: 'prev next today',
-          center: 'title',
-          end: 'dayGridMonth,dayGridWeek,dayGridDay'
-        },
-        titleFormat: function (date) {
-          return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
-        },
-        //initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-        selectable: true, // 달력 일자 드래그 설정가능
-        droppable: true,
-        editable: true,
-        nowIndicator: true, // 현재 시간 마크
-        locale: 'ko' // 한국어 설정
-      });
-
-        // 이벤트 추가
-      calendar.addEvent({
-        title: '회의',
-        start: '2024-12-15T10:00:00', // 이벤트 시작 날짜와 시간
-        end: '2024-12-17T12:00:00', // 이벤트 종료 날짜와 시간
-        description: '회의 설명',
-        location: '회의실 1'
-      });
-
-      calendar.render();
-    });
-
-
   </script>
 </head>
 
@@ -137,45 +95,90 @@
   </div>
 
   <!-- modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <form method="POST">
-      {% csrf_token %}
-      <div id="modal_head">
-        <button type="button" id="closeModalBtn"></button>
-        <button type="submit" id="chechkModalBtn"></button>
-        <h2>일정 추가</h2> <!-- 제목 -->
-      </div>
-      
-      <label for="eventTitle">제목</label>
-      <input class="Modal_input" type="text" id="eventTitle" name="title" placeholder="이벤트 제목을 입력하세요" /><br>
-      
-      <label for="startTime">시작</label>
-      <input class="Modal_input" type="datetime-local" id="startTime" name="start_date" /><br>
-      
-      <label for="endTime">종료</label>
-      <input class="Modal_input" type="datetime-local" id="endTime" name="end_date" /><br>
-      
-      <label for="eventTitle">장소</label>
-      <input class="Modal_input" type="text" id="eventTitle" name="location"/><br>
-      
-      <label for="repeat">반복</label>
-      <select class="Modal_input" id="repeat" name="repeat"><br>
-        <option value="none">없음</option>
-        <option value="daily">매일</option>   
-        <option value="weekly">매주</option>
-        <option value="monthly">매월</option>
-        <option value="monthly">매년</option>
-      </select><br>
-      
-      <label for="notes">메모</label>
-      <textarea class="Modal_input" id="notes" name="memo" rows="2" placeholder="메모를 작성하세요"></textarea><br>
-      
-    </form>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="modal_head">
+          <button type="button" id="closeModalBtn" class="closemodalBtn"></button>
+          <button type="submit" id="chechkModalBtn"></button>
+          <h2>일정 추가</h2>
+        </div>
+        
+        <label for="eventTitle">제목</label>
+        <input class="Modal_input" type="text" id="eventTitle" name="title" placeholder="이벤트 제목을 입력하세요" /><br>
+        
+        <label for="eventColor">색상</label>
+        <input class="Modal_input" type="color" id="eventColor" name="color" /><br>
+
+        <label for="startTime">시작</label>
+        <input class="Modal_input" type="datetime-local" id="startTime" name="start_date" /><br>
+        
+        <label for="endTime">종료</label>
+        <input class="Modal_input" type="datetime-local" id="endTime" name="end_date" /><br>
+        
+        <label for="eventlocation">장소</label>
+        <input class="Modal_input" type="text" id="eventlocation" name="location"/><br>
+        
+        <label for="repeat">반복</label>
+        <select class="Modal_input" id="repeat" name="repeat"><br>
+          <option value="none">없음</option>
+          <option value="daily">매일</option>   
+          <option value="weekly">매주</option>
+          <option value="monthly">매월</option>
+          <option value="monthly">매년</option>
+        </select><br>
+        
+        <label for="notes">메모</label>
+        <textarea class="Modal_input" id="notes" name="memo" rows="2" placeholder="메모를 작성하세요"></textarea><br>
+      </form>
+    </div>
   </div>
-</div>
+
+  <div id="disModal" class="modal">
+    <div class="modal-content">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="modal_head">
+          <button type="button" id="closeModalBtn2" class="closemodalBtn"></button>
+          <h2>일정 추가</h2>
+        </div>
+        <input type="hidden" id='eventNo' name="no" >
+        <label for="eventTitle">제목</label>
+        <input class="Modal_input" type="text" id="eventTitle1" name="title1" placeholder="이벤트 제목을 입력하세요" /><br>
+        
+        <label for="eventColor1">색상</label>
+        <input class="Modal_input" type="color" id="eventColor1" name="color1" /><br>
+
+        <label for="startTime">시작</label>
+        <input class="Modal_input" type="datetime-local" id="startTime1" name="start_date1" /><br>
+        
+        <label for="endTime">종료</label>
+        <input class="Modal_input" type="datetime-local" id="endTime1" name="end_date1" /><br>
+        
+        <label for="eventlocation">장소</label>
+        <input class="Modal_input" type="text" id="eventlocation1" name="location1"/><br>
+        
+        <label for="repeat">반복</label>
+        <select class="Modal_input" id="repeat1" name="repeat1"><br>
+          <option value="none">없음</option>
+          <option value="daily">매일</option>   
+          <option value="weekly">매주</option>
+          <option value="monthly">매월</option>
+          <option value="monthly">매년</option>
+        </select><br>
+        
+        <label for="notes">메모</label>
+        <textarea class="Modal_input" id="notes1" name="memo1" rows="2" placeholder="메모를 작성하세요"></textarea><br>
+        <div id="deleteBtn">
+          <button type="button" id="updateEventBtn"></button>
+          <button type="button" id="deleteEventBtn"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="{% static '/js/calendar1/calendar.js'%}"></script>
-  <!-- footer -->
 </body>
 
 </html>
