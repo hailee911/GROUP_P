@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멤버 추가</title>
+    <style>
+        #memberList {
+            margin-top: 20px;
+        }
+        .nickname {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>멤버 추가</h1>
+    <input type="text" id="memberIdInput" placeholder="멤버 ID 입력">
+    <button onclick="searchMember()">검색</button>
+    <div id="memberList"></div>
+
+    <script>
+        // 예시 멤버 데이터
+        const members = [
+            { id: "user1", nickname: "닉네임1" },
+            { id: "user2", nickname: "닉네임2" },
+            { id: "user3", nickname: "닉네임3" }
+        ];
+
+        // 멤버 추가된 목록
+        const addedMembers = [];
+
+        function searchMember() {
+            const input = document.getElementById('memberIdInput').value.trim();
+            const member = members.find(m => m.id === input);
+
+            if (member) {
+                // 중복 추가 방지
+                if (addedMembers.some(m => m.id === member.id)) {
+                    alert("이미 추가된 멤버입니다.");
+                    return;
+                }
+
+                if (confirm("멤버를 추가하시겠습니까?")) {
+                    addedMembers.push(member);
+                    displayMember(member);
+                }
+            } else {
+                alert("해당 id는 존재하지 않습니다.");
+            }
+        }
+
+        function displayMember(member) {
+            const memberList = document.getElementById('memberList');
+            const memberDiv = document.createElement('div');
+            memberDiv.className = 'nickname';
+            memberDiv.textContent = member.nickname;
+            memberList.appendChild(memberDiv);
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from diary.models import DiaryBoard
+from loginpage.models import Member
 from diary.models import Letter
 from loginpage.models import Member
 
@@ -17,5 +19,11 @@ def diaryHome(request):
 
 ## 내 다이어리 목록
 def MdiaryList(request):
-  
-  return render(request,'MdiaryList.html')
+  qs = DiaryBoard.objects.all()
+  for i in qs:
+    print(i.diarytit)
+    print(i.dtitle)
+    print(i.dcontent)
+    print('-=' * 39)
+  context = {"MdiaryList":qs}
+  return render(request,'MdiaryList.html',context)
