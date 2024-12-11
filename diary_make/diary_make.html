@@ -82,26 +82,111 @@
           <span>다이어리 제목</span>
         </div>
         <div>
-          <input type="text" class="title_input" placeholder="제목을 입력하세요" maxlength="20"></input>
+          <input type="text" class="title_input" placeholder="제목을 입력하세요." maxlength="20"></input>
         </div>
         <div id="mem_search">
           <span>추가할 가족 검색</span><br>
-          <input id="searchBar" type="text" name="search" placeholder="검색">
-          <span><button id="searchBtn"><img src="images/searchBtn.png" alt=""></button></span>
+          <div class="search_container">
+            <input id="searchBar" type="text" name="search" placeholder="검색">
+            <button onclick="searchMember()" id="searchBtn"><img src="images/searchBtn.png" alt=""></button>
+          </div>
+          <div id="memberList"></div>
+        </div>
+        <div id="date_search">
+          <span>다이어리 생성일</span><br>
+          <input type="date" class="date_input">
+        </div>
+        <div id="save_area">
+          <a href="#"><button id="saveBtn"><img src="images/saveBtn.png" alt=""></button></a>
+          <a href="#"><span id="cancleBtn"><button><img src="images/cancleBtn.png" alt=""></button></span></a>
+
         </div>
 
       </div>
-      
-      
     </div>
-    
-
   </div>
     
 
 
   <!-- 스크립트 부분 -->
   <script>
+    // 예시 멤버 데이터
+    const members = [
+            { id: "user1", nicName: "닉네임1" },
+            { id: "user2", nicName: "닉네임2" },
+            { id: "user3", nicName: "닉네임3" }
+        ];
+
+        // 멤버 추가된 목록
+        const addedMembers = [];
+
+        function searchMember() {
+            const input = document.getElementById('searchBar').value.trim();
+            const member = members.find(m => m.id === input);
+
+            if (member) {
+                // 중복 추가 방지
+                if (addedMembers.some(m => m.id === member.id)) {
+                    alert("이미 추가된 멤버입니다.");
+                    return;
+                }
+
+                if (confirm("멤버를 추가하시겠습니까?")) {
+                    addedMembers.push(member);
+                    displayMember(member);
+                }
+            } else {
+                alert("해당 id는 존재하지 않습니다.");
+            }
+        }
+
+        function displayMember(member) {
+            const memberList = document.getElementById('memberList');
+            const memberDiv = document.createElement('div');
+            memberDiv.className = 'nicName';
+            memberDiv.textContent = member.nicName;
+            memberList.appendChild(memberDiv);
+        }
+
+
+
+        // 다이어리 저장 버튼 클릭 시 동작
+        document.getElementById('saveBtn').addEventListener('click', function () {
+            // 제목과 날짜 입력값 가져오기
+            const title = document.querySelector('.title_input').value.trim();
+            const date = document.querySelector('.date_input').value;
+
+            // 필수값 확인
+            if (!title) {
+                alert("다이어리 제목을 입력해주세요.");
+                return;
+            }
+            if (!date) {
+                alert("생성일을 선택해주세요.");
+                return;
+            }
+
+            // 저장 데이터 확인
+            console.log("다이어리 제목:", title);
+            console.log("생성일:", date);
+            console.log("추가된 멤버:", addedMembers);
+
+            // 성공 알림
+            alert("다이어리가 생성되었습니다.");
+        });
+
+        // 다이어리 취소 버튼 클릭 시 동작
+        document.querySelector('#cancleBtn button').addEventListener('click', function () {
+            if (confirm("생성을 취소하겠습니까?")) {
+                // 취소 동작 (필요 시 초기화)
+                document.querySelector('.title_input').value = ''; // 제목 초기화
+                document.querySelector('.date_input').value = '';  // 날짜 초기화
+                document.getElementById('memberList').innerHTML = ''; // 멤버 목록 초기화
+                addedMembers.length = 0; // 추가된 멤버 배열 초기화
+
+                alert("다이어리 생성이 취소되었습니다.");
+            }
+        });
     
   </script>
 

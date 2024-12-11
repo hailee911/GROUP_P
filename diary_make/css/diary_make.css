@@ -71,7 +71,7 @@ a{
   /* position: absolute;
   top: 60px;
   left: 530px; */
-  width: 600px;
+  width: 350px;
   height: 40px;
   border: 1px solid #DDDDDD;
   border-radius: 10px;
@@ -94,7 +94,15 @@ textarea {
   margin-top: 40px;
 }
 
+.search_container {
+  display: flex; /* Flexbox 활성화 */
+  align-items: center; /* 세로 가운데 정렬 */
+  justify-content: center; /* 가로 가운데 정렬 */
+  gap: 10px; /* 입력창과 버튼 사이 간격 */
+}
+
 #searchBar{
+  flex: 1;
   width: 200px;
   height: 34px;
   padding: 14px 14px;
@@ -111,23 +119,52 @@ textarea {
 }
 
 #searchBtn{
+  display: flex; /* 이미지 안의 내용도 가운데 정렬 */
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* 버튼 크기 조정 */
+  position: relative; /* 기본 위치 기준 */
+  transform: translate(10px, 0,5,0); /* 오른쪽으로 10px 이동 */
   width: 24px;               
   height: 24px;             
   background-color: white;    
   border: none;              
   border-radius: 100%;       
-  /* justify-content: center;  
-  align-items: center;        */
   cursor: pointer;          
-  margin-left: 15px;
-  /* margin-right: 800px; */
-  /* margin-top: 145px; */
-  /* display: flex; */
-  /* position: absolute;
-  top: 180px;
-  left: 530px; */
+  /* margin-left: 15px; */
 }
 
+#date_search{
+  margin-top: 40px;
+}
 
+.date_input{
+  height: 28px;
+  margin-top: 10px;
+  border: 1px solid #DDDDDD;
+}
 
+#memberList {
+  margin-top: 16px;
+}
+
+.nicName {
+  font-size: 10px;
+  margin: 5px 0;
+  color: #398FD6;
+}
+
+#save_area{
+  margin-top: 40px;
+}
+
+#save_area button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#cancleBtn{
+  margin-left: 10px;
+}
 
