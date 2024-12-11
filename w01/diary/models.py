@@ -30,7 +30,8 @@ class Letter(models.Model):
     return f"{self.lno},{self.member},{self.ltitle},{self.lcontent},{self.ldate}"
   
   
-# 그룹 다이어리 db
+# 그룹 다이어리 db 나중에 그룹 다이어리 생성 시 중복 체크해서 raise ValidationError("이미 그룹 다이어리가 존재합니다.")
+# 한 아이디가 하나의 그룹 다이어리 생성 할 수 있도록
 class GroupDiary(models.Model):
   gno = models.AutoField(primary_key=True)
   member = models.ForeignKey(Member,on_delete=models.DO_NOTHING, null=False)
