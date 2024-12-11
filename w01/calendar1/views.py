@@ -2,6 +2,8 @@ from django.shortcuts import render
 from calendar1.models import Event
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from datetime import timedelta
+from django.utils import timezone
 
 
 @csrf_exempt
@@ -61,6 +63,10 @@ def cal(request):
     repeat = request.POST.get('repeat')
     memo = request.POST.get('memo')
 
+    # datetime 형식으로 변환
+    start_date = timezone.datetime.fromisoformat(start_date)
+    end_date = timezone.datetime.fromisoformat(end_date)
+    
     # 이벤트 생성
     Event.objects.create(
       title=title,
