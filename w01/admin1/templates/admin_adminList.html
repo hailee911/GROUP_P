@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>관리자설정</title>
+<<<<<<< Updated upstream
+=======
 <script>
 	if ('{{outMsg}}' == '1'){
 		alert("안전하게 로그아웃되었습니다.")
@@ -34,47 +36,48 @@
 			location.href = '/admin1/admin_adminAdd/'
 		})
 
-
+		// 체크박스 선택된 관리자 삭제
 		$('#dBtn').click(function () {
 			// 선택된 체크박스의 데이터를 배열로 저장
 			const selectedMembers = [];
-			document.querySelectorAll('.select_member:checked').forEach((checkbox) => {
-					const memberId = checkbox.closest('tr').querySelector('td:nth-child(2)').textContent.trim(); // 아이디 추출
+			$('.select_member:checked').each(function () {
+					const memberId = $(this).closest('tr').find('td:nth-child(3)').text().trim(); // 아이디 추출
 					selectedMembers.push(memberId);
 			});
-
+	
 			// 선택된 멤버가 없을 경우 알림
 			if (selectedMembers.length === 0) {
-					alert("삭제할 회원을 선택해주세요.");
+					alert("삭제할 관리자를 선택해주세요.");
 					return;
 			}
-
+	
 			// 확인 창
-			if (!confirm("선택된 회원을 삭제하시겠습니까?")) {
+			if (!confirm("선택된 관리자를 삭제하시겠습니까?")) {
 					return;
 			}
-
+	
 			// AJAX로 데이터 전송
 			$.ajax({
-					url: '/admin1/admin_memsDelete/', // 삭제 요청을 처리할 URL
+					url: '/admin1/admin_adminsDelete/', // 삭제 요청을 처리할 URL
 					method: 'POST',
 					data: JSON.stringify({ members: selectedMembers }),
 					contentType: 'application/json',
 					headers: {
-							'X-CSRFToken': '{{ csrf_token }}', // CSRF 토큰 추가 (Django 사용 시)
+							'X-CSRFToken': '{{ csrf_token }}',
 					},
 					success: function (response) {
-							alert("선택된 회원이 삭제되었습니다.");
+							alert("선택된 관리자가 삭제되었습니다.");
 							location.reload(); // 페이지 새로고침
 					},
 					error: function (error) {
-							alert("회원 삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
+							alert("관리자 삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
 							console.error(error);
 					},
 			});
 		});
 	})
 </script>
+>>>>>>> Stashed changes
 </head>
 <body>
 	<nav class="gnb">
@@ -108,17 +111,29 @@
 			</thead>
 			<tbody>
 				<!-- 데이터 추가 반복 -->
+<<<<<<< Updated upstream
+				<tr>
+					<td><input type="checkbox" class="select_member"></td>
+					<td>001</td>
+					<td>aaaaa</td>
+					<td class="member_name"><a href="#">홍길동</a></td>
+					<td>수퍼어드민</td>
+					<td>hong@naver.com</td>
+					<td>3</td>
+				</tr>
+=======
 				 {% for admin in adminList %}
 					<tr>
 						<td><input type="checkbox" class="select_member"></td>
 						<td>{{admin.ano}}</td>
 						<td>{{admin.id}}</td>
-						<td class="member_name"><a href="#">{{admin.name}}</a></td>
+						<td class="member_name"><a href="/admin1/admin_adminView/{{admin.id}}/">{{admin.name}}</a></td>
 						<td>{{admin.nickname}}</td>
 						<td>{{admin.tel}}</td>
 						<td>{{admin.role}}</td>
 					</tr>
 					{% endfor %}
+>>>>>>> Stashed changes
 				<!-- 데이터 추가 반복 -->
 			</tbody>
 		</table>
