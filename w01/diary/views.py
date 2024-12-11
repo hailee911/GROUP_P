@@ -2,6 +2,9 @@ from django.shortcuts import render
 from diary.models import Letter
 from loginpage.models import Member
 from django.utils import timezone
+from diary.models import Content
+
+# 우체통
 
 def diaryHome(request):
   qs = Letter.objects.all().order_by("ldate")
@@ -18,8 +21,9 @@ def diaryHome(request):
 
 ## 내 다이어리 목록
 def MdiaryList(request):
-  
-  return render(request,'MdiaryList.html')
+  qs = Content.objects.all().order_by("-cdate")
+  context = {'content':qs}  
+  return render(request,'MdiaryList.html', context)
 
 #다이어리 작성
 def diaryWrite(request):
