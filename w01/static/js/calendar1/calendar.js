@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
     editable: true,
     events: '/calendar1/son/',
 
-    // 이벤트 렌더링 시 색상 적용
-    eventRender: function(info) {
-      var event = info.event;
-      var color = event.extendedProps.color;  // 색상 가져오기
-      info.el.style.backgroundColor = color;  // 배경 색상 변경
-    },
+    // // 이벤트 렌더링 시 색상 적용
+    // eventRender: function(info) {
+    //   var event = info.event;
+    //   var color = event.extendedProps.color;  // 색상 가져오기
+    //   info.el.style.backgroundColor = color;  // 배경 색상 변경
+    // },
 
     // 이벤트 클릭 시 처리
     eventClick: function(info) {
@@ -54,13 +54,38 @@ document.addEventListener('DOMContentLoaded', function () {
       // 이벤트 데이터 모달 폼에 채우기
       document.getElementById("eventNo").value = event.id; // 고유번호
       document.getElementById("eventTitle1").value = event.title; // 제목
-      document.getElementById("eventColor1").value = event.extendedProps.color || '#0000FF';  // 색상
+      document.getElementById("eventColor1").value = event.extendedProps.color ;  // 색상
       document.getElementById("startTime1").value = event.start.toISOString().slice(0, 16);  // 시작 시간
       document.getElementById("endTime1").value = event.end ? event.end.toISOString().slice(0, 16) : event.start.toISOString().slice(0, 16);  // 끝 시간
-      document.getElementById("eventlocation1").value = event.extendedProps.location || '';  // 위치
-      document.getElementById("repeat1").value = event.extendedProps.repeat || '';  // 반복 여부
-      document.getElementById("notes1").value = event.extendedProps.memo || '';  // 메모
+      document.getElementById("eventlocation1").value = event.extendedProps.location ;  // 위치
+      document.getElementById("repeat1").value = event.extendedProps.repeat ;  // 반복 여부
+      document.getElementById("notes1").value = event.memo ;  // 메모
+
+
+        // 메모 부분을 빈 값으로 초기화하거나 기존 값으로 설정
+      const notesInput = document.getElementById("notes1");
+      if (event.extendedProps.memo !== undefined && event.extendedProps.memo !== null) {
+        notesInput.value = event.extendedProps.memo;  // 메모 값이 있으면 설정
+      } else {
+        notesInput.value = '';  // 메모가 없으면 빈 값으로 설정
+      }
+
+    },
+
+    // 토요일 날짜 글자 색을 파란색으로 변경
+    dayCellDidMount: function(info) {
+      // 토요일일 경우 글자 색을 파란색으로 설정
+      if (info.date.getDay() === 6) {  // 6은 토요일을 나타냄
+        info.el.style.color = 'blue';  // 글자 색을 파란색으로 변경
+      }
+      if(info.date.getDay() === 0){
+        info.el.style.color = 'red';
+      }
+
     }
+
+
+
   });
   calendar.render();
 });

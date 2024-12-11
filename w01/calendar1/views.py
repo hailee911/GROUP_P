@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from calendar1.models import Event
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -47,7 +47,7 @@ def son(request):
       'start': event.start_date.isoformat(),
       'end': event.end_date.isoformat(),
       'location': event.location,
-      'description': event.memo,
+      'memo': event.memo,
       'repeat': event.repeat,
     })
   return JsonResponse(events_data, safe=False)
@@ -77,7 +77,7 @@ def cal(request):
       repeat=repeat,
       memo=memo,
     )
-    return render(request, 'calendar.html')
+    return redirect('/calendar1/cal/')
   else:
     return render(request, 'calendar.html')
 
