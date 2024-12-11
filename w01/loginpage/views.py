@@ -276,10 +276,14 @@ def login(request):
     id = request.POST.get('id')
     pw = request.POST.get('pw')
     qs = Member.objects.filter(id=id,pw=pw)
+    mail = qs[0].mail
+    name = qs[0].name
     print("확인용 :",id)
 
     if qs:
       request.session['session_id'] = id
+      request.session['session_mail'] = mail
+      request.session['session_name'] = name
       print("확인일")
       context = {"lmsg":"1"}
       return redirect('/index',context)

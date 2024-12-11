@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf_token" content="{{ csrf_token }}">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 	<link rel="stylesheet" href="{% static 'css/main_navi_base.css'%}">
   <link rel="stylesheet" href="{% static 'css/customer/customer_service.css'%}">
@@ -11,8 +12,6 @@
   <link rel="stylesheet" href="{% static 'css/customer/customer_notice_list.css'%}">
   <link rel="stylesheet" href="{% static 'css/emotion/emotion.css'%}">
   <link rel="stylesheet" href="{% static 'css/mypage/mypage_modi.css'%}">
-
-
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <title>우리의 기록</title>
 </head>
@@ -53,6 +52,7 @@
 				$('#n_overlay').removeClass('show');
 				});
 		});
+
 	</script>
 </head>
 <body>
@@ -70,13 +70,9 @@
 	<div id="gnb">
 
 		<!-- 프로필 -->
-		<div id="user_profile">
-			<div id="pimg">
-				<img src="/static/images/home/default_profile.png" alt="">
-			</div>
-			<p id="uName">김용준</p>
-			<p id="uEmail">kyjoon0105@gmail.com</p>
-		</div>
+		{% block profill-block%}
+		
+		{% endblock profill-block%}
 
 		<!-- Nav -->
 		<nav id="menu">
@@ -92,7 +88,7 @@
 
 		<!-- logout -->
 		<div id="logout">
-			<a href="#"><span>로그아웃</span></a>
+			<a href="/main/logout/"><span>로그아웃</span></a>
 		</div>
 		
 	</div>
