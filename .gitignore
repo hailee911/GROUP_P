@@ -280,8 +280,9 @@ db.sqlite3
 /media/
 
 # 마이그레이션 파일
-*/migrations/*.py
-!*/migrations/__init__.py
+# */migrations/*.py
+# !*/migrations/
+# */__init__.py
 
 # IDE 및 편집기 설정 파일
 .vscode/
