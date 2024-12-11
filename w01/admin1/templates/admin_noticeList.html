@@ -22,21 +22,21 @@
 </head>
 <body>
 	<nav class="gnb">
-		<a href="#" class="logo"><img src="images/logo_sample.png" alt=""></a>
+		<a href="#" class="logo"><img src="/static/images/admin1/logo_sample.png" alt=""></a>
 		<div class="menu">
 			<a href="/admin1/admin_memList/">회원관리</a>
 			<a href="#">판매관리</a>
-			<a class="active" href="/admin1/admin_noticeList/">공지사항</a>
+			<a href="/admin1/admin_noticeList/" class='active'>공지사항</a>
 			<a href="/admin1/admin_postList/">포스트</a>
 			<a href="/admin1/admin_adminList/">관리자설정</a>
-			<a href="#">로그아웃</a>
+			<a id='a_logout'>로그아웃</a>
 		</div>
 	</nav>
 	<div class="container">
 		<div class="con_header">
 			<h2>공지사항</h2>
-			<button id="cBtn" type="button">공지사항 추가</button>
-			<button id="dBtn" type="button">공지사항 삭제</button>
+			<button id="notiAddBtn" type="button">공지사항 추가</button>
+			<button id="notiDelBtn" type="button">공지사항 삭제</button>
 		</div>
 		<table>
 			<colgroup>

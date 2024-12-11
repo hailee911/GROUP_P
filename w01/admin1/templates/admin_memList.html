@@ -9,13 +9,15 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>회원관리</title>
 <script>
-	if(! '{{request.session.session_id}}'){
-		alert("로그인을 하셔야 접근가능합니다.")
-		location.href = '/admin1/login/'
-	}
 	if ('{{outMsg}}' == '1'){
 		alert("안전하게 로그아웃되었습니다.")
 		location.href = '/admin1/login/'
+		
+	};
+
+	if ('{{amsg}}' != ''){
+		alert("{{amsg}} 님이 회원으로 등록되었습니다.")
+		location.href = '/admin1/admin_memList/'
 	};
 	$(function(){
 		$("#a_logout").click(function(){
@@ -79,8 +81,8 @@
 		<div class="menu">
 				<a class="active" href="/admin1/admin_memList/">회원관리</a>
 				<a href="#">판매관리</a>
-				<a href="admin_noticeList.html">공지사항</a>
-				<a href="admin_postList.html">포스트</a>
+				<a href="/admin1/admin_noticeList/">공지사항</a>
+				<a href="/admin1/admin_postList/">포스트</a>
 				<a href="/admin1/admin_adminList/">관리자설정</a>
 				<a id='a_logout'>로그아웃</a>
 		</div>
@@ -88,7 +90,7 @@
 	<div class="container">
 		<div class="con_header">
 			<h2>회원 관리</h2>
-			<button id="cBtn" type="button">회원 추가</button>
+			<button id="addBtn" type="button">회원 추가</button>
 			<button id="dBtn" type="button">회원 삭제</button>
 		</div>
 		<table>
@@ -109,7 +111,7 @@
 				<tr>
 					<td><input type="checkbox" class="select_member"></td>
 					<td>{{mem.id}}</td>
-					<td class="member_name"><a href="#">{{mem.name}}</a></td>
+					<td class="member_name"><a href="/admin1/admin_memView/{{mem.id}}/">{{mem.name}}</a></td>
 					<td>{{mem.nicName}}</td>
 					<td>{{mem.mail}}</td>
 					<td>{{mem.mdate}}</td>

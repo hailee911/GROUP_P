@@ -6,7 +6,6 @@
 a {
 	text-decoration: none;
 	color: inherit;
-	cursor: pointer;
 }
 ol, ul {
 	list-style: none;
@@ -18,7 +17,7 @@ ol, ul {
 	background: #fff;
 	border-bottom: 1px solid #E9E9E9;
 	position: fixed;
-	z-index: 1;
+	
 }
 
 #gnb {
@@ -28,7 +27,6 @@ ol, ul {
 	position: fixed;
 	top : 60px;
 	border-right: 1px solid #E9E9E9;
-	background: #fff;
 }
 
 #user_profile {
@@ -81,7 +79,7 @@ ol, ul {
 	font-weight: 600;
 	color: #000;
 	background-color: #FAFAFA;
-	background-image: url(/static/images/home/menu_bar.png);
+	background-image: url(../images/menu_bar.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 	
@@ -96,7 +94,7 @@ ol, ul {
 	font-size: 16px;
 	font-weight: 600;
 	margin-left: 40px;
-	background-image: url(/static/images/home/logout_icon.png);
+	background-image: url(../images/logout_icon.png);
 	background-repeat: no-repeat;
 	background-position: left center;
 }
@@ -106,7 +104,7 @@ ol, ul {
 
 
 #top_nav>h1{ width: 81px; height: 24px; 
-background: url(/static/images/home/logo_sample.png) no-repeat;
+background: url('../images/logo_sample.png') no-repeat;
 position: absolute; 
 left:50px; top:18px; 
 }
@@ -122,3 +120,62 @@ box-sizing: border-box;
 
 
 /* ----- container ----- */
+#container{width: 100%; height: 2000px; float: left; margin-top: 60px; border: 1px solid red;}
+#main_sec1{height: 408px; margin-left: 284px; border: 1px solid green; display: flex; align-items: center;}
+#main_sec2{height: 462px; margin-left: 284px; background: #fafafa; border: 1px solid rgb(29, 29, 85);}
+#main_sec3{height: 460px; margin-left: 284px; border: 1px solid green;}
+#diary_txt{
+	width: 683px; 
+	height: 328px; 
+	border: 1px solid black;
+	padding-left: 80px;
+	padding-top: 70px;
+	box-sizing: border-box;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+#d_txt{margin-bottom: 94px;}
+.main_txt{
+	font-size: 26px;
+	font-weight: 300;
+	line-height: 40px;
+
+}
+.main_btn{
+	width: 155px;
+	height: 43px;
+	border: 1px solid #d9d9d9;
+	font-size: 18px;
+}
+.main_btn span{
+	font-size: 22px;
+}
+
+#diary_list{
+	width: 900px;
+	height: 328px;
+	border: 1px solid rgb(221, 107, 0);
+	flex-shrink: 0;
+	padding-top: 80px;
+	box-sizing: border-box;
+}
+
+#main_wbtn{
+	width: 66px;
+	height: 248px;
+	font-size: 36px;
+	font-weight: 200;
+	color: #999;
+	background: #fff;
+	border: 1px dashed #999;
+	border-radius: 18px;
+}
+#dlist{
+	width: 178px;
+	height: 248px;
+	border: 1px solid #E9E9E9;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 8px 11px 16px rgba(0, 0, 0, 0.13);
+	float: right;
+}

@@ -46,7 +46,6 @@ def admin_memList(request):
 	context = {"mlist":qs}
 	return render(request, 'admin_memList.html', context)
 
-<<<<<<< Updated upstream
 # 관리자 리스트
 def admin_adminList(request):
 	return render(request, 'admin_adminList.html')
