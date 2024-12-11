@@ -1,9 +1,4 @@
 from django.shortcuts import render,redirect
-<<<<<<< Updated upstream
-from admin1.models import Administrator
-from loginpage.models import Member
-from loginpage.models import Member
-=======
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -12,7 +7,6 @@ from django.db.models import Max
 from admin1.models import Administrator
 from customer.models import NoticeBoard
 
->>>>>>> Stashed changes
 
 # 어드민 로그인
 def admin_login(request):
@@ -46,10 +40,6 @@ def admin_memList(request):
 	context = {"mlist":qs}
 	return render(request, 'admin_memList.html', context)
 
-# 관리자 리스트
-def admin_adminList(request):
-	return render(request, 'admin_adminList.html')
-=======
 # 유저 상세정보
 def admin_memView(request,id):
 	qs = Member.objects.get(id=id)
@@ -212,16 +202,43 @@ def admin_adminsDelete(request):
 
 # 공지사항 리스트
 def admin_noticeList(request):
-	qs = NoticeBoard.objects.all()
+	qs = NoticeBoard.objects.filter(category=1).order_by("-bno")
 	context = {"notiList":qs}
 	return render(request, 'admin_noticeList.html', context)
 
 # 공지사항 쓰기
 def admin_notiWrite(request):
-	return render(request, 'admin_notiWrite.html')
+	if request.method == 'GET':
+		return render(request, 'admin_notiWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		category = 1
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_noticeList.html', context)
 
 
 # 포스트 리스트
 def admin_postList(request):
 	return render(request, 'admin_postList.html')
->>>>>>> Stashed changes
+
+
+# 포스트 쓰기
+def admin_postWrite(request):
+	if request.method == 'GET':
+		return render(request, 'admin_postWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		bfile_thumbnail = request.FILES.get('bfile_thumbnail','')
+		category = 2
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile_thumbnail=bfile_thumbnail,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_noticeList.html', context)

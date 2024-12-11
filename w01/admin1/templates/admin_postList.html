@@ -1,14 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdeliv.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-<link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
-<link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<title>포스트</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdeliv.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+		<link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
+		<link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>포스트</title>
+		<script>
+		$(function(){
+			$("#postAddBtn").click(function(){
+				location.href = '/admin1/admin_postWrite/'
+			})
+		})
+		// 전체 선택 기능
+		const selectAllCheckbox = document.getElementById('select_all');
+		const memberCheckboxes = document.querySelectorAll('.select_member');
+		
+		selectAllCheckbox.addEventListener('change', function () {
+				memberCheckboxes.forEach(checkbox => {
+						checkbox.checked = selectAllCheckbox.checked;
+				});
+		});
+		</script>
 </head>
 <body>
 	<nav class="gnb">
@@ -25,7 +41,7 @@
 	<div class="container">
 		<div class="con_header">
 			<h2>포스트</h2>
-			<button id="cBtn" type="button">포스트 추가</button>
+			<button id="postAddBtn" type="button">포스트 추가</button>
 			<button id="dBtn" type="button">포스트 삭제</button>
 		</div>
 		<table>
@@ -77,26 +93,6 @@
 			</tbody>
 		</table>
 	</div>
-	<script>
-	$(function(){
-		const currentPage = window.location.pathname;
-		$('.menu-item').each(function () {
-			if ($(this).attr('href') === currentPage) {
-				$(this).addClass('active');
-			}
-		});
-	});
-	
-	// 전체 선택 기능
-	const selectAllCheckbox = document.getElementById('select_all');
-	const memberCheckboxes = document.querySelectorAll('.select_member');
-	
-	selectAllCheckbox.addEventListener('change', function () {
-			memberCheckboxes.forEach(checkbox => {
-					checkbox.checked = selectAllCheckbox.checked;
-			});
-	});
-	</script>
 
 </body>
 </html>

@@ -9,16 +9,17 @@
 <link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>공지사항</title>
-<<<<<<< Updated upstream
-=======
 <script>
+	if('{{wmsg}}' == '1'){
+		alert("공지사항이 저장되었습니다.")
+		location.href='/admin1/admin_noticeList/'
+	}
 	$(function(){
 		$("#notiAddBtn").click(function(){
 			location.href = '/admin1/admin_notiWrite/'
 		})
 	})
 </script>
->>>>>>> Stashed changes
 </head>
 <body>
 	<nav class="gnb">
@@ -79,14 +80,7 @@
 		</table>
 	</div>
 	<script>
-	$(function(){
-		const currentPage = window.location.pathname;
-		$('.menu-item').each(function () {
-			if ($(this).attr('href') === currentPage) {
-				$(this).addClass('active');
-			}
-		});
-	});
+
 	
 	// 전체 선택 기능
 	const selectAllCheckbox = document.getElementById('select_all');

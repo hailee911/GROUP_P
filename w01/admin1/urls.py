@@ -11,8 +11,6 @@ urlpatterns = [
     path('admin_memList/', views.admin_memList, name="admin_memList"),
 	# 관리자리스트
     path('admin_adminList/', views.admin_adminList, name="admin_adminList"),
-<<<<<<< Updated upstream
-=======
 	# 관리자추가
     path('admin_adminAdd/', views.admin_adminAdd, name="admin_adminAdd"),
 	# 관리자상세정보페이지
@@ -29,6 +27,8 @@ urlpatterns = [
     path('admin_notiWrite/', views.admin_notiWrite, name="admin_notiWrite"),
 	# 포스트리스트
     path('admin_postList/', views.admin_postList, name="admin_postList"),
+	# 포스트쓰기
+    path('admin_postWrite/', views.admin_postWrite, name="admin_postWrite"),
 	# 유저상세정보페이지
     path('admin_memView/<str:id>/', views.admin_memView, name="admin_memView"),
 	# 유저정보수정페이지
@@ -41,5 +41,4 @@ urlpatterns = [
     path('admin_memAdd/', views.admin_memAdd, name="admin_memAdd"),
 
 
->>>>>>> Stashed changes
 ]
