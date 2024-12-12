@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
     },
+    
 
     // 토요일 날짜 글자 색을 파란색으로 변경
     dayCellDidMount: function(info) {

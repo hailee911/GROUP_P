@@ -288,4 +288,5 @@ box-sizing: border-box;
 	background-color: #456CA8;
 	border-radius: 10px;
 	border: none;
+	cursor: pointer;
 }

@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
-  <title>캘린더</title>
+  <title>우리가족</title>
 
 
   <script>
@@ -46,7 +46,7 @@
         smallToggle1.style.display = 'block';
       }
       // small_list_1이 4개 이하일 경우 "더보기" 버튼 숨기기
-      if (smallItems1.length <= 4) {
+      if (smallToggle2.length <= 4) {
         smallToggle2.style.display = 'none';
       } else {
         smallToggle2.style.display = 'block';
@@ -178,6 +178,7 @@
     <div id="top_name">가족구성원</div>
     <div id='main_tool'>
       <div id="non">가족이 존재하지 않습니다. 가족을 추가하세요.</div>
+      
       <div id="main_me">
 
         <div id="small_title1" class="small_title">가족그룹이름</div>
@@ -185,6 +186,14 @@
 
         <div class="small_list" id="small_list1">
 
+          <div class="small_list_1">
+            <div class="small_img"><img src="{% static 'images/family1/default_profile.png'%}" alt="" /></div>
+            <div class="summ">
+              <div class="small_name">홍길동</div>
+              <div class="small_bir">1999-01-09</div>
+              <button type=button class="list_deleteBtn">삭제</button>
+            </div>
+          </div>
           <div class="small_list_1">
             <div class="small_img"><img src="{% static 'images/family1/default_profile.png'%}" alt="" /></div>
             <div class="summ">
