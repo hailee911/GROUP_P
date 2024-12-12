@@ -49,6 +49,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_COOKIE_NAME = 'csrftoken'  # 쿠키 이름 확인
+CSRF_USE_SESSIONS = False  # False일 경우, CSRF 토큰이 쿠키로 전달됨
+
 ROOT_URLCONF = 'w01.urls'
 
 # 템플릿 경로 설정 - 기본 경로에서 templates 폴더를 모두 사용

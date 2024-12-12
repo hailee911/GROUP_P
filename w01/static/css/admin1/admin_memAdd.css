@@ -25,6 +25,10 @@
 	margin-left: 20px;
 }
 
+#addFrm label{
+	margin-right: 14px;
+}
+
 #addFrm input{
 	margin-bottom: 20px;
 	margin-top: 8px;
@@ -41,6 +45,11 @@
 	outline: none;
 }
 
+#addFrm input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
 #addFrm button{
 	width: 116px;
 	height: 32px;
@@ -49,4 +58,9 @@
 	border-radius: 10px;
 	border: 1px solid #999;
 	cursor: pointer;
+}
+
+
+#delBtn{
+	color:#f33c0e;
 }

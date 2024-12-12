@@ -81,7 +81,7 @@ ol, ul {
 	font-weight: 600;
 	color: #000;
 	background-color: #FAFAFA;
-	background-image: url(../images/menu_bar.png);
+	background-image: url(/static/images/home/menu_bar.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 	
@@ -96,7 +96,7 @@ ol, ul {
 	font-size: 16px;
 	font-weight: 600;
 	margin-left: 40px;
-	background-image: url(../images/logout_icon.png);
+	background-image: url(/static/images/home/logout_icon.png);
 	background-repeat: no-repeat;
 	background-position: left center;
 }
@@ -106,7 +106,7 @@ ol, ul {
 
 
 #top_nav>h1{ width: 81px; height: 24px; 
-background: url('../images/logo_sample.png') no-repeat;
+background: url(/static/images/home/logo_sample.png) no-repeat;
 position: absolute; 
 left:50px; top:18px; 
 }
