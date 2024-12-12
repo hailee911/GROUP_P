@@ -10,6 +10,11 @@
 <title>관리자정보 수정</title>
 <script>
 	$(function(){
+		$("#a_logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href='/admin1/logout/'
+			}
+		})
 		$("#addBtn").click(function(){
 			if($("#admin_id").val().length<2){
 				alert("아이디를 입력해주세요.");

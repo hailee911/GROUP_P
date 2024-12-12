@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from loginpage.models import Member
 from django.db.models import Max
+from django.db.models import Q
 from admin1.models import Administrator
 from customer.models import NoticeBoard
 
@@ -220,11 +221,50 @@ def admin_notiWrite(request):
 		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile=bfile,category=category)
 		context = {'wmsg':'1'}
 		return render(request, 'admin_noticeList.html', context)
+	
+# 공지사항 상세보기
+def admin_notiView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=1).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=1).order_by('bno').first()
+	
+	context = {
+		"noti": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_notiView.html', context)
 
+# 공지사항 삭제
+def admin_notiDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_noticeList.html', context)
+
+# 체크박스 게시글 삭제
+def admin_notisDelete(request):
+	if request.method == 'POST':
+			try:
+					data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
+					members_to_delete = data.get('members', [])
+					# print("Members to delete:", members_to_delete)
+
+					# 실제로 데이터베이스에서 삭제
+					for member_id in members_to_delete:
+							NoticeBoard.objects.filter(bno=member_id).delete()
+
+					return JsonResponse({'status': 'success'}, status=200)
+			except Exception as e:
+					return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+	return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 # 포스트 리스트
 def admin_postList(request):
-	return render(request, 'admin_postList.html')
+	qs = NoticeBoard.objects.filter(category=2).order_by("-bno")
+	context = {"postList":qs}
+	return render(request, 'admin_postList.html', context)
 
 
 # 포스트 쓰기
@@ -241,4 +281,26 @@ def admin_postWrite(request):
 		category = 2
 		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile_thumbnail=bfile_thumbnail,bfile=bfile,category=category)
 		context = {'wmsg':'1'}
-		return render(request, 'admin_noticeList.html', context)
+		return render(request, 'admin_postList.html', context)
+
+# 포스트 상세보기
+def admin_postView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=2).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=2).order_by('bno').first()
+	
+	context = {
+		"post": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_postView.html', context)
+
+# 포스트 삭제
+def admin_postDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_postList.html', context)
+

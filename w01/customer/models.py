@@ -2,7 +2,7 @@ from django.db import models
 from loginpage.models import Member
 from admin1.models import Administrator
 
-# 공지사항
+# 공지사항/포스트 
 class NoticeBoard(models.Model):
   bno = models.AutoField(primary_key=True)
   # do_nothing : 아무것도 하지 않음 ( 자식의 값이 다 지워져야 부모도 지울 수 있음 [default] )
