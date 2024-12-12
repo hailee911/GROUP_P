@@ -275,8 +275,6 @@ def login(request):
     id = request.POST.get('id')
     pw = request.POST.get('pw')
     qs = Member.objects.filter(id=id,pw=pw)
-    mail = qs[0].mail
-    name = qs[0].name
     print("확인용 :",id)
 
     if qs:
