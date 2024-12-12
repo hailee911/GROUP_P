@@ -1,4 +1,5 @@
 from django.db import models
+
 # import datetime
 from datetime import datetime
 class Member(models.Model):
@@ -27,5 +28,6 @@ class Member(models.Model):
         related_name='members'
     )
   
+
   def __str__(self):
     return f"{self.id},{self.name},{self.mdate}"
