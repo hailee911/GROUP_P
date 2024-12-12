@@ -1,4 +1,5 @@
 from django.db import models
+
 # import datetime
 from datetime import datetime
 class Member(models.Model):
@@ -11,6 +12,6 @@ class Member(models.Model):
   gender = models.CharField(max_length=10,choices=[('남자', '남자'), ('여자', '여자')])
   mdate = models.DateTimeField(auto_now=True)
   # mdate = models.DateTimeField(default=datetime.now())
-  
+
   def __str__(self):
     return f"{self.id},{self.name},{self.mdate}"
