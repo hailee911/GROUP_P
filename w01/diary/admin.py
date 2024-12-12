@@ -3,8 +3,8 @@ from diary.models import DiaryBoard
 
 @admin.register(DiaryBoard)
 class BoardAdmin(admin.ModelAdmin):
-  list_display = ['dno','dtitle','ddate']
-  
+    list_display = ['dno','dtitle','ddate']
+
 
 # 우체통
 from diary.models import Letter
@@ -18,7 +18,7 @@ class LetterAdmin(admin.ModelAdmin):
 from diary.models import GroupDiary,Content    
 @admin.register(GroupDiary)
 class GroupDiaryAdmin(admin.ModelAdmin):
-    list_display = ['gno','member_id','gtitle','created_at']
+    list_display = ['gno','member_id','gtitle','gName','created_at']
     
 from django.contrib import admin
 from .models import Content

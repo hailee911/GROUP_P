@@ -86,7 +86,7 @@
   <!-- 다이어리 작성 메인 -->
   <div id="diary_write">
     <h1>일기 작성</h1>
-    <form action="#" name="writeFrm" method="post" enctype="multipart/form-data">
+    <form action= "{% url 'diary:diaryWrite' %}" id="writeFrm" name="writeFrm" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="form-group">
         <label for="title">제목</label>
@@ -128,16 +128,26 @@
       <p>공유 가능한 다이어리가 없습니다.</p>
       {% endif %} -->
 
+      {% if created_group or joined_group %}
       <div class="form-group">
-        <label>공유</label><br>
-        <label id="fdiary">가족1
-          <input type="checkbox" id="share" name="diary_ids" value="db저장값">
-        </label>
+          <label>공유</label><br>
 
-        <label id="fdiary">가족2
-          <input type="checkbox" id="share" name="diary_ids" value="db저장값2">
-        </label>
+          {% if created_group %}
+          <label id="fdiary">
+              {{ created_group.gName }}
+              <input type="checkbox" id="share" name="diary_ids" value="{{ created_group.gno }}">
+          </label>
+          {% endif %}
+
+          {% if joined_group %}
+          <label id="fdiary">
+              {{ joined_group.gName }}
+              <input type="checkbox" id="share" name="diary_ids" value="{{ joined_group.gno }}">
+          </label>
+          {% endif %}
       </div>
+      {% endif %}
+
       <button type="submit" onclick='saveBtn(event)' class="save">저장</button>
       <button type="button" class="cancel" onclick="confirmCancel()">취소</button>
   </div>
@@ -170,16 +180,9 @@
       $("#title").focus();
       return false;
     }
-
-    // 다이어리 저장 후 알림
-    alert("저장되었습니다.");
-    
-    // 폼 제출 후 페이지 이동
-    setTimeout(function() {
-      window.location.href = '/diary/MdiaryList/';
-    }, 1000);  // 1초 후 이동
+    writeFrm.submit()
   }
-
+    
   // 취소 버튼 클릭 시 확인 메시지
   function confirmCancel() {
     var confirmAction = confirm("정말 취소하시겠습니까?");
@@ -188,9 +191,10 @@
     }
   }
 
-  {% comment %} if ("{{wmsg}}" == "1"){
+  if ("{{wmsg}}" == "1"){
     alert("저장되었습니다.")
-  }  {% endcomment %}
+    location.href = '/diary/MdiaryList/'
+  }
   
   function autoResize(textarea) {
     textarea.style.height = 'auto';

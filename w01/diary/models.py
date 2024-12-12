@@ -36,10 +36,11 @@ class GroupDiary(models.Model):
   gno = models.AutoField(primary_key=True)
   member = models.ForeignKey(Member,on_delete=models.DO_NOTHING, null=False)
   gtitle = models.CharField(max_length=200)
+  gName = models.CharField(max_length=100, null=False, default="우리가족") # 그룹이름
   created_at = models.DateTimeField(auto_now_add=True)
   
   def __str__(self):
-    return f"{self.gno},{self.member.id},{self.gtitle},{self.created_at}"
+    return f"{self.gno},{self.member.id},{self.gtitle},{self.gName},{self.created_at}"
 
 # 다이어리 작성 -> 내용 db
 from django.utils import timezone
