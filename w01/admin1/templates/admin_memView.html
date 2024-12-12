@@ -15,6 +15,11 @@
 		location.href = '/admin1/admin_memList/'
 	}
 	$(function(){
+		$("#a_logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href='/admin1/logout/'
+			}
+		})
 		$("#updateBtn").click(function(){
 			alert("{{mem.name}} 님 회원 정보 수정페이지로 이동합니다.")
 			location.href = '/admin1/admin_memUpdate/{{mem.id}}/'
