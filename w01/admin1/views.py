@@ -1,17 +1,13 @@
 from django.shortcuts import render,redirect
-<<<<<<< Updated upstream
 from admin1.models import Administrator
-from loginpage.models import Member
 from loginpage.models import Member
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from loginpage.models import Member
 from django.db.models import Max
 from admin1.models import Administrator
 from customer.models import NoticeBoard
 
->>>>>>> Stashed changes
 
 # 어드민 로그인
 def admin_login(request):
