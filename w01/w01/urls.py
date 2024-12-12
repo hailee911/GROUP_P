@@ -12,4 +12,5 @@ urlpatterns = [
     path('mypage/', include('mypage.urls')),
     path('comment/', include('comment.urls')),
     path('calendar1/', include('calendar1.urls')),
+    path('family1/', include('family1.urls')),
 ]

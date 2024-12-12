@@ -77,9 +77,12 @@ def cal(request):
       repeat=repeat,
       memo=memo,
     )
-    return redirect('/calendar1/cal/')
+    user_id = request.POST.get('user_id') 
+    return redirect(f'/calendar1/cal/?user_id={user_id}')
   else:
-    return render(request, 'calendar.html')
+    user_id = request.GET.get('user_id') 
+    context = {'user_id':user_id}
+    return render(request, 'calendar.html',context)
 
 @csrf_exempt
 def delete_event(request):

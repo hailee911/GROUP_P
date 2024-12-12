@@ -99,6 +99,7 @@
     <div class="modal-content">
       <form method="POST">
         {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ user_id }}">
         <div class="modal_head">
           <button type="button" id="closeModalBtn" class="closemodalBtn"></button>
           <button type="submit" id="chechkModalBtn"></button>

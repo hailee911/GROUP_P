@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'mypage',
     'comment',
     'calendar1',
+    'family1',
 ]
 
 MIDDLEWARE = [
