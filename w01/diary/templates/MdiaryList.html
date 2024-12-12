@@ -70,7 +70,8 @@
 <div id="main_area">
 
   <div id="title_area">
-    <p id="infoTit">{{Mdiary.}}
+    
+    <p id="infoTit">내 다이어리 이름을 설정해 주세요.{{MdiaryList.diarytit}}
       <span><a href="/diary/diaryView/"><button type="button" class="wBtn"><img src="/static/images/diary/writeBtn.png" alt=""></button></a></span>
       <span><div id="modify_del_slide_1">
         <button type="button" id="addBtn">
@@ -91,7 +92,32 @@
   </div>
   
   <div id="list_area">
+    {% if content %}
+    {% for c in content %}
     <div class="list_group">
+      <a href="#">
+        <div class="wrap_cont">
+          <span class="tit_post"><span class="num_txt">{{c.cno}}</span>{{c.ctitle}}<span class="img"><img src="/static/images/diary/lock.png" alt=""></span></span>
+          <p class="desc_cont">
+            <span class="diaryTit">내가 한 말을 내가 오해하지 않기로 함</span><span class="space"> | </span>
+            <span class="list_txt">{{c.ccontent}}
+            </span>
+          </p>
+        </div>
+        <dl class="list_post_info">
+          <dd class="txt_g">
+            <span>{{ c.cdate|date:"Y.m.d" }}</span><span class="space"> | </span>
+            <span>댓글</span><span>01</span><span class="space"> | </span>
+            <span>좋아요</span><span>02</span>
+          </dd>
+        </dl>
+      </a>
+    </div>
+    {% endfor %}
+    {% else %}
+    일기를 작성해봅시다!🙌
+    {% endif %}
+    {% comment %} <div class="list_group">
       <a href="#">
         <div class="wrap_cont">
           
@@ -133,29 +159,7 @@
             <span>좋아요</span><span>02</span>
           </dd>
         </dl>
-      </a>
-    </div>
-    <div class="list_group">
-      <a href="#">
-        <div class="wrap_cont">
-          
-          <span class="tit_post"><span class="num_txt">35</span> 제일 행복했던 순간과 제일 최악의 순간이 모두 있던 날<span class="img"><img src="/static/images/diary/lock.png" alt=""></span></span>
-          <p class="desc_cont">
-            <span class="diaryTit">내가 한 말을 내가 오해하지 않기로 함</span><span class="space"> | </span>
-            <span class="list_txt">오늘은 정말 감정이 롤러코스터를 타듯 오르락내리락했던 날이었다.
-              제일 행복했던 순간과 제일 최악의 순간이 모두 내 하루에 존재했다는 게 신기할 정도다.
-              아침은 평화롭게 시작했다. 창밖으로 비추는 햇살이 따뜻해서 기분 좋게 눈을 떴고, 가족들과 오랜만에 아침 식사를 함께 했는데. 엄마가 해준 김치찌개는 정말 최고였다.
-              </span>
-          </p>
-        </div>
-        <dl class="list_post_info">
-          <dd class="txt_g">
-            <span>2024.11.29</span><span class="space"> | </span>
-            <span>댓글</span><span>01</span><span class="space"> | </span>
-            <span>좋아요</span><span>02</span>
-          </dd>
-        </dl>
-      </a>
+      </a> {% endcomment %}
     </div>
 
   </div>
