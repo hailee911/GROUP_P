@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from loginpage.models import Member
 from diary.models import Letter
 from loginpage.models import Member
 from django.utils import timezone
@@ -20,6 +21,13 @@ def diaryHome(request):
     context = {'list':qs}
     
   return render(request,'diaryHome.html', context)
+
+
+
+
+## 가족다이어리 생성
+def diaryMake(requset):
+  return render(requset,'diaryMake.html')
 
 
 ## 내 다이어리 목록
