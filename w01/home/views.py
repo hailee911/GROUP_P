@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from loginpage.models import Member
 
 
@@ -6,10 +6,7 @@ from loginpage.models import Member
 def landing(request):
   return render(request,'landing.html')
 
-def main(request):
-  return render(request, 'main.html')
-
-def logout(request):
-  request.session.clear()
-  return redirect('/')
+def main(request,user_id):
+  context = {'user_id': user_id} 
+  return render(request, 'main.html',context)
 
