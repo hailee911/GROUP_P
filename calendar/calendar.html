@@ -82,6 +82,29 @@
         nowIndicator: true, // 현재 시간 마크
         locale: 'ko' // 한국어 설정
       });
+
+
+
+        // 이벤트 추가
+      calendar.addEvent({
+        title: '회의',
+        start: '2024-12-15T10:00:00', // 이벤트 시작 날짜와 시간
+        end: '2024-12-17T12:00:00', // 이벤트 종료 날짜와 시간
+        description: '회의 설명',
+        location: '회의실 1'
+      });
+        // 이벤트 추가
+      calendar.addEvent({
+        title: '회의2',
+        start: '2024-12-15T13:00:00', // 이벤트 시작 날짜와 시간
+        end: '2024-12-17T12:00:00', // 이벤트 종료 날짜와 시간
+        description: '회의 설명',
+        location: '회의실 1'
+      });
+
+
+
+      
       calendar.render();
     });
 

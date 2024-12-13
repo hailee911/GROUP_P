@@ -13,12 +13,40 @@ urlpatterns = [
     path('admin_adminList/', views.admin_adminList, name="admin_adminList"),
 	# 관리자추가
     path('admin_adminAdd/', views.admin_adminAdd, name="admin_adminAdd"),
+	# 관리자상세정보페이지
+    path('admin_adminView/<str:id>/', views.admin_adminView, name="admin_adminView"),
+	# 관리자정보수정페이지
+    path('admin_adminUpdate/<str:id>/', views.admin_adminUpdate, name="admin_adminUpdate"),
+	# 관리자삭제
+    path('admin_adminDelete/<str:id>/', views.admin_adminDelete, name="admin_adminDelete"),
+	# 관리자삭제(여러명 동시 삭제)
+    path('admin_adminsDelete/', views.admin_adminsDelete, name="admin_adminsDelete"),
+
+
 	# 공지사항리스트
     path('admin_noticeList/', views.admin_noticeList, name="admin_noticeList"),
 	# 공지사항쓰기
     path('admin_notiWrite/', views.admin_notiWrite, name="admin_notiWrite"),
+	# 공지사항 보기
+    path('admin_notiView/<int:bno>/', views.admin_notiView, name="admin_notiView"),
+	# 공지사항 삭제
+    path('admin_notiDelete/<int:bno>/', views.admin_notiDelete, name="admin_notiDelete"),
+	# 공지사항 삭제(여러개 동시 삭제)
+    path('admin_notisDelete/', views.admin_notisDelete, name="admin_notiDelete"),
+
+
 	# 포스트리스트
     path('admin_postList/', views.admin_postList, name="admin_postList"),
+	# 포스트쓰기
+    path('admin_postWrite/', views.admin_postWrite, name="admin_postWrite"),
+	# 포스트 보기
+    path('admin_postView/<int:bno>/', views.admin_postView, name="admin_notiView"),
+	# 포스트 삭제
+    path('admin_postDelete/<int:bno>/', views.admin_postDelete, name="admin_notiDelete"),
+	# 포스트 삭제(여러개 동시 삭제)
+    # path('admin_postsDelete/', views.admin_postsDelete, name="admin_notiDelete"),
+
+
 	# 유저상세정보페이지
     path('admin_memView/<str:id>/', views.admin_memView, name="admin_memView"),
 	# 유저정보수정페이지

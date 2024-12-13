@@ -10,7 +10,17 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>회원정보수정</title>
 <script>
+	
+	if('{{request.session.session_role}}'!='3'){
+		alert("접근 권한이 없습니다.")
+		location.href = '/admin1/admin_memList/'
+	}
 	$(function(){
+		$("#a_logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href='/admin1/logout/'
+			}
+		})
 		$("#updateBtn").click(function(){
 			if($("#user_id").val().length<2){
 				alert("아이디를 입력해주세요.");

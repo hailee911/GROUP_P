@@ -57,7 +57,7 @@
 					data: JSON.stringify({ members: selectedMembers }),
 					contentType: 'application/json',
 					headers: {
-							'X-CSRFToken': '{{ csrf_token }}', // CSRF 토큰 추가 (Django 사용 시)
+							'X-CSRFToken': '{{ csrf_token }}',
 					},
 					success: function (response) {
 							alert("선택된 회원이 삭제되었습니다.");

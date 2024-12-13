@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'diary',
     'mypage',
     'comment',
+    'calendar1',
+    'family1',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_COOKIE_NAME = 'csrftoken'  # 쿠키 이름 확인
+CSRF_USE_SESSIONS = False  # False일 경우, CSRF 토큰이 쿠키로 전달됨
 
 ROOT_URLCONF = 'w01.urls'
 
@@ -72,6 +77,8 @@ WSGI_APPLICATION = 'w01.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {

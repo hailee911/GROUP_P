@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
+from admin1.models import Administrator
+from loginpage.models import Member
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from admin1.models import Administrator
-from loginpage.models import Member
 from django.db.models import Max
+from admin1.models import Administrator
+from customer.models import NoticeBoard
 
 
 # 어드민 로그인
@@ -74,6 +76,23 @@ def admin_memDelete(request,id):
 	context = {'dmsg':id}
 	return render(request, 'admin_memView.html', context)
 
+# 체크박스 유저 삭제
+def admin_memsDelete(request):
+	if request.method == 'POST':
+			try:
+					data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
+					members_to_delete = data.get('members', [])
+
+					# 실제로 데이터베이스에서 삭제
+					for member_id in members_to_delete:
+							# Member는 회원 테이블 모델로 변경해야 합니다.
+							Member.objects.filter(id=member_id).delete()
+
+					return JsonResponse({'status': 'success'}, status=200)
+			except Exception as e:
+					return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+	return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
+
 # 유저추가페이지
 def admin_memAdd(request):
 	if request.method == 'GET':
@@ -123,54 +142,165 @@ def admin_adminAdd(request):
 		
 		return redirect('/admin1/admin_adminList/')
 
+# 관리자 상세보기
+def admin_adminView(request,id):
+	qs = Administrator.objects.get(id=id)
+	context = {"admin":qs}
+	return render(request, 'admin_adminView.html', context)
+
+# 관리자 정보수정
+def admin_adminUpdate(request,id):
+	if request.method == 'GET':
+		qs = Administrator.objects.get(id=id)
+		context = {"admin":qs}
+		return render(request, 'admin_adminUpdate.html', context)
+	else:
+		id = request.POST.get('admin_id')
+		pw = request.POST.get('admin_pw')
+		name = request.POST.get('admin_name')
+		tel = request.POST.get('tel')
+		role = request.POST.get('role')
+		if role == '3':
+			nickname = '수퍼관리자'
+		else:
+			nickname = '관리자'
+
+		qs = Administrator.objects.get(id=id)
+		qs.id = id
+		qs.pw = pw
+		qs.name = name
+		qs.tel = tel
+		qs.role = role
+		qs.nickname = nickname
+		qs.save()
+		return redirect('admin1:admin_adminView', id)
+	
+# 관리자 삭제
+def admin_adminDelete(request,id):
+	Administrator.objects.get(id=id).delete()
+
+	context = {'dmsg':id}
+	return render(request, 'admin_adminView.html', context)
 
 
+# 체크박스 관리자 삭제
+def admin_adminsDelete(request):
+	if request.method == 'POST':
+			try:
+					data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
+					members_to_delete = data.get('members', [])
+					# print("Members to delete:", members_to_delete)
 
+					# 실제로 데이터베이스에서 삭제
+					for member_id in members_to_delete:
+							Administrator.objects.filter(id=member_id).delete()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @csrf_exempt  # CSRF 검사를 우회하려면 추가 (보안상 적절한 검토 필요)
-def admin_memsDelete(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
-            members_to_delete = data.get('members', [])
-
-            # 실제로 데이터베이스에서 삭제
-            for member_id in members_to_delete:
-                # Member는 회원 테이블 모델로 변경해야 합니다.
-                Member.objects.filter(id=member_id).delete()
-
-            return JsonResponse({'status': 'success'}, status=200)
-        except Exception as e:
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
-
-
+					return JsonResponse({'status': 'success'}, status=200)
+			except Exception as e:
+					return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+	return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 
 # 공지사항 리스트
 def admin_noticeList(request):
-	return render(request, 'admin_noticeList.html')
+	qs = NoticeBoard.objects.filter(category=1).order_by("-bno")
+	context = {"notiList":qs}
+	return render(request, 'admin_noticeList.html', context)
 
 # 공지사항 쓰기
 def admin_notiWrite(request):
-	return render(request, 'admin_notiWrite.html')
+	if request.method == 'GET':
+		return render(request, 'admin_notiWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		category = 1
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_noticeList.html', context)
+	
+# 공지사항 상세보기
+def admin_notiView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=1).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=1).order_by('bno').first()
+	
+	context = {
+		"noti": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_notiView.html', context)
 
+# 공지사항 삭제
+def admin_notiDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_noticeList.html', context)
+
+# 체크박스 게시글 삭제
+def admin_notisDelete(request):
+	if request.method == 'POST':
+			try:
+					data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
+					members_to_delete = data.get('members', [])
+					# print("Members to delete:", members_to_delete)
+
+					# 실제로 데이터베이스에서 삭제
+					for member_id in members_to_delete:
+							NoticeBoard.objects.filter(bno=member_id).delete()
+
+					return JsonResponse({'status': 'success'}, status=200)
+			except Exception as e:
+					return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+	return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 # 포스트 리스트
 def admin_postList(request):
-	return render(request, 'admin_postList.html')
+	qs = NoticeBoard.objects.filter(category=2).order_by("-bno")
+	context = {"postList":qs}
+	return render(request, 'admin_postList.html', context)
+
+
+# 포스트 쓰기
+def admin_postWrite(request):
+	if request.method == 'GET':
+		return render(request, 'admin_postWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		bfile_thumbnail = request.FILES.get('bfile_thumbnail','')
+		category = 2
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile_thumbnail=bfile_thumbnail,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_postList.html', context)
+
+# 포스트 상세보기
+def admin_postView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=2).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=2).order_by('bno').first()
+	
+	context = {
+		"post": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_postView.html', context)
+
+# 포스트 삭제
+def admin_postDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_postList.html', context)
+

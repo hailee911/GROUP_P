@@ -42,9 +42,6 @@ def send_verification_email(email, code):
 
 
 
-# 테스트
-def test(request):
-  return render(request,'test.html')
 
 # 회원가입페이지4
 def join04(request):
@@ -57,11 +54,13 @@ def join03(request,id,pw,mail):
     id = request.POST.get('id')
     pw = request.POST.get('pw')  # 비밀번호는 암호화 필요
     mail = request.POST.get('full_mail')
+    name=request.POST.get('name')
     qs = Member.objects.create(
       id=id,
       pw=pw,  # 암호화 필요
       mail=mail,
-      name=request.POST.get('name'),
+      name=name,
+      nicName=name,
       birthday=request.POST.get('date'),
       gender=request.POST.get('gender'),
     )
@@ -276,14 +275,14 @@ def login(request):
     id = request.POST.get('id')
     pw = request.POST.get('pw')
     qs = Member.objects.filter(id=id,pw=pw)
+    mail = qs[0].mail
+    name = qs[0].name
     print("확인용 :",id)
 
     if qs:
-      request.session['session_id'] = id
+      user_id = id 
       print("확인일")
-      context = {"lmsg":"1"}
-      return redirect('/index',context)
+      return redirect('/index/'+user_id)
     else:
-      context = {'lmsg':"0"}
       print("확인2")
-      return render(request,'login.html',context)
+      return render(request,'login.html')
