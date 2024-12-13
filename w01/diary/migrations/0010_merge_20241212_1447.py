@@ -6,12 +6,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('diary', '0010_merge_20241212_1447'),
+        ('diary', '0005_mdiaryboard_delete_diaryboard'),
+        ('diary', '0009_groupdiary_gname'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='mdiaryboard',
-            name='nicName',
-        ),
     ]
