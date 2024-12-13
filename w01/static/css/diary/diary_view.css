@@ -61,6 +61,7 @@ table, tr, td{
 /* 일기내용 */
 #diary_content{
   width: 100%;
+  margin-bottom: 100px;
 }
 
 #diary_content p{
@@ -131,6 +132,7 @@ table, tr, td{
   font-size: 14px;
   color: #333;
   margin-bottom: 40px;
+  margin-top: 80px;
 }
 
 .diary_react .diary_like{
@@ -141,6 +143,7 @@ table, tr, td{
   text-align: center;
   padding-top: 7px;
   margin-right: 5px;
+
 }
 
 .diary_like span{

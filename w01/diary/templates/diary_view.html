@@ -123,12 +123,16 @@
         <tr>
           <th colspan="4">우리 가족 일기</th>
         </tr>
+        {% if content %}
+        {% for c in content %}
         <tr>
-          <td>78</td>
-          <td><a href="">스키장에서 보낸 즐건 하루</a></td>
-          <td>배현지</td>
-          <td>24.12.01</td>
+          <td>{{c.cno}}</td>
+          <td><a href="">{{c.ctitle}}</a></td>
+          <td>{{c.member.nicName}}</td>
+          <td>{{c.cdate|date:"y.m.d"}}</td>
         </tr>
+        {% endfor %}
+        {% endif %}
         <tr>
           <td>78</td>
           <td><a href="">스키장에서 보낸 즐건 하루</a></td>
@@ -154,7 +158,7 @@
           <td>24.12.01</td>
         </tr>
         <tr class="diary_list_last">
-          <td colspan="4"><a href=""><span>전체 일기 보기(총 0개)</span><img src="/static/images/diary/Expand_right_light.png" alt=""></a></td>
+          <td colspan="4"><a href="/diary/MdiaryList/"><span>전체 일기 보기(총 {{content.count}}개)</span><img src="/static/images/diary/Expand_right_light.png" alt=""></a></td>
         </tr>
       </table>
     </div>
