@@ -1,7 +1,13 @@
 from django.shortcuts import render,redirect
 from admin1.models import Administrator
 from loginpage.models import Member
-from loginpage.models import Member
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.db.models import Max
+from admin1.models import Administrator
+from customer.models import NoticeBoard
+
 
 # 어드민 로그인
 def admin_login(request):
@@ -34,10 +40,6 @@ def admin_memList(request):
 	qs = Member.objects.all()
 	context = {"mlist":qs}
 	return render(request, 'admin_memList.html', context)
-
-# 관리자 리스트
-def admin_adminList(request):
-	return render(request, 'admin_adminList.html')
 
 # 유저 상세정보
 def admin_memView(request,id):
@@ -201,16 +203,104 @@ def admin_adminsDelete(request):
 
 # 공지사항 리스트
 def admin_noticeList(request):
-	qs = NoticeBoard.objects.all()
+	qs = NoticeBoard.objects.filter(category=1).order_by("-bno")
 	context = {"notiList":qs}
 	return render(request, 'admin_noticeList.html', context)
 
 # 공지사항 쓰기
 def admin_notiWrite(request):
-	return render(request, 'admin_notiWrite.html')
+	if request.method == 'GET':
+		return render(request, 'admin_notiWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		category = 1
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_noticeList.html', context)
+	
+# 공지사항 상세보기
+def admin_notiView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=1).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=1).order_by('bno').first()
+	
+	context = {
+		"noti": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_notiView.html', context)
 
+# 공지사항 삭제
+def admin_notiDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_noticeList.html', context)
+
+# 체크박스 게시글 삭제
+def admin_notisDelete(request):
+	if request.method == 'POST':
+			try:
+					data = json.loads(request.body)  # 요청에서 JSON 데이터 파싱
+					members_to_delete = data.get('members', [])
+					# print("Members to delete:", members_to_delete)
+
+					# 실제로 데이터베이스에서 삭제
+					for member_id in members_to_delete:
+							NoticeBoard.objects.filter(bno=member_id).delete()
+
+					return JsonResponse({'status': 'success'}, status=200)
+			except Exception as e:
+					return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+	return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
 
 # 포스트 리스트
 def admin_postList(request):
-	return render(request, 'admin_postList.html')
+	qs = NoticeBoard.objects.filter(category=2).order_by("-bno")
+	context = {"postList":qs}
+	return render(request, 'admin_postList.html', context)
+
+
+# 포스트 쓰기
+def admin_postWrite(request):
+	if request.method == 'GET':
+		return render(request, 'admin_postWrite.html')
+	else:
+		id = request.session.get('session_id')
+		member = Administrator.objects.get(id=id)
+		btitle = request.POST.get("title")
+		bcontent = request.POST.get("content")
+		bfile = request.FILES.get('bfile','')
+		bfile_thumbnail = request.FILES.get('bfile_thumbnail','')
+		category = 2
+		NoticeBoard.objects.create(member=member,btitle=btitle,bcontent=bcontent,bfile_thumbnail=bfile_thumbnail,bfile=bfile,category=category)
+		context = {'wmsg':'1'}
+		return render(request, 'admin_postList.html', context)
+
+# 포스트 상세보기
+def admin_postView(request, bno):
+	qs = NoticeBoard.objects.get(bno=bno)
+	## 이전글
+	prev_qs = NoticeBoard.objects.filter(bno__lt=bno, category=2).order_by('-bno').first()
+	# 다음글
+	next_qs = NoticeBoard.objects.filter(bno__gt=bno, category=2).order_by('bno').first()
+	
+	context = {
+		"post": qs,
+		"prev_board": prev_qs,
+		"next_board": next_qs,
+	}
+	return render(request, 'admin_postView.html', context)
+
+# 포스트 삭제
+def admin_postDelete(request, bno):
+	NoticeBoard.objects.get(bno=bno).delete()
+	context = {'dmsg':bno}
+	return render(request, 'admin_postList.html', context)
 

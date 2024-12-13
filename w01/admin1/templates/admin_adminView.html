@@ -10,8 +10,13 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>관리자정보</title>
 <script>
+	$("#a_logout").click(function(){
+		if(confirm("로그아웃 하시겠습니까?")){
+			location.href='/admin1/logout/'
+		}
+	})
 	if("{{dmsg}}"!=''){
-		alert("{{dmsg}} 관리자를 삭제했습니다.")
+		alert("{{dmsg}} 를 삭제했습니다.")
 		location.href = '/admin1/admin_adminList/'
 	}
 	$(function(){

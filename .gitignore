@@ -291,3 +291,7 @@ db.sqlite3
 # OS 관련 파일
 .DS_Store
 Thumbs.db
+
+# .gitignore
+*/migrations/__pycache__/
+

@@ -4,21 +4,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdeliv.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 <link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
 <link rel="stylesheet" href="{% static 'css/admin1/admin_login.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>공지사항</title>
-<<<<<<< Updated upstream
-=======
 <script>
+	if('{{request.session.session_role}}'=='1'){
+		alert("접근 권한이 없습니다.")
+		location.href = '/admin1/admin_memList/'
+	}
+	if('{{dmsg}}'!=''){
+		alert("게시글이 삭제되었습니다.")
+		location.href='/admin1/admin_noticeList/'
+	}
+	if('{{wmsg}}' == '1'){
+		alert("공지사항이 저장되었습니다.")
+		location.href='/admin1/admin_noticeList/'
+	}
+
+
+	// 체크박스 체크 삭제
+	$(document).ready(function() {
+    $('#notiDelBtn').click(function() {
+			// 선택된 체크박스의 데이터를 배열로 저장
+			const selectedMembers = [];
+			document.querySelectorAll('.select_member:checked').forEach((checkbox) => {
+				const href = checkbox.closest('tr').querySelector('.member_name a').getAttribute('href'); // href 추출
+				const bno = href.split('/').filter(Boolean).pop(); // URL에서 bno 추출
+				selectedMembers.push(bno);
+			});
+
+			// 선택된 글 없을 경우 알림
+			if (selectedMembers.length === 0) {
+				alert("삭제할 게시글을 선택해주세요.");
+				return;
+			}
+
+			// 확인 창
+			if (!confirm("선택된 게시글을 삭제하시겠습니까?")) {
+				return;
+			}
+
+			// AJAX로 데이터 전송
+			$.ajax({
+				url: '/admin1/admin_notisDelete/', // 삭제 요청을 처리할 URL
+				method: 'POST',
+				data: JSON.stringify({ members: selectedMembers }),
+				contentType: 'application/json',
+				headers: {
+						'X-CSRFToken': '{{ csrf_token }}',
+				},
+				success: function(response) {
+						alert("선택된 게시글이 삭제되었습니다.");
+						location.reload(); // 페이지 새로고침
+				},
+				error: function(error) {
+						alert("게시글 삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
+						console.error(error);
+				},
+			});
+    });
+	});
+
 	$(function(){
+		$("#a_logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?")){
+				location.href='/admin1/logout/'
+			}
+		})
 		$("#notiAddBtn").click(function(){
 			location.href = '/admin1/admin_notiWrite/'
 		})
 	})
 </script>
->>>>>>> Stashed changes
 </head>
 <body>
 	<nav class="gnb">
@@ -62,8 +120,8 @@
 				{% for noti in notiList %}
 				<tr>
 					<td><input type="checkbox" class="select_member"></td>
-					<td>{{noti.bno}}</td>
-					<td class="member_name"><a href="#">{{noti.btitle}}</a></td>
+					<td>{{forloop.revcounter}}</td> 
+					<td class="member_name"><a href="/admin1/admin_notiView/{{noti.bno}}/">{{noti.btitle}}</a></td>
 					<td>{{noti.member.name}}</td>
 					<td>{{noti.bdate|date:'y-m-d H:i:s'}}</td>
 					<td>게시 중</td>
@@ -79,24 +137,14 @@
 		</table>
 	</div>
 	<script>
-	$(function(){
-		const currentPage = window.location.pathname;
-		$('.menu-item').each(function () {
-			if ($(this).attr('href') === currentPage) {
-				$(this).addClass('active');
-			}
-		});
-	});
-	
-	// 전체 선택 기능
-	const selectAllCheckbox = document.getElementById('select_all');
-	const memberCheckboxes = document.querySelectorAll('.select_member');
-	
-	selectAllCheckbox.addEventListener('change', function () {
+		// 체크박스 전체 선택 기능
+		const selectAllCheckbox = document.getElementById('select_all');
+		const memberCheckboxes = document.querySelectorAll('.select_member');
+		selectAllCheckbox.addEventListener('change', function () {
 			memberCheckboxes.forEach(checkbox => {
-					checkbox.checked = selectAllCheckbox.checked;
+				checkbox.checked = selectAllCheckbox.checked;
 			});
-	});
+		});
 
 	</script>
 

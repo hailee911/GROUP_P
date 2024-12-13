@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="{% static 'css/admin1/admin_memllist.css'%}">
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>관리자설정</title>
-<<<<<<< Updated upstream
-=======
 <script>
 	if ('{{outMsg}}' == '1'){
 		alert("안전하게 로그아웃되었습니다.")
@@ -77,7 +75,6 @@
 		});
 	})
 </script>
->>>>>>> Stashed changes
 </head>
 <body>
 	<nav class="gnb">
@@ -111,17 +108,6 @@
 			</thead>
 			<tbody>
 				<!-- 데이터 추가 반복 -->
-<<<<<<< Updated upstream
-				<tr>
-					<td><input type="checkbox" class="select_member"></td>
-					<td>001</td>
-					<td>aaaaa</td>
-					<td class="member_name"><a href="#">홍길동</a></td>
-					<td>수퍼어드민</td>
-					<td>hong@naver.com</td>
-					<td>3</td>
-				</tr>
-=======
 				 {% for admin in adminList %}
 					<tr>
 						<td><input type="checkbox" class="select_member"></td>
@@ -133,7 +119,6 @@
 						<td>{{admin.role}}</td>
 					</tr>
 					{% endfor %}
->>>>>>> Stashed changes
 				<!-- 데이터 추가 반복 -->
 			</tbody>
 		</table>
