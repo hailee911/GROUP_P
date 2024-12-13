@@ -1,11 +1,9 @@
 from django.shortcuts import render,redirect
 from admin1.models import Administrator
 from loginpage.models import Member
-from loginpage.models import Member
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from loginpage.models import Member
 from django.db.models import Max
 from admin1.models import Administrator
 from customer.models import NoticeBoard
