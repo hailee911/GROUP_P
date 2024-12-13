@@ -129,6 +129,10 @@ def diaryWrite(request):
         return redirect('diary:MdiaryList')  # 다이어리 리스트로 리다이렉트
 
 
-# 다이어리 view
+# 다이어리 view 추후 업데이트 >>
 def diaryView(request):
-  return render(request,'diary_view.html')
+    id = request.session.get('session_id')
+    member = Member.objects.filter(id=id)
+    qs = Content.objects.filter(member=member[0])
+    context = {"content":qs}
+    return render(request,'diary_view.html',context)
