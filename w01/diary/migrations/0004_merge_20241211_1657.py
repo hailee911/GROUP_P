@@ -7,7 +7,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('diary', '0002_letter'),
-        ('diary', '0002_remove_diaryboard_like_members'),
         ('diary', '0003_diaryboard_diarytit'),
     ]
 
