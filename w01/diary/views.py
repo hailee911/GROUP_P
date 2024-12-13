@@ -14,23 +14,86 @@ from .models import MdiaryBoard
 
 ## 다이어리 HOME
 def diaryHome(request):
-  qs = Letter.objects.all().order_by("ldate")
   id = request.session.get('session_id')
+  ## 공유 일기장
+  # 유저가 생성한 공유일기장
+  qs_createdDiary = GroupDiary.objects.filter(member__id=id)
+  qs_cmember = Member.objects.filter(joined_group=qs_createdDiary[0].gno) # 가입멤버
+
+  if qs_createdDiary:
+    c_context = {"createdDiary":qs_createdDiary[0],"cmembers":qs_cmember}
+    return render(request,'diaryHome.html',c_context)
+  
+  # # 유저가 가입한 공유일기장
+  qs_joinedDiary = GroupDiary.objects.filter(gno=Member.joined_group)
+  qs_jmember = Member.objects.get(created_group=qs_createdDiary[0].gno) # 방장
+  qs_jmembers = Member.objects.filter(joined_group=qs_createdDiary[0].gno) # 가입멤버
+  if qs_joinedDiary:
+    j_context = {"joinedDiary":qs_joinedDiary,"jmem":qs_jmember,"jmembers":qs_jmembers}
+    return render(request,'diaryHome.html',j_context)
+
+
+  # if qs_createdDiary:
+  #   if qs_joinedDiary:
+  #     d_context = {"createdDiary":qs_createdDiary,"joined_diary":qs_joinedDiary}
+  #     return render(request,'diaryHome.html',d_context)
+  #   else:
+  #     d_context = {"createdDiary":qs_createdDiary}
+  #     return render(request,'diaryHome.html',d_context)
+  # # 유저가 가입한 공유일기장
+  # if qs_joinedDiary:
+  #   if not qs_createdDiary:
+  #     d_context = {"joined_diary":qs_joinedDiary}
+  #     return render(request,'diaryHome.html',d_context)
+
+
+  # 우체통
+  qs = Letter.objects.all().order_by("ldate")
   member = Member.objects.filter(id=id)
   # personal_diaries = MdiaryBoard.objects.select_related('id').all() # 개인 다이어리 데이터 가져오기
   if member:
     user_nic = member[0].nicName
     context = {"list":qs ,'user_nic':user_nic}
+    return render(request,'diaryHome.html',context)
   else:
     context = {'list':qs}
+    return render(request,'diaryHome.html',context)
+  
     
-  return render(request,'diaryHome.html',context)
 
 
 
 ## 가족다이어리 생성
-def diaryMake(requset):
-  return render(requset,'diaryMake.html')
+def diaryMake(request):
+  if request.method == 'GET':
+    qs = Member.objects.all()
+    context = {'members':qs}
+    return render(request,'diaryMake.html', context)
+  else:
+    id = request.session['session_id']
+    member = Member.objects.get(id=id)
+    gtitle = request.POST.get('gtitle')
+    gName = request.POST.get('gName')
+    created_at = request.POST.get('created_at','')
+    search_members = request.POST.getlist('search_members[]')
+
+    qs_gDiary = GroupDiary.objects.create(gtitle=gtitle, gName=gName, created_at=created_at, member=member)
+
+    
+    qs_cMem = Member.objects.get(id=id)
+    qs_cMem.created_group = qs_gDiary
+    qs_cMem.save()
+
+    for member in search_members:
+      qs = Member.objects.get(id=member)
+      qs.joined_group = qs_gDiary
+      qs.save()
+    
+    context = {"gmsg":"1"}
+    return render(request, 'diaryHome.html', context)
+    
+
+
 
 
 ## 내 다이어리 목록
