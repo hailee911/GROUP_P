@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static '/css/diary/diary_make.css'%}">
   <link rel="stylesheet" href="{% static '/css/home/main.css'%}">
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <title>가족 공유 다이어리 생성</title>
-</head>
-
+  
 <!-- 공통 상단좌측메뉴 -->
 <script>
   $(function() {
@@ -71,145 +69,116 @@
 <div id="all_area">
   <!-- 상단부분 -->
   <div id="title_area">
-    <p id="topTit">가족 공유 다이어리 생성</p>      
+    <p id="topTit">가족 공유 다이어리 만들기</p>      
   </div>
 
   <!-- 메인부분 -->
   <div id="main_area">
     <div class="container">
       <img id="diaryImg" src="/static/images/diary/diaryMake.png" alt="Family Diary Background">
-      <div class="title_container">
-
-        <div>
-          <span>다이어리 제목</span>
-        </div>
-        <div>
-          <input type="text" class="title_input" placeholder="제목을 입력하세요." maxlength="20"></input>
-        </div>
-
-        <div id="groupName">
-          <span>가족 이름</span><br>
-          <div class="gName_container">
-            <input type="text" name="groupName" class="familyName" placeholder="가족 이름을 입력하세요." maxlength="20">
+      <form action="" method="post" id="diaryFrm" name="diaryFrm">
+        {% csrf_token %}
+        <div class="title_container">
+          <div>
+            <span>다이어리 제목</span>
+          </div>
+          <div>
+            <input type="text" id="title" name='gtitle' class="title_input" placeholder="제목을 입력하세요." maxlength="20"></input>
+          </div>
+          
+          <div id="groupName">
+            <span>가족 이름</span><br>
+            <div class="gName_container">
+              <input type="text" id='gName' name="gName" class="familyName" placeholder="우리 가족의 이름을 정해보세요." maxlength="20">
+            </div>
+          </div>
+          
+          <div id="mem_search">
+            <span>추가할 가족 검색</span><br>
+            <div id="search_container">
+              <input id="searchBar" class="searchBar" type="text" name="search" placeholder="검색">
+              <button type="button">검색</button>
+              <ul id="mList" style="display:none;">
+                {% for member in members %}
+                  <li>{{ member.id }}</li>
+                  <li>{{ member.name }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div id="memberList">
+              
+            </div>
+          </div>
+        
+          <div id="date_search">
+            <span>다이어리 생성일</span><br>
+            <input type="date" id='gdate' name='created_at' class="date_input">
+          </div>
+        
+          <div id="save_area">
+            <button id="saveBtn" type='button'><img src="/static/images/diary/saveBtn.png" alt=""></button>
+            <span id="cancelBtn"><button><img src="/static/images/diary/cancleBtn.png" alt=""></button></span>
           </div>
         </div>
-
-        <div id="mem_search">
-          <span>추가할 가족 검색</span><br>
-          <div class="search_container">
-            <input id="searchBar" class="searchBar" type="text" name="search" placeholder="검색">
-          </div>
-          <div id="memberList"></div>
-        </div>
-
-        <div id="date_search">
-          <span>다이어리 생성일</span><br>
-          <input type="date" class="date_input">
-        </div>
-
-        <div id="save_area">
-          <button id="saveBtn"><img src="/static/images/diary/saveBtn.png" alt=""></button>
-          <span id="cancleBtn"><button><img src="/static/images/diary/cancleBtn.png" alt=""></button></span>
-        </div>
-
-      </div>
+      </form>
     </div>
   </div>
     
-
-
   <!-- 스크립트 부분 -->
   <script>
-    // 예시 멤버 데이터
-    const members = [
-    { id: "user1", name: "김철수", nicName: "닉네임1" },
-    { id: "user2", name: "이영희", nicName: "닉네임2" },
-    { id: "user3", name: "박민수", nicName: "닉네임3" }
-    ];
-
-    // 멤버 추가된 목록
-    const addedMembers = [];
-
-    function searchMember() {
-    const input = document.getElementById('searchBar').value.trim();
-    const member = members.find(m => m.id === input);
-
-    if (member) {
-        // 중복 추가 방지
-        if (addedMembers.some(m => m.id === member.id)) {
-            alert("이미 추가된 멤버입니다.");
-            return;
+    $(document).ready(function () {
+      const members = []; // ID와 Name을 저장할 배열
+    
+      // #mList의 <li>들을 순회하며 처리
+      $('#mList li:nth-child(odd)').each(function (index) {
+        const memberId = $(this).text().trim(); // 홀수 번째 <li>는 ID
+        const memberName = $('#mList li:nth-child(even)').eq(index).text().trim(); // 짝수 번째 <li>는 Name
+    
+        members.push({ id: memberId, name: memberName }); // 객체로 저장
+      });
+      
+      // 엔터키 입력 방지 및 버튼 클릭 트리거
+      $('#searchBar').on('keypress', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault(); // 기본 제출 방지
+          $('#search_container button').click(); // 버튼 클릭 트리거
         }
-
-        if (confirm("멤버를 추가하시겠습니까?")) {
-            addedMembers.push(member);
-            displayMember(member);
+      });
+      // 검색 버튼 클릭 이벤트 처리
+      $('#search_container button').on('click', function () {
+        const input_id = $('#searchBar').val().trim(); // 입력값 가져오기
+    
+        // 입력값과 일치하는 회원 찾기
+        const member = members.find(m => m.id === input_id);
+    
+        if (member) {
+          // 일치하는 회원이 있을 경우 이름 추가
+          $('#memberList').append(`<div class='nicName'>${member.name}</div>`); // 이름 텍스트 추가
+          $('#diaryFrm').append(`<input type="hidden" name="search_members[]" value="${member.id}">`); // 검색해서 추가한 멤버id hidden 저장
+          alert(`"${input_id}" 회원을 찾았어요!`);
+          $("#searchBar").val('')
+        } else {
+          // 일치하는 회원이 없을 경우 메시지 출력
+          alert(`"${input_id}"는 회원 정보와 일치하지 않아요.`);
+          $("#searchBar").val('')
         }
-    } else {
-        alert("해당 id는 존재하지 않습니다.");
-    }
-    }
+      });
 
-    function displayMember(member) {
-    const memberList = document.getElementById('memberList');
-    const memberDiv = document.createElement('div');
-    memberDiv.className = 'nicName';
-    memberDiv.textContent = member.name; // 이름 표시
-    memberList.appendChild(memberDiv);
-    }
-
-    // Enter 키로 검색 동작 추가
-    document.getElementById('searchBar').addEventListener('keyup', function (event) {
-    if (event.key === 'Enter') {
-        searchMember();
-    }
-    });
-
-    // 다이어리 저장 버튼 클릭 시 동작
-    document.getElementById('saveBtn').addEventListener('click', function () {
-        const title = document.querySelector('.title_input').value.trim();
-        const groupName = document.querySelector('.familyName').value.trim();
-        const date = document.querySelector('.date_input').value;
-    
-        if (!title) {
-            alert("다이어리 제목을 입력해주세요.");
-            return;
+      $("#saveBtn").click(function(){
+        if($("#title").val().length<1){
+          alert("다이어리 제목을 입력하세요.");
+          return false;
         }
-    
-        if (groupName === '') {
-            alert("가족 이름을 입력해주세요.");
-            return;
+        if($("#gName").val().length<1){
+          alert("가족 이름을 입력하세요.");
+          return false;
         }
-    
-        if (!date) {
-            alert("생성일을 선택해주세요.");
-            return;
+        if ($("#memberList").children().length < 1) {
+          alert("가족을 추가하세요.");
+          return false;
         }
-    
-        // 추가된 멤버의 이름 리스트
-        const memberNames = addedMembers.map(member => member.name).join(', ');
-    
-        // localStorage에 저장 (groupName 포함)
-        const diaryData = {
-            title: title,
-            groupName: groupName, // 저장하지만 표시하지 않음
-            date: date,
-            members: memberNames
-        };
-        localStorage.setItem('diaryData', JSON.stringify(diaryData));
-    
-        alert("다이어리가 생성되었습니다.");
-        window.location.href = '/diary/diaryHome/';
-    });
-  
-
-    // 다이어리 취소 버튼 클릭 시 동작
-    document.querySelector('#cancleBtn button').addEventListener('click', function (event) {
-    if (confirm("생성을 취소하시겠습니까?")) {
-        window.location.href = '/diary/diaryHome/';
-    } else {
-        event.preventDefault();
-    }
+        diaryFrm.submit()
+      });
     });
   </script>
 
