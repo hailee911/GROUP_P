@@ -278,9 +278,9 @@ def login(request):
     print("확인용 :",id)
 
     if qs:
-      user_id = id 
+      request.session['session_id'] = id
       print("확인일")
-      return redirect('/index/'+user_id)
+      return redirect('/index/')
     else:
       print("확인2")
       return render(request,'login.html')
