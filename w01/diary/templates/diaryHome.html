@@ -14,6 +14,10 @@
 
 <!-- 공통 상단좌측메뉴 -->
 <script>
+  if("{{gmsg}}"=='1'){
+    alert("가족 다이어리가 만들어졌어요.")
+    location.href = '/diary/diaryHome/'
+  }
   $(function() {
     // GNB 클릭
     $('#menu ul li').on('click', function() {

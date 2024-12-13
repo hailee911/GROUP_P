@@ -29,8 +29,36 @@ def diaryHome(request):
 
 
 ## 가족다이어리 생성
-def diaryMake(requset):
-  return render(requset,'diaryMake.html')
+def diaryMake(request):
+  if request.method == 'GET':
+    qs = Member.objects.all()
+    context = {'members':qs}
+    return render(request,'diaryMake.html', context)
+  else:
+    id = request.session['session_id']
+    member = Member.objects.get(id=id)
+    gtitle = request.POST.get('gtitle')
+    gName = request.POST.get('gName')
+    created_at = request.POST.get('created_at','')
+    search_members = request.POST.getlist('search_members[]')
+
+    qs_gDiary = GroupDiary.objects.create(gtitle=gtitle, gName=gName, created_at=created_at, member=member)
+
+    
+    qs_cMem = Member.objects.get(id=id)
+    qs_cMem.created_group = qs_gDiary
+    qs_cMem.save()
+
+    for member in search_members:
+      qs = Member.objects.get(id=member)
+      qs.joined_group = qs_gDiary
+      qs.save()
+    
+    context = {"gmsg":"1"}
+    return render(request, 'diaryHome.html', context)
+    
+
+
 
 
 ## 내 다이어리 목록
